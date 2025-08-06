@@ -1,12 +1,12 @@
-﻿#nullable enable
-using System;
+﻿using System;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Windowing;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Utility.Raii;
 using Lumina.Excel.Sheets;
 
 using static BlueMageHelper.SpellSources;
@@ -17,11 +17,11 @@ namespace BlueMageHelper.Windows;
 public class MainWindow : Window, IDisposable
 {
     private Plugin Plugin;
-    private Configuration Configuration;
 
     private int SelectedSpellNumber;
     private int SelectedSource;
-    private static readonly Vector2 size = new(80, 80);
+
+    private static readonly Vector2 IconSize = new(80, 80);
 
     public ExcelSheetSelector<AozAction>.ExcelSheetPopupOptions? SourceOptions;
 
@@ -35,10 +35,9 @@ public class MainWindow : Window, IDisposable
         };
 
         Plugin = plugin;
-        Configuration = plugin.Configuration;
 
         // 0 is the first learned blu skill
-        SelectedSpellNumber = SelectedSpellNumber = Configuration.ShowOnlyUnlearned ? 0 : 1;
+        SelectedSpellNumber = SelectedSpellNumber = Plugin.Configuration.ShowOnlyUnlearned ? 0 : 1;
     }
 
     public void Dispose() { }
@@ -50,7 +49,7 @@ public class MainWindow : Window, IDisposable
             ExcelSheetSelector<AozAction>.FilteredSearchSheet = null!;
             SourceOptions = new()
             {
-                FormatRow = a => $"{Helper.ToTitleCaseExtended(a.Action.Value!.Name)}",
+                FormatRow = a => $"{Utils.ToTitleCaseExtended(a.Action.Value.Name)}",
                 FilteredSheet = Plugin.AozActionsCache.Where(a => IsUnlocked($"{Plugin.AozTransientCache[(int)a.RowId - 1].Number}")).OrderBy(a => Plugin.AozTransientCache[(int)a.RowId - 1].Number)
             };
         }
@@ -58,7 +57,7 @@ public class MainWindow : Window, IDisposable
         var currentSpell = SelectedSpellNumber;
         var keyList = Spells.Keys.Where(IsUnlocked).ToList();
 
-        if (!keyList.Any())
+        if (keyList.Count == 0)
         {
             ImGui.TextColored(ImGuiColors.ParsedOrange, "All spells learned, nothing to show.");
             ImGui.TextColored(ImGuiColors.ParsedOrange, "[You can disable this option in the config]");
@@ -66,7 +65,7 @@ public class MainWindow : Window, IDisposable
         }
 
         if (SelectedSpellNumber >= keyList.Count)
-            SelectedSpellNumber = Configuration.ShowOnlyUnlearned ? 0 : 1; // 0 is the first learned blu skill, so we skip to 1 for all
+            SelectedSpellNumber = Plugin.Configuration.ShowOnlyUnlearned ? 0 : 1; // 0 is the first learned blu skill, so we skip to 1 for all
 
         var stringList = Spells.Where(x => keyList.Contains(x.Key)).Select(x => $"{x.Key} - {x.Value.Name}").ToArray();
         ImGui.Combo("##spellSelector", ref SelectedSpellNumber, stringList, stringList.Length);
@@ -77,9 +76,9 @@ public class MainWindow : Window, IDisposable
             var spellNumber = Plugin.AozTransientCache[(int)spellRow - 1].Number;
             SelectedSpellNumber = Array.IndexOf(stringList, $"{spellNumber} - {Spells[$"{spellNumber}"].Name}");
         }
-        DrawArrows(ref SelectedSpellNumber, stringList.Length, 0);
+        Helper.DrawArrows(ref SelectedSpellNumber, stringList.Length, 0);
         ImGui.SameLine();
-        ImGui.Checkbox("##unlearnedSpells", ref Configuration.ShowOnlyUnlearned);
+        ImGui.Checkbox("##unlearnedSpells", ref Plugin.Configuration.ShowOnlyUnlearned);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Show only unlearned spells.");
 
@@ -94,147 +93,125 @@ public class MainWindow : Window, IDisposable
             return;
 
         var selectedSpell = Spells[keyList[SelectedSpellNumber]];
-        DrawIcon(selectedSpell.Icon);
+        Helper.DrawScaledIcon(selectedSpell.Icon, IconSize);
         ImGuiHelpers.ScaledDummy(10);
 
-        if (ImGui.BeginChild("Content", new Vector2(0, -30), false, 0))
+        using (var contentChild = ImRaii.Child("Content", new Vector2(0, -30)))
         {
-            var source = selectedSpell.Sources[SelectedSource];
-            if (selectedSpell.HasMultipleSources)
+            if (contentChild.Success)
             {
-                var sourcesList = selectedSpell.Sources.Select(x => $"{x.Info} ").ToArray();
-                ImGui.Combo("##sourcesSelector", ref SelectedSource, sourcesList, sourcesList.Length);
-                DrawArrows(ref SelectedSource, selectedSpell.Sources.Count, 2);
-                source = selectedSpell.Sources[SelectedSource];
-            }
-            else
-            {
-                if (source.Type != RegionType.Unknown)
-                    ImGui.TextUnformatted($"{(source.Type != RegionType.Buy ? "Mob" : "Info")}: {source.Info}");
-                else
-                    ImGui.TextUnformatted($"Currently Unknown");
-            }
-
-            switch (source.Type)
-            {
-                case RegionType.ARank:
-                    ImGui.TextUnformatted($"Note: Rank A Elite Mark");
-                    break;
-                case RegionType.BRank:
-                    ImGui.TextUnformatted($"Note: Rank B Elite Mark");
-                    break;
-                case RegionType.SRank:
-                    ImGui.TextUnformatted($"Note: Rank S Elite Mark");
-                    break;
-            }
-
-            if (source.Type != RegionType.Buy)
-                ImGui.TextUnformatted($"Min Lvl: {source.DutyMinLevel}");
-
-            if (source.TerritoryType != null)
-                ImGui.TextUnformatted(!source.IsDuty ? $"Region: {source.PlaceName}" : $"Duty: {source.DutyName}");
-
-            var isHunt = source.Type is RegionType.ARank or RegionType.BRank or RegionType.SRank;
-            if (source.MapLink != null || isHunt)
-            {
-                if (Plugin.TeleportConsumer.IsAvailable)
+                var source = selectedSpell.Sources[SelectedSource];
+                if (selectedSpell.HasMultipleSources)
                 {
-                    if (ImGui.Button("T"))
-                        Plugin.TeleportToNearestAetheryte(source);
-                    ImGui.SameLine();
+                    var sourcesList = selectedSpell.Sources.Select(x => $"{x.Info} ").ToArray();
+                    ImGui.Combo("##sourcesSelector", ref SelectedSource, sourcesList, sourcesList.Length);
+                    Helper.DrawArrows(ref SelectedSource, selectedSpell.Sources.Count, 2);
+                    source = selectedSpell.Sources[SelectedSource];
+                }
+                else
+                {
+                    ImGui.TextUnformatted(source.Type != RegionType.Unknown
+                        ? $"{(source.Type != RegionType.Buy ? "Mob" : "Info")}: {source.Info}"
+                        : "Currently Unknown");
                 }
 
-                if (!isHunt)
+                switch (source.Type)
                 {
-                    if (!source.CurrentlyUnknown)
+                    case RegionType.ARank:
+                        ImGui.TextUnformatted($"Note: Rank A Elite Mark");
+                        break;
+                    case RegionType.BRank:
+                        ImGui.TextUnformatted($"Note: Rank B Elite Mark");
+                        break;
+                    case RegionType.SRank:
+                        ImGui.TextUnformatted($"Note: Rank S Elite Mark");
+                        break;
+                }
+
+                if (source.Type != RegionType.Buy)
+                    ImGui.TextUnformatted($"Min Lvl: {source.DutyMinLevel}");
+
+                if (source.TerritoryType != null)
+                    ImGui.TextUnformatted(!source.IsDuty ? $"Region: {source.PlaceName}" : $"Duty: {source.DutyName}");
+
+                var isHunt = source.Type is RegionType.ARank or RegionType.BRank or RegionType.SRank;
+                if (source.MapLink != null || isHunt)
+                {
+                    if (Plugin.TeleportConsumer.IsAvailable)
                     {
-                        if (ImGui.Selectable($"Coords: {source.MapLink?.CoordinateString ?? "Unknown"}##mapCoords"))
-                            Plugin.SetMapMarker(source.MapLink);
+                        using var pushedFont = ImRaii.PushFont(UiBuilder.IconFont);
+                        if (ImGui.Button($"{FontAwesomeIcon.StreetView.ToIconString()}"))
+                            Plugin.TeleportToNearestAetheryte(source);
+
+                        ImGui.SameLine();
+                    }
+
+                    if (!isHunt)
+                    {
+                        if (ImGui.Selectable(source.CurrentlyUnknown == false
+                                ? $"Coords: {source.MapLink?.CoordinateString ?? "Unknown"}##mapCoords"
+                                : "Exact location currently unknown##mapCoords"))
+                            Plugin.SetMapMarker(source.MapLink!);
                     }
                     else
                     {
-                        if (ImGui.Selectable($"Exact location currently unknown##mapCoords"))
+                        if (ImGui.Selectable($"Random Location##mapCoords"))
                             Plugin.SetMapMarker(source.MapLink);
                     }
                 }
-                else
+
+                ImGui.TextUnformatted($"Learned: ");
+                DrawProgressSymbol(Plugin.UnlockedSpells.TryGetValue(keyList[SelectedSpellNumber], out var unlocked) && unlocked);
+
+                if (source.TerritoryType != null && source.Type != RegionType.Buy)
                 {
-                    if (ImGui.Selectable($"Random Location##mapCoords"))
-                        Plugin.SetMapMarker(source.MapLink);
+                    var combos = Spells
+                        .Where(key => keyList.Contains(key.Key))
+                        .Where(key => key.Key != keyList[SelectedSpellNumber])
+                        .Where(spell => spell.Value.Sources.Any(spellSource => source.CompareTerritory(spellSource)))
+                        .ToArray();
+
+                    if (combos.Length != 0)
+                    {
+                        ImGuiHelpers.ScaledDummy(5);
+                        ImGui.Separator();
+                        ImGuiHelpers.ScaledDummy(5);
+                        ImGui.TextUnformatted("Same location:");
+                        foreach (var (key, value) in combos)
+                        {
+                            if (ImGui.Selectable($"{key} - {value.Name}"))
+                            {
+                                SelectedSource = value.Sources.FindIndex(x => x.TerritoryTypeID == source.TerritoryTypeID);
+                                SelectedSpellNumber = keyList.FindIndex(val => val == key);;
+                            }
+                        }
+                    }
                 }
-            }
 
-            ImGui.TextUnformatted($"Learned: ");
-            DrawProgressSymbol(Plugin.UnlockedSpells.TryGetValue(keyList[SelectedSpellNumber], out var unlocked) && unlocked);
-
-            if (source.TerritoryType != null && source.Type != RegionType.Buy)
-            {
-                var combos = Spells
-                    .Where(key => keyList.Contains(key.Key))
-                    .Where(key => key.Key != keyList[SelectedSpellNumber])
-                    .Where(spell => spell.Value.Sources.Any(spellSource => source.CompareTerritory(spellSource)))
-                    .ToArray();
-
-                if (combos.Any())
+                if (source.AcquiringTips != "")
                 {
                     ImGuiHelpers.ScaledDummy(5);
                     ImGui.Separator();
                     ImGuiHelpers.ScaledDummy(5);
-                    ImGui.TextUnformatted("Same location:");
-                    foreach (var (key, value) in combos)
+
+                    if (ImGui.CollapsingHeader($"Acquisition Tips##{selectedSpell.Icon}"))
                     {
-                        if (ImGui.Selectable($"{key} - {value.Name}"))
+                        foreach (var tip in source.AcquiringTips.Split("\n"))
                         {
-                            SelectedSource = value.Sources.FindIndex(x => x.TerritoryTypeID == source.TerritoryTypeID);
-                            SelectedSpellNumber = keyList.FindIndex(val => val == key);;
+                            ImGui.Bullet();
+                            using (ImRaii.TextWrapPos(0.0f))
+                                ImGui.TextUnformatted(tip);
                         }
                     }
                 }
             }
-
-            if (source.AcquiringTips != "")
-            {
-                ImGuiHelpers.ScaledDummy(5);
-                ImGui.Separator();
-                ImGuiHelpers.ScaledDummy(5);
-
-                if (ImGui.CollapsingHeader($"Acquisition Tips##{selectedSpell.Icon}"))
-                {
-                    foreach (var tip in source.AcquiringTips.Split("\n"))
-                    {
-                        ImGui.Bullet();
-                        ImGui.PushTextWrapPos();
-                        ImGui.TextUnformatted(tip);
-                        ImGui.PopTextWrapPos();
-                    }
-                }
-            }
         }
-        ImGui.EndChild();
 
-        if (ImGui.BeginChild("BottomBar", new Vector2(0, 0), false, 0))
-            ImGui.TextDisabled("Data sourced from ffxiv.consolegameswiki.com");
-        ImGui.EndChild();
-    }
-
-    private static void DrawArrows(ref int selected, int length, int id)
-    {
-        ImGui.SameLine();
-        if (selected == 0) ImGui.BeginDisabled();
-        if (IconButton(id, FontAwesomeIcon.ArrowLeft)) selected--;
-        if (selected == 0) ImGui.EndDisabled();
-
-        ImGui.SameLine();
-        if (selected + 1 == length) ImGui.BeginDisabled();
-        if (IconButton(id+1, FontAwesomeIcon.ArrowRight)) selected++;
-        if (selected + 1 == length) ImGui.EndDisabled();
-    }
-
-    private static void DrawIcon(uint iconId)
-    {
-        var iconSize = size * ImGuiHelpers.GlobalScale;
-        var texture = Plugin.Texture.GetFromGameIcon(iconId).GetWrapOrEmpty();
-        ImGui.Image(texture.ImGuiHandle, iconSize);
+        using (var bottomBar = ImRaii.Child("BottomBar", new Vector2(0, 0)))
+        {
+            if (bottomBar.Success)
+                ImGui.TextDisabled("Data sourced from ffxiv.consolegameswiki.com");
+        }
     }
 
     private static void DrawProgressSymbol(bool done)
@@ -243,10 +220,10 @@ public class MainWindow : Window, IDisposable
         var text = done ? FontAwesomeIcon.Check.ToIconString() : FontAwesomeIcon.Times.ToIconString();
 
         ImGui.SameLine();
-        ImGui.PushFont(UiBuilder.IconFont);
-        ImGui.TextColored(color, text);
-        ImGui.PopFont();
+        ImGui.AlignTextToFramePadding();
+        using (ImRaii.PushFont(UiBuilder.IconFont))
+            ImGui.TextColored(color, text);
     }
 
-    private bool IsUnlocked(string num) => !Configuration.ShowOnlyUnlearned || (Plugin.UnlockedSpells.TryGetValue(num, out var isUnlocked) && !isUnlocked);
+    private bool IsUnlocked(string num) => !Plugin.Configuration.ShowOnlyUnlearned || (Plugin.UnlockedSpells.TryGetValue(num, out var isUnlocked) && !isUnlocked);
 }

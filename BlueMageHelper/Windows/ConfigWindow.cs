@@ -3,7 +3,8 @@ using System.Numerics;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Windowing;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Utility.Raii;
 
 namespace BlueMageHelper.Windows;
 
@@ -28,94 +29,96 @@ public class ConfigWindow : Window, IDisposable
 
     public override void Draw()
     {
-        if (ImGui.BeginTabBar("##ConfigTabBar"))
-        {
-            General();
+        using var tabBar = ImRaii.TabBar("##ConfigTabBar");
+        if (!tabBar.Success)
+            return;
 
-            About();
-        }
-        ImGui.EndTabBar();
+        General();
+
+        About();
     }
 
     private void General()
     {
-        if (!ImGui.BeginTabItem("General"))
+        using var tabItem = ImRaii.TabItem("General");
+        if (!tabItem.Success)
             return;
 
         var changed = false;
 
         ImGui.TextColored(ImGuiColors.DalamudViolet, "Vanilla Spellbook:");
-        ImGui.Indent(10.0f);
-        changed |= ImGui.Checkbox("Show hint even if a spell is already unlocked.", ref Configuration.ShowHintEvenIfUnlocked);
-        ImGui.Unindent(10.0f);
+        using (ImRaii.PushIndent(10.0f))
+            changed |= ImGui.Checkbox("Show hint even if a spell is already unlocked.", ref Configuration.ShowHintEvenIfUnlocked);
 
         ImGuiHelpers.ScaledDummy(5.0f);
 
         ImGui.TextColored(ImGuiColors.DalamudViolet, "Spellbook:");
-        ImGui.Indent(10.0f);
-        changed |= ImGui.Checkbox("Show only unlearned spells.", ref Configuration.ShowOnlyUnlearned);
-        ImGui.Unindent(10.0f);
+        using (ImRaii.PushIndent(10.0f))
+            changed |= ImGui.Checkbox("Show only unlearned spells.", ref Configuration.ShowOnlyUnlearned);
 
         if (changed)
         {
             Plugin.MainWindow.SourceOptions = null;
             Configuration.Save();
         }
-
-        ImGui.EndTabItem();
     }
 
     private static void About()
     {
-        if (!ImGui.BeginTabItem("About"))
+        using var tabItem = ImRaii.TabItem("About");
+        if (!tabItem.Success)
             return;
 
-        var buttonHeight = ImGui.CalcTextSize("RRRR").Y + (20.0f * ImGuiHelpers.GlobalScale);
-        if (ImGui.BeginChild("AboutContent", new Vector2(0, -buttonHeight)))
+        var buttonHeight = Helper.CalculateChildHeight();
+        using (var contentChild = ImRaii.Child("Content", new Vector2(0, -buttonHeight)))
         {
-            ImGuiHelpers.ScaledDummy(5.0f);
+            if (contentChild)
+            {
+                ImGuiHelpers.ScaledDummy(5.0f);
 
-            ImGui.TextUnformatted("Author:");
-            ImGui.SameLine();
-            ImGui.TextColored(ImGuiColors.ParsedGold, Plugin.Authors);
+                ImGui.TextUnformatted("Author:");
+                ImGui.SameLine();
+                ImGui.TextColored(ImGuiColors.ParsedGold, Plugin.PluginInterface.Manifest.Author);
 
-            ImGui.TextUnformatted("Discord:");
-            ImGui.SameLine();
-            ImGui.TextColored(ImGuiColors.ParsedGold, "@infi");
+                ImGui.TextUnformatted("Discord:");
+                ImGui.SameLine();
+                ImGui.TextColored(ImGuiColors.ParsedGold, "@infi");
 
-            ImGui.TextUnformatted("Version:");
-            ImGui.SameLine();
-            ImGui.TextColored(ImGuiColors.ParsedOrange, Plugin.Version);
+                ImGui.TextUnformatted("Version:");
+                ImGui.SameLine();
+                ImGui.TextColored(ImGuiColors.ParsedOrange, Plugin.PluginInterface.Manifest.AssemblyVersion.ToString());
+            }
         }
-
-        ImGui.EndChild();
 
         ImGui.Separator();
-        ImGuiHelpers.ScaledDummy(1.0f);
+        ImGuiHelpers.ScaledDummy(Helper.SeparatorPadding);
 
-        if (ImGui.BeginChild("AboutBottomBar", new Vector2(0, 0), false, 0))
+        using (var bottomChild = ImRaii.Child("Bottom", Vector2.Zero))
         {
-            ImGui.PushStyleColor(ImGuiCol.Button, ImGuiColors.ParsedBlue);
-            if (ImGui.Button("Discord Thread"))
-                Dalamud.Utility.Util.OpenLink("https://canary.discord.com/channels/581875019861328007/1067487937735970846");
-            ImGui.PopStyleColor();
+            if (bottomChild.Success)
+            {
+                using (ImRaii.PushColor(ImGuiCol.Button, ImGuiColors.ParsedBlue))
+                {
+                    if (ImGui.Button("Discord Thread"))
+                        Dalamud.Utility.Util.OpenLink("https://discord.com/channels/581875019861328007/1067487937735970846");
+                }
 
-            ImGui.SameLine();
+                ImGui.SameLine();
 
-            ImGui.PushStyleColor(ImGuiCol.Button, ImGuiColors.DPSRed);
-            if (ImGui.Button("Issues"))
-                Dalamud.Utility.Util.OpenLink("https://github.com/Infiziert90/BlueMageHelper");
-            ImGui.PopStyleColor();
+                using (ImRaii.PushColor(ImGuiCol.Button, ImGuiColors.DPSRed))
+                {
+                    if (ImGui.Button("Issues"))
+                        Dalamud.Utility.Util.OpenLink("https://github.com/Infiziert90/BlueMageHelper");
+                }
 
-            ImGui.SameLine();
+                ImGui.SameLine();
 
-            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.12549f, 0.74902f, 0.33333f, 0.6f));
-            if (ImGui.Button("Ko-Fi Tip"))
-                Dalamud.Utility.Util.OpenLink("https://ko-fi.com/infiii");
-            ImGui.PopStyleColor();
+                using (ImRaii.PushColor(ImGuiCol.Button, new Vector4(0.12549f, 0.74902f, 0.33333f, 0.6f)))
+                {
+                    if (ImGui.Button("Ko-Fi Tip"))
+                        Dalamud.Utility.Util.OpenLink("https://ko-fi.com/infiii");
+                }
+            }
         }
-        ImGui.EndChild();
-
-        ImGui.EndTabItem();
     }
 }

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
-using System.Reflection;
 using System.Timers;
 using BlueMageHelper.IPC;
 using BlueMageHelper.Windows;
@@ -36,9 +35,6 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] public static ITextureProvider Texture { get; private set; } = null!;
 
     private const string CommandName = "/spellbook";
-
-    public const string Authors = "Infi, Sl0nderman";
-    public static readonly string Version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "Unknown";
 
     public Configuration Configuration { get; init; }
     private WindowSystem WindowSystem = new("Blue Mage Helper");
@@ -274,10 +270,10 @@ public sealed class Plugin : IDalamudPlugin
             if (content == null)
                 continue;
 
-            if (Helper.ToTitleCaseExtended(content.Value.Name) == "")
+            if (Utils.ToTitleCaseExtended(content.Value.Name) == "")
                 continue;
 
-            Log.Information($"Duty: {Helper.ToTitleCaseExtended(content.Value.Name)}");
+            Log.Information($"Duty: {Utils.ToTitleCaseExtended(content.Value.Name)}");
         }
     }
 

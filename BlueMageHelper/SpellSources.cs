@@ -70,7 +70,7 @@ public class SpellSource
             if (content != null && content.Value.Name.ExtractText() != "")
             {
                 IsDuty = true;
-                DutyName = Helper.ToTitleCaseExtended(content.Value.Name);
+                DutyName = Utils.ToTitleCaseExtended(content.Value.Name);
                 DutyMinLevel = content.Value.ClassJobLevelRequired.ToString();
             }
         }

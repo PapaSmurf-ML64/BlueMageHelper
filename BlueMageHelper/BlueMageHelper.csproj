@@ -1,6 +1,6 @@
-﻿<Project Sdk="Dalamud.NET.Sdk/12.0.2">
+﻿<Project Sdk="Dalamud.NET.Sdk/13.0.0">
 	<PropertyGroup>
-        <Version>3.0.3.0</Version>
+        <Version>3.0.4.0</Version>
 		<TargetFramework>net9.0-windows</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<PackageId>BlueMageHelper</PackageId>
