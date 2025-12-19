@@ -221,7 +221,7 @@
         "Info": "(2nd Boss) Coincounter",
         "AcquiringTips": "Glower is used midway during the fight. Be sure to wait for the one that goes in a straight line, not in a wide arc.",
         "Type": 99,
-        "TerritoryTypeID": 172,
+        "TerritoryTypeID": 1331,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
@@ -455,7 +455,7 @@
         "Info": "(Trash) Sand Bat",
         "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 170,
+        "TerritoryTypeID": 1303,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -575,7 +575,7 @@
         "Info": "(Trash) Shrapnel",
         "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
         "Type": 13,
-        "TerritoryTypeID": 170,
+        "TerritoryTypeID": 1303,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
@@ -761,7 +761,7 @@
         "Info": "(Trash) Morbol",
         "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 172,
+        "TerritoryTypeID": 1331,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
@@ -855,7 +855,7 @@
         "Info": "(Last Boss) Chimera",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 99,
-        "TerritoryTypeID": 170,
+        "TerritoryTypeID": 1303,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
@@ -893,7 +893,7 @@
         "Info": "(Last Boss) Chimera",
         "AcquiringTips": "The enemy will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 99,
-        "TerritoryTypeID": 170,
+        "TerritoryTypeID": 1303,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
@@ -961,7 +961,7 @@
         "Info": "(Trash) Sabotender Desertor",
         "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 170,
+        "TerritoryTypeID": 1303,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
