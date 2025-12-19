@@ -33,6 +33,8 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] public static IChatGui ChatGui { get; private set; } = null!;
     [PluginService] public static IPluginLog Log { get; private set; } = null!;
     [PluginService] public static ITextureProvider Texture { get; private set; } = null!;
+    [PluginService] public static IObjectTable ObjectTable { get; set; } = null!;
+
 
     private const string CommandName = "/spellbook";
 
@@ -67,13 +69,13 @@ public sealed class Plugin : IDalamudPlugin
 
     public Plugin()
     {
-        AozActionsCache = Data.GetExcelSheet<AozAction>()!.Where(a => a.Rank != 0).ToList();
-        AozTransientCache = Data.GetExcelSheet<AozActionTransient>()!.Where(a => a.Number != 0).ToList();
+        AozActionsCache = Data.GetExcelSheet<AozAction>().Where(a => a.Rank != 0).ToList();
+        AozTransientCache = Data.GetExcelSheet<AozActionTransient>().Where(a => a.Number != 0).ToList();
 
-        AetheryteSheet = Data.GetExcelSheet<Aetheryte>()!;
+        AetheryteSheet = Data.GetExcelSheet<Aetheryte>();
         TerritorySheet = Data.GetExcelSheet<TerritoryType>();
-        MapMarkerSheet = Data.GetSubrowExcelSheet<MapMarker>()!;
-        ContentFinderSheet = Data.GetExcelSheet<ContentFinderCondition>()!;
+        MapMarkerSheet = Data.GetSubrowExcelSheet<MapMarker>();
+        ContentFinderSheet = Data.GetExcelSheet<ContentFinderCondition>();
 
         TeleportConsumer = new TeleportConsumer();
 
@@ -130,7 +132,7 @@ public sealed class Plugin : IDalamudPlugin
         if (!ClientState.IsLoggedIn)
             return;
 
-        if (ClientState.LocalPlayer == null)
+        if (ObjectTable.LocalPlayer == null)
             return;
 
         UnlockedSpells.Clear();
@@ -225,7 +227,7 @@ public sealed class Plugin : IDalamudPlugin
                         ConvertLocationToRaw(marker.X, marker.Y, map.SizeFactor)),
                     rowId = marker.DataKey.RowId
                 })
-            .MinBy(x => x.distance).rowId;
+            .MinBy(x => x.distance)!.rowId;
 
         // Support the unique case of aetheryte not being in the same map
         var nearestAetheryte = location.TerritoryTypeID == 399

@@ -156,7 +156,8 @@ public class MainWindow : Window, IDisposable
                     else
                     {
                         if (ImGui.Selectable($"Random Location##mapCoords"))
-                            Plugin.SetMapMarker(source.MapLink);
+                            if (source.MapLink != null)
+                                Plugin.SetMapMarker(source.MapLink);
                     }
                 }
 

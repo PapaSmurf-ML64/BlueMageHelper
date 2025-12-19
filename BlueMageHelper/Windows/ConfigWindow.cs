@@ -10,8 +10,8 @@ namespace BlueMageHelper.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
-    private Plugin Plugin;
     private Configuration Configuration;
+    private Plugin Plugin;
 
     public ConfigWindow(Plugin plugin) : base("Configuration##BlueMageHelper")
     {
@@ -82,7 +82,7 @@ public class ConfigWindow : Window, IDisposable
 
                 ImGui.TextUnformatted("Discord:");
                 ImGui.SameLine();
-                ImGui.TextColored(ImGuiColors.ParsedGold, "@infi");
+                ImGui.TextColored(ImGuiColors.ParsedGold, "@harbingerftw");
 
                 ImGui.TextUnformatted("Version:");
                 ImGui.SameLine();
@@ -108,16 +108,16 @@ public class ConfigWindow : Window, IDisposable
                 using (ImRaii.PushColor(ImGuiCol.Button, ImGuiColors.DPSRed))
                 {
                     if (ImGui.Button("Issues"))
-                        Dalamud.Utility.Util.OpenLink("https://github.com/Infiziert90/BlueMageHelper");
+                        Dalamud.Utility.Util.OpenLink("https://github.com/harbingerftw/BlueMageHelper");
                 }
 
-                ImGui.SameLine();
-
-                using (ImRaii.PushColor(ImGuiCol.Button, new Vector4(0.12549f, 0.74902f, 0.33333f, 0.6f)))
-                {
-                    if (ImGui.Button("Ko-Fi Tip"))
-                        Dalamud.Utility.Util.OpenLink("https://ko-fi.com/infiii");
-                }
+                // ImGui.SameLine();
+                //
+                // using (ImRaii.PushColor(ImGuiCol.Button, new Vector4(0.12549f, 0.74902f, 0.33333f, 0.6f)))
+                // {
+                //     if (ImGui.Button("Ko-Fi Tip"))
+                //         Dalamud.Utility.Util.OpenLink("https://ko-fi.com/infiii");
+                // }
             }
         }
     }
