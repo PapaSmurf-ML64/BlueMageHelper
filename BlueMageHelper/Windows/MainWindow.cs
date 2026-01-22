@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Interface;
@@ -7,10 +8,8 @@ using Dalamud.Interface.Utility;
 using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
-using Lumina.Excel.Sheets;
-
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using static BlueMageHelper.SpellSources;
-using static Dalamud.Interface.Components.ImGuiComponents;
 
 namespace BlueMageHelper.Windows;
 
@@ -18,82 +17,165 @@ public class MainWindow : Window, IDisposable
 {
     private Plugin Plugin;
 
-    private int SelectedSpellNumber;
+    /// <summary>
+    /// Index of the selected spell, NOT the spell id
+    /// </summary>
+    public int SelectedIndex;
+
     private int SelectedSource;
+    private static readonly Vector2 IconSize = new(110, 110);
+    public List<BlueSpell>? AllBlueSpells;
 
-    private static readonly Vector2 IconSize = new(80, 80);
 
-    public ExcelSheetSelector<AozAction>.ExcelSheetPopupOptions? SourceOptions;
+    public record BlueSpell
+    {
+        public required string Name;
+        public required string Description;
+        public int Number;
+        public uint IconId;
+    }
+
+    public ClippedCombo<BlueSpell>? SpellSelector;
 
     public MainWindow(Plugin plugin) : base("Grimoire##BlueMageHelper")
     {
         Flags = ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse;
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new Vector2(420, 500),
+            MinimumSize = new Vector2(370, 500),
             MaximumSize = new Vector2(float.MaxValue, float.MaxValue)
         };
 
-        Plugin = plugin;
+        TitleBarButtons.Add(new()
+        {
+            Icon = FontAwesomeIcon.Cog,
+            ShowTooltip = () => ImGui.SetTooltip("Open Config"),
+            Click = (_) => Plugin?.ConfigWindow.Toggle(),
+        });
 
-        // 0 is the first learned blu skill
-        SelectedSpellNumber = SelectedSpellNumber = Plugin.Configuration.ShowOnlyUnlearned ? 0 : 1;
+        Plugin = plugin;
+        SelectedIndex = 0;
+
     }
 
     public void Dispose() { }
 
     public override void Draw()
     {
-        if (SourceOptions == null)
+        if (AllBlueSpells == null || SpellSelector == null)
         {
-            ExcelSheetSelector<AozAction>.FilteredSearchSheet = null!;
-            SourceOptions = new()
+            AllBlueSpells = Plugin.AozActionsCache
+                .Select(a => new BlueSpell
+                {
+                    Name = a.Action.Value.Name.ToString(),
+                    Description = Plugin.ActionTransient.GetRow(a.Action.RowId).Description.ToString(),
+                    Number = Plugin.AozTransientCache[(int)a.RowId - 1].Number,
+                    IconId = Plugin.AozTransientCache[(int)a.RowId - 1].Icon
+                })
+                .Where(a => IsUnlocked(a.Number))
+                .OrderBy(a => a.Number)
+                .ToList();
+
+            SpellSelector = new ClippedCombo<BlueSpell>("BlueSpellSelector",
+                string.Empty,
+                275,
+                AllBlueSpells,
+                g => $"{g.Name} (#{g.Number})");
+        }
+
+        var currentSpell = SelectedIndex;
+
+        using (ImRaii.Disabled(AllBlueSpells.Count == 0))
+        {
+            if (SpellSelector.Draw(SelectedIndex, out int selectedSpellIndex))
             {
-                FormatRow = a => $"{Utils.ToTitleCaseExtended(a.Action.Value.Name)}",
-                FilteredSheet = Plugin.AozActionsCache.Where(a => IsUnlocked($"{Plugin.AozTransientCache[(int)a.RowId - 1].Number}")).OrderBy(a => Plugin.AozTransientCache[(int)a.RowId - 1].Number)
-            };
+                SelectedIndex = selectedSpellIndex;
+            }
         }
 
-        var currentSpell = SelectedSpellNumber;
-        var keyList = Spells.Keys.Where(IsUnlocked).ToList();
+        SelectedIndex = SelectedIndex < 0 ? 0 : SelectedIndex;
 
-        if (keyList.Count == 0)
-        {
-            ImGui.TextColored(ImGuiColors.ParsedOrange, "All spells learned, nothing to show.");
-            ImGui.TextColored(ImGuiColors.ParsedOrange, "[You can disable this option in the config]");
-            return;
-        }
-
-        if (SelectedSpellNumber >= keyList.Count)
-            SelectedSpellNumber = Plugin.Configuration.ShowOnlyUnlearned ? 0 : 1; // 0 is the first learned blu skill, so we skip to 1 for all
-
-        var stringList = Spells.Where(x => keyList.Contains(x.Key)).Select(x => $"{x.Key} - {x.Value.Name}").ToArray();
-        ImGui.Combo("##spellSelector", ref SelectedSpellNumber, stringList, stringList.Length);
+        Helper.DrawArrows(ref SelectedIndex, AllBlueSpells.Count, 0);
         ImGui.SameLine();
-        IconButton(99, FontAwesomeIcon.Search);
-        if (ExcelSheetSelector<AozAction>.ExcelSheetPopup("SourceResultPopup", out var spellRow, SourceOptions))
+        if (ImGui.Checkbox("##unlearnedSpells", ref Plugin.Configuration.ShowOnlyUnlearned))
         {
-            var spellNumber = Plugin.AozTransientCache[(int)spellRow - 1].Number;
-            SelectedSpellNumber = Array.IndexOf(stringList, $"{spellNumber} - {Spells[$"{spellNumber}"].Name}");
+            SpellSelector = null;
         }
-        Helper.DrawArrows(ref SelectedSpellNumber, stringList.Length, 0);
-        ImGui.SameLine();
-        ImGui.Checkbox("##unlearnedSpells", ref Plugin.Configuration.ShowOnlyUnlearned);
+
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Show only unlearned spells.");
 
-        if (currentSpell != SelectedSpellNumber)
+        if (AllBlueSpells.Count == 0)
+        {
+            ImGui.TextColored(ImGuiColors.ParsedOrange, "All spells learned, nothing to show!");
+            ImGui.TextColored(ImGuiColors.ParsedOrange, "[Disable 'Show only unlearned' if you want to see them.]");
+            return;
+        }
+
+        if (currentSpell != SelectedIndex)
             SelectedSource = 0;
 
-        ImGuiHelpers.ScaledDummy(10);
+        ImGuiHelpers.ScaledDummy(5);
         ImGui.Separator();
         ImGuiHelpers.ScaledDummy(5);
 
-        if (!Spells.Any())
-            return;
+        var scaledIconSize = IconSize * ImGuiHelpers.GlobalScale;
+        var screenCursor = ImGui.GetCursorScreenPos();
 
-        var selectedSpell = Spells[keyList[SelectedSpellNumber]];
-        Helper.DrawScaledIcon(selectedSpell.Icon, IconSize);
+        var rectPos = new Vector2(screenCursor.X, screenCursor.Y);
+        var rectSize = new Vector2(
+            x: ImGui.GetContentRegionMax().X,
+            y: scaledIconSize.Y + ImGui.GetStyle().ItemSpacing.Y + 10
+        );
+
+        var rectColor = ImGui.GetColorU32(ImGuiCol.TableHeaderBg);
+        var drawList = ImGui.GetWindowDrawList();
+        drawList.AddRectFilled(rectPos, rectPos + rectSize, rectColor);
+
+        if (!Spells.Any())
+        {
+            Services.Log.Warning("No spells found.");
+            return;
+        }
+
+        if (!Spells.TryGetValue(AllBlueSpells[SelectedIndex].Number, out var selectedSpell))
+        {
+            Services.Log.Warning($"Selected spell {SelectedIndex} not found.");
+            ImGui.TextColored(ImGuiColors.DalamudYellow, $"Render Error.");
+            return;
+        }
+
+        ImGui.Indent(7);
+        var cursor = ImGui.GetCursorPos();
+
+        ImGui.SetCursorPosY(cursor.Y + 7);
+        Helper.DrawScaledIcon(AllBlueSpells[SelectedIndex].IconId, IconSize);
+        screenCursor = ImGui.GetCursorScreenPos();
+        cursor = ImGui.GetCursorPos();
+        var p1 = scaledIconSize with { Y = -4 };
+        var p2 = p1 with { Y = p1.Y - 50 };
+        var p3 = p1 with { X = p1.X - 50 };
+
+        drawList.AddTriangleFilled(screenCursor + p1,
+            screenCursor + p2,
+            screenCursor + p3,
+            ImGui.GetColorU32(new Vector4(0, 0, 0, 0.8f)));
+
+        ImGui.SetCursorPos(cursor + p1 + new Vector2(-30, -30));
+        var exists = Plugin.UnlockedSpells.TryGetValue(AllBlueSpells[SelectedIndex].Number, out var unlocked);
+        DrawUnlockSymbol(exists && unlocked);
+
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(unlocked ? "Spell learned" : "Spell not learned");
+        cursor = ImGui.GetCursorPos();
+        ImGui.SetCursorPos(cursor + new Vector2(scaledIconSize.X + 7, -(scaledIconSize.Y + 7)));
+        using (ImRaii.Child("blueDescription", new Vector2(0, scaledIconSize.Y + 7)))
+        {
+            ImGui.TextWrapped(AllBlueSpells[SelectedIndex].Description);
+        }
+
+        ImGui.SetCursorPos(cursor);
+        ImGui.Unindent(7);
         ImGuiHelpers.ScaledDummy(10);
 
         using (var contentChild = ImRaii.Child("Content", new Vector2(0, -30)))
@@ -103,72 +185,106 @@ public class MainWindow : Window, IDisposable
                 var source = selectedSpell.Sources[SelectedSource];
                 if (selectedSpell.HasMultipleSources)
                 {
-                    var sourcesList = selectedSpell.Sources.Select(x => $"{x.Info} ").ToArray();
+                    var sourcesList = selectedSpell.Sources
+                        .Select(x => $"{x.Type.GetDisplay()}: " + (x.IsDuty ? x.DutyName : x.PlaceName))
+                        .ToArray();
+
                     ImGui.Combo("##sourcesSelector", ref SelectedSource, sourcesList, sourcesList.Length);
+
+
                     Helper.DrawArrows(ref SelectedSource, selectedSpell.Sources.Count, 2);
                     source = selectedSpell.Sources[SelectedSource];
+                    ImGui.Text($"Target: {(source.Type == RegionType.Unknown ? "Currently Unknown" : source.Info)}");
                 }
                 else
                 {
-                    ImGui.TextUnformatted(source.Type != RegionType.Unknown
-                        ? $"{(source.Type != RegionType.Buy ? "Mob" : "Info")}: {source.Info}"
+                    ImGui.Text(source.Type != RegionType.Unknown
+                        ? $"{source.Type.GetDisplay()}: {source.Info}"
                         : "Currently Unknown");
                 }
 
                 switch (source.Type)
                 {
                     case RegionType.ARank:
-                        ImGui.TextUnformatted($"Note: Rank A Elite Mark");
+                        ImGui.Text($"Note: Rank A Elite Mark");
                         break;
                     case RegionType.BRank:
-                        ImGui.TextUnformatted($"Note: Rank B Elite Mark");
+                        ImGui.Text($"Note: Rank B Elite Mark");
                         break;
                     case RegionType.SRank:
-                        ImGui.TextUnformatted($"Note: Rank S Elite Mark");
+                        ImGui.Text($"Note: Rank S Elite Mark");
                         break;
                 }
 
-                if (source.Type != RegionType.Buy)
-                    ImGui.TextUnformatted($"Min Lvl: {source.DutyMinLevel}");
+                if (source.Type != RegionType.Buy && source.DutyMinLevel != "1")
+                    ImGui.Text($"Min Lvl: {source.DutyMinLevel}");
 
-                if (source.TerritoryType != null)
-                    ImGui.TextUnformatted(!source.IsDuty ? $"Region: {source.PlaceName}" : $"Duty: {source.DutyName}");
+                ImGuiHelpers.ScaledDummy(4);
+
+                if (source is { TerritoryType: not null, IsDuty: true })
+                {
+                    unsafe
+                    {
+                        using var font = ImRaii.PushFont(UiBuilder.IconFont);
+                        if (ImGui.Button($"{FontAwesomeIcon.ArrowUpRightFromSquare.ToIconString()}"))
+                        {
+                            var territory = Plugin.TerritorySheet.GetRowOrDefault(source.TerritoryTypeID);
+                            if (territory.HasValue)
+                            {
+                                AgentContentsFinder.Instance()->OpenRegularDuty(territory.Value.ContentFinderCondition
+                                    .RowId);
+                            }
+                        }
+                    }
+
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip("Open duty finder");
+                    ImGui.SameLine();
+                    ImGui.TextUnformatted($"Duty: {source.DutyName}");
+                }
 
                 var isHunt = source.Type is RegionType.ARank or RegionType.BRank or RegionType.SRank;
                 if (source.MapLink != null || isHunt)
                 {
                     if (Plugin.TeleportConsumer.IsAvailable)
                     {
-                        using var pushedFont = ImRaii.PushFont(UiBuilder.IconFont);
+                        using var font = ImRaii.PushFont(UiBuilder.IconFont);
                         if (ImGui.Button($"{FontAwesomeIcon.StreetView.ToIconString()}"))
                             Plugin.TeleportToNearestAetheryte(source);
-
+                        font.Pop();
+                        if (ImGui.IsItemHovered())
+                            ImGui.SetTooltip("Teleport to nearest aetheryte");
                         ImGui.SameLine();
                     }
 
-                    if (!isHunt)
+                    if (source.MapLink != null)
                     {
-                        if (ImGui.Selectable(source.CurrentlyUnknown == false
-                                ? $"Coords: {source.MapLink?.CoordinateString ?? "Unknown"}##mapCoords"
-                                : "Exact location currently unknown##mapCoords"))
-                            Plugin.SetMapMarker(source.MapLink!);
+                        using var font = ImRaii.PushFont(UiBuilder.IconFont);
+                        if (ImGui.Button($"{FontAwesomeIcon.MapMarkedAlt.ToIconString()}"))
+                            Plugin.SetMapMarker(source.MapLink);
+                        font.Pop();
+                        if (ImGui.IsItemHovered())
+                            ImGui.SetTooltip("Place map flag");
+                        ImGui.SameLine();
+                    }
+
+                    if (source.CurrentlyUnknown)
+                    {
+                        ImGui.Text("Location: ???");
                     }
                     else
                     {
-                        if (ImGui.Selectable($"Random Location##mapCoords"))
-                            if (source.MapLink != null)
-                                Plugin.SetMapMarker(source.MapLink);
+                        var text = isHunt
+                            ? source.PlaceName
+                            : $"{source.PlaceName} {source.MapLink?.CoordinateString ?? "???"}";
+                        ImGui.Text($"Location: {text}");
                     }
                 }
-
-                ImGui.TextUnformatted($"Learned: ");
-                DrawProgressSymbol(Plugin.UnlockedSpells.TryGetValue(keyList[SelectedSpellNumber], out var unlocked) && unlocked);
 
                 if (source.TerritoryType != null && source.Type != RegionType.Buy)
                 {
                     var combos = Spells
-                        .Where(key => keyList.Contains(key.Key))
-                        .Where(key => key.Key != keyList[SelectedSpellNumber])
+                        .Where(key => key.Key != AllBlueSpells[SelectedIndex].Number)
                         .Where(spell => spell.Value.Sources.Any(spellSource => source.CompareTerritory(spellSource)))
                         .ToArray();
 
@@ -177,14 +293,24 @@ public class MainWindow : Window, IDisposable
                         ImGuiHelpers.ScaledDummy(5);
                         ImGui.Separator();
                         ImGuiHelpers.ScaledDummy(5);
-                        ImGui.TextUnformatted("Same location:");
+                        ImGui.Text("Same location:");
                         foreach (var (key, value) in combos)
                         {
-                            if (ImGui.Selectable($"{key} - {value.Name}"))
+                            using (ImRaii.PushFont(UiBuilder.IconFont))
                             {
-                                SelectedSource = value.Sources.FindIndex(x => x.TerritoryTypeID == source.TerritoryTypeID);
-                                SelectedSpellNumber = keyList.FindIndex(val => val == key);;
+                                ImGui.Text($"{FontAwesomeIcon.ArrowRightArrowLeft.ToIconString()}");
+                                ImGui.SameLine();
                             }
+
+                            if (ImGui.Selectable($"#{key} - {value.Name}"))
+                            {
+                                SelectedSource = value.Sources
+                                    .FindIndex(x => x.TerritoryTypeID == source.TerritoryTypeID);
+                                SelectedIndex = AllBlueSpells
+                                    .FindIndex(val => val.Number == key);
+                            }
+                            // drawList.AddRect(ImGui.GetItemRectMin(), ImGui.GetItemRectMax(),
+                            //     ImGui.GetColorU32(ImGuiCol.Border), 0, 0, 1);
                         }
                     }
                 }
@@ -201,7 +327,7 @@ public class MainWindow : Window, IDisposable
                         {
                             ImGui.Bullet();
                             using (ImRaii.TextWrapPos(0.0f))
-                                ImGui.TextUnformatted(tip);
+                                ImGui.Text(tip);
                         }
                     }
                 }
@@ -215,16 +341,14 @@ public class MainWindow : Window, IDisposable
         }
     }
 
-    private static void DrawProgressSymbol(bool done)
+    private static void DrawUnlockSymbol(bool done)
     {
         var color = done ? ImGuiColors.HealerGreen : ImGuiColors.DalamudRed;
-        var text = done ? FontAwesomeIcon.Check.ToIconString() : FontAwesomeIcon.Times.ToIconString();
-
-        ImGui.SameLine();
-        ImGui.AlignTextToFramePadding();
-        using (ImRaii.PushFont(UiBuilder.IconFont))
-            ImGui.TextColored(color, text);
+        if (Services.TextureProvider.GetFromGameIcon(done ? 60081 : 61552)
+            .TryGetWrap(out var texture, out var exception))
+            ImGui.Image(texture.Handle, new Vector2(30, 30), color);
     }
 
-    private bool IsUnlocked(string num) => !Plugin.Configuration.ShowOnlyUnlearned || (Plugin.UnlockedSpells.TryGetValue(num, out var isUnlocked) && !isUnlocked);
+    private bool IsUnlocked(int num) => !Plugin.Configuration.ShowOnlyUnlearned ||
+                                        (Plugin.UnlockedSpells.TryGetValue(num, out var isUnlocked) && !isUnlocked);
 }

@@ -15,7 +15,7 @@ public static class Utils
         if (article == 1)
             return s.ToDalamudString().ToString();
 
-        var sb        = new StringBuilder(s.ToDalamudString().ToString());
+        var sb = new StringBuilder(s.ToDalamudString().ToString());
         var lastSpace = true;
         for (var i = 0; i < sb.Length; ++i)
         {
@@ -26,7 +26,7 @@ public static class Utils
             else if (lastSpace)
             {
                 lastSpace = false;
-                sb[i]     = char.ToUpperInvariant(sb[i]);
+                sb[i] = char.ToUpperInvariant(sb[i]);
             }
         }
 
@@ -40,7 +40,7 @@ public static class Utils
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static T? FirstOrNull<T>(this IEnumerable<T> values, Func<T, bool> predicate) where T : struct
     {
-        foreach(var val in values)
+        foreach (var val in values)
             if (predicate(val))
                 return val;
 

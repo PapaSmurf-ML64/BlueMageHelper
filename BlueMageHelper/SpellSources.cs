@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
-
+using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Newtonsoft.Json;
@@ -12,11 +11,10 @@ namespace BlueMageHelper;
 
 public class Spell
 {
-    public string Name;
+    public string? Name;
     public uint Icon;
-    public readonly List<SpellSource> Sources = new();
+    public readonly List<SpellSource> Sources = [];
 
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public Spell() { }
 
     [JsonIgnore] public SpellSource Source => Sources[0];
@@ -25,7 +23,7 @@ public class Spell
 
 public class SpellSource
 {
-    public string Info;
+    public string? Info;
     public string AcquiringTips = "";
 
     public RegionType Type = RegionType.Default;
@@ -43,7 +41,6 @@ public class SpellSource
 
     [NonSerialized] public bool CurrentlyUnknown = false;
 
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public SpellSource() { }
 
     public SpellSource(string info)
@@ -58,7 +55,6 @@ public class SpellSource
     }
 
     [OnDeserialized]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public void Initialize(StreamingContext _)
     {
         if (TerritoryTypeID != 0 && Plugin.TerritorySheet.HasRow(TerritoryTypeID))
@@ -66,7 +62,8 @@ public class SpellSource
             TerritoryType = Plugin.TerritorySheet.GetRow(TerritoryTypeID);
             PlaceName = TerritoryType.Value.PlaceName.Value.Name.ExtractText();
 
-            var content = Plugin.ContentFinderSheet.FirstOrNull(content => content.TerritoryType.RowId == TerritoryType.Value.RowId);
+            var content = Plugin.ContentFinderSheet.FirstOrNull(content =>
+                content.TerritoryType.RowId == TerritoryType.Value.RowId);
             if (content != null && content.Value.Name.ExtractText() != "")
             {
                 IsDuty = true;
@@ -90,7 +87,7 @@ public class SpellSource
             }
             catch
             {
-                Plugin.Log.Error($"MapLink creation failed for {Info}.");
+                Services.Log.Error($"MapLink creation failed for {Info}.");
             }
         }
         else if (Type == RegionType.Buy)
@@ -121,29 +118,53 @@ public class SpellSource
         };
 
         if (text != "") region->SetText(text);
-        if (Type != RegionType.Default) regionType->PartId = (ushort) Type;
+        if (Type != RegionType.Default) regionType->PartId = (ushort)Type;
     }
 }
 
 // ID = PartID
 public enum RegionType
 {
-    OpenWorld = 2,
-    Buy = 3,
-    Dungeon = 13,
-    Fate = 26,
+    [Display("Mob")] OpenWorld = 2,
+    [Display("Totem Purchase")] Buy = 3,
+    [Display("Dungeon")] Dungeon = 13,
+    [Display("Fate Mob")] Fate = 26,
 
     // non PartIDs
-    Default = 99,
-    ARank = 100,
-    BRank = 101,
-    SRank = 102,
+    [Display("Info")] Default = 99,
+    [Display("A Rank")] ARank = 100,
+    [Display("B Rank")] BRank = 101,
+    [Display("S Rank")] SRank = 102,
+
+    [Display("Masked Carnivale")] MaskedCarnivale = 103,
+    [Display("Raid")] Raid = 104,
+    [Display("Trial")] Trial = 105,
 
     // New Patch
     Unknown = 999,
 }
 
+[AttributeUsage(AttributeTargets.Field)]
+public class DisplayAttribute : Attribute
+{
+    internal DisplayAttribute(string name)
+    {
+        DisplayName = name;
+    }
+
+    public string DisplayName { get; }
+}
+
+public static class RegionTypeDisplayExtension
+{
+    public static string GetDisplay(this RegionType region)
+    {
+        var a = region.GetAttribute<DisplayAttribute>();
+        return a == null ? "" : a.DisplayName;
+    }
+}
+
 public static class SpellSources
 {
-    public static Dictionary<string, Spell> Spells = new();
+    public static Dictionary<int, Spell> Spells = new();
 }

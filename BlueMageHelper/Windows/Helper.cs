@@ -20,10 +20,11 @@ public static class Helper
     public static void DrawScaledIcon(uint iconId, Vector2 iconSize)
     {
         iconSize *= ImGuiHelpers.GlobalScale;
-        var texture = Plugin.Texture.GetFromGameIcon(iconId).GetWrapOrDefault();
+
+        var texture = Services.TextureProvider.GetFromGameIcon(iconId).GetWrapOrDefault();
         if (texture == null)
         {
-            ImGui.TextUnformatted($"Unknown icon {iconId}");
+            ImGui.Dummy(iconSize);
             return;
         }
 

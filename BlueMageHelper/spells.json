@@ -20,7 +20,7 @@
       {
         "Info": "(Last Boss) Gobmachine G-VI",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 362,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -36,7 +36,7 @@
       {
         "Info": "Omega",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 800,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -50,7 +50,7 @@
       {
         "Info": "Ultros",
         "AcquiringTips": "Aqua Breath is the signature attack of Ultros. He will use it frequently.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 142,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -58,7 +58,7 @@
       {
         "Info": "Leviathan",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 359,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -72,7 +72,7 @@
       {
         "Info": "(2nd Boss) Zu",
         "AcquiringTips": "Zu will only use the ability when you break the eggs at the perimeter. Only 2 eggs need to be broken.\nThe spell has no cast bar, but is animated as a body slam against the top aggro'd player.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 160,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -92,7 +92,7 @@
     "Icon": 72216,
     "Sources": [
       {
-        "Info": "Lvl. 50 Magitek Vanguard H-2",
+        "Info": "Magitek Vanguard H-2",
         "AcquiringTips": "Drill Cannon is used only when enemies are at 50% or below HP.",
         "Type": 2,
         "TerritoryTypeID": 147,
@@ -116,15 +116,7 @@
       {
         "Info": "(1st Boss) ADS",
         "AcquiringTips": "",
-        "Type": 99,
-        "TerritoryTypeID": 241,
-        "xCoord": 0.0,
-        "yCoord": 0.0
-      },
-      {
-        "Info": "(1st Boss) ADS",
-        "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 241,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -132,7 +124,7 @@
       {
         "Info": "Beastial Node (Stage 15 Masked Carnivale - The Me Nobody Nodes)",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -185,7 +177,7 @@
         "Info": "Temple Bee (Trash Before & After 1st Boss)",
         "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 163,
+        "TerritoryTypeID": 1267,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -198,7 +190,7 @@
       {
         "Info": "(Last Boss) Siren",
         "AcquiringTips": "Song of Torment is used in the Phase 1 of battle.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 160,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -220,7 +212,7 @@
       {
         "Info": "(2nd Boss) Coincounter",
         "AcquiringTips": "Glower is used midway during the fight. Be sure to wait for the one that goes in a straight line, not in a wide arc.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1331,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -274,7 +266,7 @@
       {
         "Info": "(2nd Boss) Gogmagolem",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 349,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -282,7 +274,7 @@
       {
         "Info": "Azulmagia (Stage 25 Masked Carnivale - Dirty Rotten Azulmagia)",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -324,7 +316,7 @@
       {
         "Info": "(Trash) Manor Sentry",
         "AcquiringTips": "There is a Manor Sentry enemy just outside the first boss room of Haukke Manor. More importantly, it will use Level 5 Petrify regardless of its health status. So you can choose to run this unsync'd and just run to the first boss room and hope to learn it, or form a sync'd party and just make it this far to guarantee learning it.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1040,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -338,7 +330,7 @@
       {
         "Info": "(Last Boss) Tonberry King",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 159,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -384,7 +376,7 @@
       {
         "Info": "Azulmagia (Stage 25 Masked Carnivale - Dirty Rotten Azulmagia)",
         "AcquiringTips": "Azulmagia will open with the spell as his barrier for Act 1 and will alternate it with his magic-counter barrier in Act 3 at certain intervals in the fight.",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -582,7 +574,7 @@
       {
         "Info": "Arena Cherry Bomb (Stage 8 Masked Carnivale - The Bomb-edy of Errors)",
         "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -662,7 +654,7 @@
       {
         "Info": "Typhon",
         "AcquiringTips": "Typhon will use Snort around 3~3.5min of the fight.\"Severe snort\" or \"snortassault\" will not count towards the learning of the spell.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 142,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -670,7 +662,7 @@
       {
         "Info": "Typhon (Stage 20 Masked Carnivale - Miss Typhon)",
         "AcquiringTips": "Typhon will use it as part of a devastating Fireball combo. Use Diamondback in order to survive this.",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -678,7 +670,7 @@
       {
         "Info": "Typhon (Stage 27 Masked Carnivale - Lock up Your Snorters)",
         "AcquiringTips": "Typhon uses this after the bombs drop every time.",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -692,7 +684,7 @@
       {
         "Info": "Ultros",
         "AcquiringTips": "This is used in the Phase 2 of the battle when Ultros is below 80% HP.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 142,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -706,7 +698,7 @@
       {
         "Info": "(Last Boss) Anantaboga",
         "AcquiringTips": "The Look is used by Anantaboga in the beginning of the battle.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 167,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -722,7 +714,7 @@
       {
         "Info": "(Trash) Valefor",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 174,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -768,7 +760,7 @@
       {
         "Info": "Reflective Rebekkah (Stage 19 Masked Carnivale - On a Clear Day You Can Smell Forever)",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -782,7 +774,7 @@
       {
         "Info": "(2nd Boss) Cuca Fera",
         "AcquiringTips": "Cuca Fera actually CAN be damaged heavily without use of the cannons. Use Missile to half his HP over and over till he's low enough to where you can kill him with standard skills. Alternatively, Level 5 Death can be used to finish the battle off instantly; just ensure Cuca Fera has used Diamondback first.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 365,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -854,7 +846,7 @@
       {
         "Info": "(Last Boss) Chimera",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1303,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -862,7 +854,7 @@
       {
         "Info": "Dhorme Chimera",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 369,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -870,7 +862,7 @@
       {
         "Info": "Apademak (Stage 21 Masked Carnivale - Chimera on a Hot Tin Roof)",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -878,7 +870,7 @@
       {
         "Info": "Azulmagia (Stage 25 Masked Carnivale - Dirty Rotten Azulmagia)",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -892,7 +884,7 @@
       {
         "Info": "(Last Boss) Chimera",
         "AcquiringTips": "The enemy will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1303,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -900,7 +892,7 @@
       {
         "Info": "Dhorme Chimera",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 369,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -908,7 +900,7 @@
       {
         "Info": "Apademak (Stage 21 Masked Carnivale - Chimera on a Hot Tin Roof)",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -916,7 +908,7 @@
       {
         "Info": "Azulmagia (Stage 25 Masked Carnivale - Dirty Rotten Azulmagia)",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -930,7 +922,7 @@
       {
         "Info": "(First Part) Enkidu",
         "AcquiringTips": "Enkidu casts Missile during the Chicken debuff cast by Gilgamesh.\nCleanse the minimise debuffs ASAP, reduce Enkidu to between 40% and 50% HP, and then wait until Chicken/Missile are cast.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 396,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -938,7 +930,7 @@
       {
         "Info": "Guardian",
         "AcquiringTips": "Guardian puts a red Prey marker on a player and fires a Missile at them that leaves a Burns debuff.",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 750,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -974,7 +966,7 @@
       {
         "Info": "(Last Boss) Kraken",
         "AcquiringTips": "Kraken's attack is called Ink Blast and is an AoE attack. Simply dodge them and focus on killing the main body and Kraken arms, not the tentacles.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 387,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -988,7 +980,7 @@
       {
         "Info": "(1st Boss) Frumious Koheel Ja",
         "AcquiringTips": "Will cast Blazing Angon, which is the spears he tosses to the ground. Destroy those to keep from occasional flame damage.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 188,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1016,7 +1008,7 @@
       {
         "Info": "(1st Boss) Karlabos",
         "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 387,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1025,7 +1017,7 @@
         "Info": "(Trash) Reflection of Karlabos",
         "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
         "Type": 13,
-        "TerritoryTypeID": 626,
+        "TerritoryTypeID": 1142,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
@@ -1040,7 +1032,7 @@
       {
         "Info": "(Trash) Clay Claw",
         "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 444,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1062,7 +1054,7 @@
       {
         "Info": "(Last Boss) Galvanth the Dominator",
         "AcquiringTips": "Getting from Galvanth is guaranteed, regardless of what the unrestricted party option is set to.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1037,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1070,7 +1062,7 @@
       {
         "Info": "Blaster",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 523,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1136,7 +1128,7 @@
       {
         "Info": "Garuda",
         "AcquiringTips": "When Garuda disappears, the random AoE circles that follows after are the spell.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 297,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1150,7 +1142,7 @@
       {
         "Info": "Ifrit",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 295,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1164,7 +1156,7 @@
       {
         "Info": "Titan",
         "AcquiringTips": "Spell has no cast timer and is only cast late in the fight, so it's possible to kill Titan without having seen this. Watch your combat log and flying text!",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 296,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1178,7 +1170,7 @@
       {
         "Info": "Ramuh",
         "AcquiringTips": "Shock Strike is a frequent cast for Ramuh, so no need to worry if he's cast it.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 375,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1192,7 +1184,7 @@
       {
         "Info": "Shiva",
         "AcquiringTips": "Shiva casts Glass Dance after bringing out her bow late in the fight. After her add phase, burn her to 10% or so and wait for her to say \"Arrows of frost--\", perform the bow-drawing animation, and actually cast Glass Dance!",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 378,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1206,7 +1198,7 @@
       {
         "Info": "Leviathan",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 359,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1220,7 +1212,7 @@
       {
         "Info": "(Last Boss) Opinicus",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 434,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1250,7 +1242,7 @@
       {
         "Info": "(Boss) Living Liquid",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 444,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1258,7 +1250,7 @@
       {
         "Info": "Shikigami of the Undertow (Stage 29 Masked Carnivale Red, Fraught, and Blue)",
         "AcquiringTips": "In Stage 29 of the Masked Carnivale, you can get Protean Wave not just from the boss, but also from the water column adds once they explode.",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1324,7 +1316,7 @@
       {
         "Info": "(1st Boss) Faust",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 442,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1332,7 +1324,7 @@
       {
         "Info": "Jagd Doll",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 443,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1390,7 +1382,7 @@
       {
         "Info": "Enkidu",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type":105,
         "TerritoryTypeID": 396,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1412,7 +1404,7 @@
       {
         "Info": "(White Mage) Furryfoot Kupli Kipp",
         "AcquiringTips": "This spell is still obtainable since the rework of trial Thornmarch (Hard).\nWhen the Furryfoot Kupli Kipp (WHM Moogle) spawns, you must simply damage its companion (but not kill it) and then wait. After a few minutes, the Moogle should cast Pom Cure.",
-        "Type": 99,
+        "Type":105,
         "TerritoryTypeID": 1067,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1440,7 +1432,7 @@
       {
         "Info": "(3rd Boss) Apanda",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 578,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1448,7 +1440,7 @@
       {
         "Info": "Epilogi (Stage 24 Masked Carnivale - Amazing Technicolor Pit Fiends)",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1462,7 +1454,7 @@
       {
         "Info": "(2nd Boss) Queen Hawk",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 511,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1490,7 +1482,7 @@
       {
         "Info": "(2nd Boss) Zu",
         "AcquiringTips": "This attack doesn't have a visible cast bar. You will know that the monster already used it because you will have a debuff called Windburn.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 160,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1542,7 +1534,7 @@
       {
         "Info": "(Trash) White Knight",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1066,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1556,7 +1548,7 @@
       {
         "Info": "(Trash) Black Knight",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1066,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1570,7 +1562,7 @@
       {
         "Info": "(Trash) Page 64",
         "AcquiringTips": "If Page 64 won't cast, try standing far enough away for everyone to untether.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1109,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1584,7 +1576,7 @@
       {
         "Info": "(2nd Boss) Armored Weapon",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1114,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1606,7 +1598,7 @@
       {
         "Info": "The Manipulator",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 445,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1620,7 +1612,7 @@
       {
         "Info": "(2nd Boss - Trash) Sabotender Gaurdia",
         "AcquiringTips": "Sabotender Gaurdia will spawn during the last phase of the fight against Sabotender Emperatriz (the 2nd boss of the dungeon).\nOnce a diamond shaped barrier appears around the boss, the spell has been cast.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 367,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1698,7 +1690,7 @@
       {
         "Info": "(Last Boss) Caduceus",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 241,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1714,7 +1706,7 @@
       {
         "Info": "Rafflesia",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 355,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1736,7 +1728,7 @@
       {
         "Info": "(Trash) Mechanoscribe",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 578,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1744,7 +1736,7 @@
       {
         "Info": "Arena Scribe (Stage 24 Masked Carnivale - Amazing Technicolor Pit Fiends)",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 103,
         "TerritoryTypeID": 796,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1758,7 +1750,7 @@
       {
         "Info": "(1st Boss) Ghrah Luminary",
         "AcquiringTips": "Ghrah Luminary will summon a monster called \"Corruption\". Killing the corruption is enough to obtain Aetheric Mimicry.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 510,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1772,7 +1764,7 @@
       {
         "Info": "Ravana",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 432,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1786,7 +1778,7 @@
       {
         "Info": "Sophia",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 576,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1800,7 +1792,7 @@
       {
         "Info": "(Last Phase) Brute Justice",
         "AcquiringTips": "Naturally performs J Kick at the start of the boss group attack. Be aware of all the mechanics and dodge or heal through all the attacks.",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 523,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1858,7 +1850,7 @@
       {
         "Info": "(2nd Boss) Dojun-maru",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 662,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1872,7 +1864,7 @@
       {
         "Info": "(Last Boss) Mist Dragon",
         "AcquiringTips": "When the Mist Dragon begins casting Vaporize, it will summon 3 Draconic Regards (white dragon heads). You must leave at least one head alive in order for the cast to go off, otherwise the Mist Dragon will cast White Death instead and you will not get the spell.\nUse Diamondback or other mitigation to help survive the damage.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1173,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1886,7 +1878,7 @@
       {
         "Info": "Lakshmi",
         "AcquiringTips": "Stotram is used early on as a party wide unavoidable attack that damages the party and heals adds, so nothing needs to be done to make it be cast.",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 719,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1900,7 +1892,7 @@
       {
         "Info": "Phantom Train",
         "AcquiringTips": "This attack targets a different number of people throughout the fight with a marker and creates a large spotlight shining on the ground, exploding into light. The attack is guaranteed to happen early in the fight, so nothing needs to be done to make it be cast.\nIt's important to not get kidnapped by the ghosts when the Phantom Train is killed. If you are taken away by the ghost when the train dies, you will not acquire the ability.",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 748,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1914,7 +1906,7 @@
       {
         "Info": "(Last Boss) Tokkapchi",
         "AcquiringTips": "This attack occurs midway through the Tokkapchi fight, so you may have to wait for it to cast it before killing it. Tokkapchi targets the Mud Slime it has periodically been creating during the fight (the one you should be managing the position of) with a cone shaped AoE attack.",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 788,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1942,7 +1934,7 @@
       {
         "Info": "(Last Boss) Genbu",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 742,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -1956,7 +1948,7 @@
       {
         "Info": "(Last Boss) Ivon Coeurlfish",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 663,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2014,7 +2006,7 @@
       {
         "Info": "Alte Roite",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 691,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2028,7 +2020,7 @@
       {
         "Info": "Omega",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 800,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2070,7 +2062,7 @@
       {
         "Info": "(1st Boss) Kelpie",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 1172,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2084,7 +2076,7 @@
       {
         "Info": "(Corridor Wave) Sai Taisui",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 768,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2126,7 +2118,7 @@
       {
         "Info": "Omega",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 800,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2140,7 +2132,7 @@
       {
         "Info": "(Last Boss) Qitian Dasheng",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 13,
         "TerritoryTypeID": 768,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2154,7 +2146,7 @@
       {
         "Info": "Suzaku",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 810,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2168,7 +2160,7 @@
       {
         "Info": "Tsukuyomi",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 778,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2292,9 +2284,9 @@
     "Icon": 72314,
     "Sources": [
       {
-        "Info": "",
+        "Info": "The Ruby Weapon",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 897,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2306,9 +2298,9 @@
     "Icon": 72315,
     "Sources": [
       {
-        "Info": "",
+        "Info": "Titania",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 845,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2320,9 +2312,9 @@
     "Icon": 72316,
     "Sources": [
       {
-        "Info": "",
+        "Info": "Eden Prime",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type":104,
         "TerritoryTypeID": 849,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2362,9 +2354,9 @@
     "Icon": 72319,
     "Sources": [
       {
-        "Info": "",
+        "Info": "Innocence",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 846,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2376,9 +2368,9 @@
     "Icon": 72320,
     "Sources": [
       {
-        "Info": "",
+        "Info": "Eden's Promise",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 104,
         "TerritoryTypeID": 945,
         "xCoord": 0.0,
         "yCoord": 0.0
@@ -2446,9 +2438,9 @@
     "Icon": 72325,
     "Sources": [
       {
-        "Info": "",
+        "Info": "Titania",
         "AcquiringTips": "",
-        "Type": 99,
+        "Type": 105,
         "TerritoryTypeID": 845,
         "xCoord": 0.0,
         "yCoord": 0.0

@@ -17,37 +17,18 @@ using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Newtonsoft.Json;
-
 using static BlueMageHelper.SpellSources;
 
 namespace BlueMageHelper;
 
 public sealed class Plugin : IDalamudPlugin
 {
-    [PluginService] public static IDataManager Data { get; private set; } = null!;
-    [PluginService] public static IFramework Framework { get; private set; } = null!;
-    [PluginService] public static ICommandManager Commands { get; private set; } = null!;
-    [PluginService] public static IDalamudPluginInterface PluginInterface { get; private set; } = null!;
-    [PluginService] public static IClientState ClientState { get; private set; } = null!;
-    [PluginService] public static IGameGui GameGui { get; private set; } = null!;
-    [PluginService] public static IChatGui ChatGui { get; private set; } = null!;
-    [PluginService] public static IPluginLog Log { get; private set; } = null!;
-    [PluginService] public static ITextureProvider Texture { get; private set; } = null!;
-    [PluginService] public static IObjectTable ObjectTable { get; set; } = null!;
-
-
     private const string CommandName = "/spellbook";
 
-    public Configuration Configuration { get; init; }
+    public static Configuration Configuration = null!;
     private WindowSystem WindowSystem = new("Blue Mage Helper");
     public MainWindow MainWindow;
-    private ConfigWindow ConfigWindow;
-
-    private const int BlankTextTextnodeIndex = 49;
-    private const int SpellNumberTextnodeIndex = 57;
-    private const int RegionTextnodeIndex = 52;
-    private const int RegionImageIndex = 51;
-    private const int UnlearnedNodeIndex = 58;
+    public ConfigWindow ConfigWindow;
 
     private string lastSeenSpell = string.Empty;
     private string lastOrgText = string.Empty;
@@ -58,31 +39,34 @@ public sealed class Plugin : IDalamudPlugin
     private bool OnCooldown;
     private readonly Timer Cooldown = new(3 * 1000);
 
-    public Dictionary<string, bool> UnlockedSpells = new();
+    public readonly Dictionary<int, bool> UnlockedSpells = new();
 
     public static ExcelSheet<Aetheryte> AetheryteSheet = null!;
     public static ExcelSheet<TerritoryType> TerritorySheet = null!;
     public static SubrowExcelSheet<MapMarker> MapMarkerSheet = null!;
     public static ExcelSheet<ContentFinderCondition> ContentFinderSheet = null!;
+    public static ExcelSheet<ActionTransient> ActionTransient = null!;
 
     public static TeleportConsumer TeleportConsumer = null!;
 
-    public Plugin()
+    public Plugin(IDalamudPluginInterface pluginInterface)
     {
-        AozActionsCache = Data.GetExcelSheet<AozAction>().Where(a => a.Rank != 0).ToList();
-        AozTransientCache = Data.GetExcelSheet<AozActionTransient>().Where(a => a.Number != 0).ToList();
+        pluginInterface.Create<Services>();
+        AozActionsCache = Services.DataManager.GetExcelSheet<AozAction>().Where(a => a.Rank != 0).ToList();
+        AozTransientCache = Services.DataManager.GetExcelSheet<AozActionTransient>().Where(a => a.Number != 0).ToList();
 
-        AetheryteSheet = Data.GetExcelSheet<Aetheryte>();
-        TerritorySheet = Data.GetExcelSheet<TerritoryType>();
-        MapMarkerSheet = Data.GetSubrowExcelSheet<MapMarker>();
-        ContentFinderSheet = Data.GetExcelSheet<ContentFinderCondition>();
+        AetheryteSheet = Services.DataManager.GetExcelSheet<Aetheryte>();
+        TerritorySheet = Services.DataManager.GetExcelSheet<TerritoryType>();
+        MapMarkerSheet = Services.DataManager.GetSubrowExcelSheet<MapMarker>();
+        ContentFinderSheet = Services.DataManager.GetExcelSheet<ContentFinderCondition>();
+        ActionTransient = Services.DataManager.GetExcelSheet<ActionTransient>();
 
         TeleportConsumer = new TeleportConsumer();
 
         Cooldown.AutoReset = false;
         Cooldown.Elapsed += (_, __) => OnCooldown = false;
 
-        Configuration = PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
+        Configuration = Services.PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
 
         MainWindow = new MainWindow(this);
         ConfigWindow = new ConfigWindow(this);
@@ -90,35 +74,39 @@ public sealed class Plugin : IDalamudPlugin
         WindowSystem.AddWindow(MainWindow);
         WindowSystem.AddWindow(ConfigWindow);
 
-        Commands.AddHandler(CommandName, new CommandInfo(OnCommand)
+        Services.CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
             HelpMessage = "Opens a small guide book"
         });
 
-        PluginInterface.UiBuilder.Draw += DrawUI;
-        PluginInterface.UiBuilder.OpenMainUi += DrawMainUI;
-        PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
-        Framework.Update += AozNotebookAddonManager;
-        Framework.Update += CheckLearnedSpells;
+        Services.PluginInterface.UiBuilder.Draw += DrawUI;
+        Services.PluginInterface.UiBuilder.OpenMainUi += DrawMainUI;
+        Services.PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
+        Services.Framework.Update += AozNotebookAddonManager;
+        Services.Framework.Update += CheckLearnedSpells;
 
         try
         {
-            Log.Debug("Loading Spell Sources.");
-            var path = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "spells.json");
+            var path = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, "spells.json");
             var jsonString = File.ReadAllText(path);
-            Spells = JsonConvert.DeserializeObject<Dictionary<string, Spell>>(jsonString);
+            Spells = JsonConvert.DeserializeObject<Dictionary<int, Spell>>(jsonString)!;
         }
         catch (Exception e)
         {
-            Log.Error("There was a problem building the Grimoire.");
-            Log.Error(e.Message);
-            Log.Error(e.StackTrace!);
+            Services.Log.Error("There was a problem building the Grimoire.");
+            Services.Log.Error(e.Message);
+            Services.Log.Error(e.StackTrace!);
             if (e.InnerException != null)
             {
-                Log.Error(e.InnerException.Message);
-                Log.Error(e.InnerException.StackTrace!);
+                Services.Log.Error(e.InnerException.Message);
+                Services.Log.Error(e.InnerException.StackTrace!);
             }
         }
+
+// #if DEBUG
+//         this.MainWindow.IsOpen = true;
+//         // this.ConfigWindow.IsOpen = true;
+// #endif
     }
 
     private void CheckLearnedSpells(IFramework framework)
@@ -129,23 +117,26 @@ public sealed class Plugin : IDalamudPlugin
         OnCooldown = true;
         Cooldown.Start();
 
-        if (!ClientState.IsLoggedIn)
+        if (!Services.ClientState.IsLoggedIn)
             return;
 
-        if (ObjectTable.LocalPlayer == null)
+        if (Services.ObjectTable.LocalPlayer == null)
             return;
 
         UnlockedSpells.Clear();
 
         foreach (var (transient, action) in AozTransientCache.Zip(AozActionsCache).OrderBy(pair => pair.First.Number))
-            UnlockedSpells.Add(transient.Number.ToString(), SpellUnlocked(action.Action.Value.UnlockLink.RowId));
+        {
+            var unlocked = SpellUnlocked(action.Action.Value.UnlockLink.RowId);
+            UnlockedSpells.Add(transient.Number, unlocked);
+        }
     }
 
     private void AozNotebookAddonManager(IFramework framework)
     {
         try
         {
-            var addonPtr = GameGui.GetAddonByName("AOZNotebook");
+            var addonPtr = Services.GameGui.GetAddonByName("AOZNotebook");
             if (addonPtr == nint.Zero)
                 return;
             SpellbookWriter(addonPtr);
@@ -153,32 +144,33 @@ public sealed class Plugin : IDalamudPlugin
         catch (OperationCanceledException) { }
         catch (Exception e)
         {
-            Log.Verbose("Blue Mage Helper caught an exception: "+ e);
+            Services.Log.Verbose("Blue Mage Helper caught an exception: " + e);
         }
     }
 
     private unsafe void SpellbookWriter(IntPtr addonPtr)
     {
         AtkUnitBase* spellbookBaseNode = (AtkUnitBase*)addonPtr;
-        if (spellbookBaseNode->UldManager.NodeListCount < UnlearnedNodeIndex + 1)
-            return;
-
-        AtkTextNode* unlearnedTextNode = (AtkTextNode*)spellbookBaseNode->UldManager.NodeList[UnlearnedNodeIndex];
+        AtkTextNode* unlearnedTextNode = spellbookBaseNode->GetTextNodeById(68);
         if (!unlearnedTextNode->AtkResNode.IsVisible() && !Configuration.ShowHintEvenIfUnlocked)
             return;
 
-        AtkTextNode* emptyTextnode = (AtkTextNode*)spellbookBaseNode->UldManager.NodeList[BlankTextTextnodeIndex];
-        AtkTextNode* spellNumberTextnode = (AtkTextNode*)spellbookBaseNode->UldManager.NodeList[SpellNumberTextnodeIndex];
-        AtkTextNode* region = (AtkTextNode*)spellbookBaseNode->UldManager.NodeList[RegionTextnodeIndex];
-        AtkImageNode* regionImage = (AtkImageNode*)spellbookBaseNode->UldManager.NodeList[RegionImageIndex];
-        var spellNumberString = spellNumberTextnode->NodeText.ToString()[1..]; // Remove the # from the spell number
+        AtkTextNode* emptyTextnode = spellbookBaseNode->GetTextNodeById(78);
+        AtkTextNode* spellNumberTextnode = spellbookBaseNode->GetTextNodeById(69);
+        AtkTextNode* region = spellbookBaseNode->GetTextNodeById(75);
+        AtkImageNode* regionImage = spellbookBaseNode->GetImageNodeById(76);
+        var spellNumberString = spellNumberTextnode->NodeText.ToString().Length >= 1
+            ? spellNumberTextnode->NodeText.ToString()[1..] // Remove the # from the spell number
+            : "";
 
         // Try to preserve last seen org text
         if (spellNumberString != lastSeenSpell)
             lastOrgText = emptyTextnode->NodeText.ToString();
         lastSeenSpell = spellNumberString;
 
-        var spellSource = GetHintText(spellNumberString);
+        var success = Int32.TryParse(spellNumberString, out var spellNumber);
+        if (!success) return;
+        var spellSource = GetHintText(spellNumber);
         emptyTextnode->SetText($"{(lastOrgText != "" ? $"{lastOrgText}\n" : "")}{spellSource.Info}");
         emptyTextnode->AtkResNode.ToggleVisibility(true);
 
@@ -187,28 +179,31 @@ public sealed class Plugin : IDalamudPlugin
             spellSource.SetRegion(region, regionImage);
     }
 
-    private static SpellSource GetHintText(string spellNumber) =>
+    private static SpellSource GetHintText(int spellNumber) =>
         Spells.TryGetValue(spellNumber, out var spell) ? spell.Source : new SpellSource($"Currently Unknown");
 
     public void Dispose()
     {
         WindowSystem.RemoveAllWindows();
-        Commands.RemoveHandler(CommandName);
-        Framework.Update -= AozNotebookAddonManager;
-        Framework.Update -= CheckLearnedSpells;
+        Services.CommandManager.RemoveHandler(CommandName);
+        Services.Framework.Update -= AozNotebookAddonManager;
+        Services.Framework.Update -= CheckLearnedSpells;
 
-        PluginInterface.UiBuilder.Draw -= DrawUI;
-        PluginInterface.UiBuilder.OpenMainUi -= DrawMainUI;
-        PluginInterface.UiBuilder.OpenConfigUi -= DrawConfigUI;
+        Services.PluginInterface.UiBuilder.Draw -= DrawUI;
+        Services.PluginInterface.UiBuilder.OpenMainUi -= DrawMainUI;
+        Services.PluginInterface.UiBuilder.OpenConfigUi -= DrawConfigUI;
     }
 
     private void OnCommand(string command, string args) => DrawMainUI();
     private void DrawUI() => WindowSystem.Draw();
     private void DrawMainUI() => MainWindow.Toggle();
     private void DrawConfigUI() => ConfigWindow.Toggle();
-    public void SetMapMarker(MapLinkPayload map) => GameGui.OpenMapWithMapLink(map);
+    public void SetMapMarker(MapLinkPayload map) => Services.GameGui.OpenMapWithMapLink(map);
 
-    private unsafe bool SpellUnlocked(uint unlockLink) => UIState.Instance()->IsUnlockLinkUnlockedOrQuestCompleted(unlockLink);
+    private unsafe bool SpellUnlocked(uint unlockLink)
+    {
+        return UIState.Instance()->IsUnlockLinkUnlockedOrQuestCompleted(unlockLink);
+    }
 
     public static void TeleportToNearestAetheryte(SpellSource location)
     {
@@ -219,20 +214,20 @@ public sealed class Plugin : IDalamudPlugin
         var nearestAetheryteId = MapMarkerSheet
             .SelectMany(x => x)
             .Where(x => x.DataType == 3 && x.RowId == map.MapMarkerRange)
-            .Select(
-                marker => new
-                {
-                    distance = Vector2.DistanceSquared(
-                        new Vector2(location.xCoord, location.yCoord),
-                        ConvertLocationToRaw(marker.X, marker.Y, map.SizeFactor)),
-                    rowId = marker.DataKey.RowId
-                })
+            .Select(marker => new
+            {
+                distance = Vector2.DistanceSquared(
+                    new Vector2(location.xCoord, location.yCoord),
+                    ConvertLocationToRaw(marker.X, marker.Y, map.SizeFactor)),
+                rowId = marker.DataKey.RowId
+            })
             .MinBy(x => x.distance)!.rowId;
 
         // Support the unique case of aetheryte not being in the same map
         var nearestAetheryte = location.TerritoryTypeID == 399
             ? map.TerritoryType.Value.Aetheryte.Value
-            : AetheryteSheet.FirstOrNull(x => x.IsAetheryte && x.Territory.RowId == location.TerritoryTypeID && x.RowId == nearestAetheryteId);
+            : AetheryteSheet.FirstOrNull(x =>
+                x.IsAetheryte && x.Territory.RowId == location.TerritoryTypeID && x.RowId == nearestAetheryteId);
 
         if (nearestAetheryte == null)
             return;
@@ -244,7 +239,8 @@ public sealed class Plugin : IDalamudPlugin
     private static Vector2 ConvertLocationToRaw(int x, int y, float scale)
     {
         var num = scale / 100f;
-        return new Vector2(ConvertRawToMap((int)((x - 1024) * num * 1000f), scale), ConvertRawToMap((int)((y - 1024) * num * 1000f), scale));
+        return new Vector2(ConvertRawToMap((int)((x - 1024) * num * 1000f), scale),
+            ConvertRawToMap((int)((y - 1024) * num * 1000f), scale));
     }
 
     private static float ConvertRawToMap(int pos, float scale)
@@ -255,18 +251,19 @@ public sealed class Plugin : IDalamudPlugin
     }
 
     #region internal
+
     private void PrintTerris()
     {
-        var mapSheet = Data.GetExcelSheet<TerritoryType>()!;
-        var contentSheet = Data.GetExcelSheet<ContentFinderCondition>()!;
+        var mapSheet = Services.DataManager.GetExcelSheet<TerritoryType>();
+        var contentSheet = Services.DataManager.GetExcelSheet<ContentFinderCondition>();
         foreach (var match in mapSheet)
         {
             if (match.RowId == 0) continue;
             if (match.Map.Value.PlaceName.Value.Name.ExtractText() == "") continue;
-            Log.Information("---------------");
-            Log.Information(match.Map.Value.PlaceName.Value.Name.ExtractText());
-            Log.Information($"TerriID: {match.RowId}");
-            Log.Information($"MapID: {match.Map.RowId}");
+            Services.Log.Information("---------------");
+            Services.Log.Information(match.Map.Value.PlaceName.Value.Name.ExtractText());
+            Services.Log.Information($"TerriID: {match.RowId}");
+            Services.Log.Information($"MapID: {match.Map.RowId}");
 
             var content = contentSheet.FirstOrNull(x => x.TerritoryType.RowId == match.RowId);
             if (content == null)
@@ -275,24 +272,29 @@ public sealed class Plugin : IDalamudPlugin
             if (Utils.ToTitleCaseExtended(content.Value.Name) == "")
                 continue;
 
-            Log.Information($"Duty: {Utils.ToTitleCaseExtended(content.Value.Name)}");
+            Services.Log.Information($"Duty: {Utils.ToTitleCaseExtended(content.Value.Name)}");
         }
     }
 
     private void PrintBlueSkills()
     {
-
         // skip the first non existing skill
-        var aozActionTransients = Data.GetExcelSheet<AozActionTransient>()!.Skip(1);
-        var aozActions = Data.GetExcelSheet<AozAction>()!.Skip(1);
+        var aozActionTransients = Services.DataManager.GetExcelSheet<AozActionTransient>().Skip(1);
+        var aozActions = Services.DataManager.GetExcelSheet<AozAction>().Skip(1);
 
         Dictionary<string, Spell> spells = new();
         foreach (var (transient, action) in aozActionTransients.Zip(aozActions))
         {
-            spells.Add(transient.Number.ToString(), new Spell() {Name = action.Action.Value!.Name.ToString(), Icon = transient.Icon, Sources = { new SpellSource("", RegionType.Unknown) }});
+            spells.Add(transient.Number.ToString(),
+                new Spell()
+                {
+                    Name = action.Action.Value!.Name.ToString(), Icon = transient.Icon,
+                    Sources = { new SpellSource("", RegionType.Unknown) }
+                });
         }
 
-        Log.Information(JsonConvert.SerializeObject(spells, Formatting.Indented));
+        Services.Log.Information(JsonConvert.SerializeObject(spells, Formatting.Indented));
     }
+
     #endregion
 }

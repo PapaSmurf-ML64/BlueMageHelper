@@ -1,5 +1,4 @@
 using System;
-
 using Dalamud.Plugin.Ipc;
 
 namespace BlueMageHelper.IPC;
@@ -43,12 +42,12 @@ public class TeleportConsumer
     {
         try
         {
-            IsInitialized = Plugin.PluginInterface.GetIpcSubscriber<bool>("Teleport.ChatMessage");
-            Teleport = Plugin.PluginInterface.GetIpcSubscriber<uint, byte, bool>("Teleport");
+            IsInitialized = Services.PluginInterface.GetIpcSubscriber<bool>("Teleport.ChatMessage");
+            Teleport = Services.PluginInterface.GetIpcSubscriber<uint, byte, bool>("Teleport");
         }
         catch (Exception e)
         {
-            Plugin.Log.Debug($"Failed to subscribe to Teleport\nReason: {e}");
+            Services.Log.Debug($"Failed to subscribe to Teleport\nReason: {e}");
         }
     }
 
@@ -60,7 +59,7 @@ public class TeleportConsumer
         }
         catch
         {
-            Plugin.ChatGui.PrintError("[BlueMageHelper] Teleport plugin is not responding");
+            Services.ChatGui.PrintError("[BlueMageHelper] Teleport plugin is not responding");
             return false;
         }
     }

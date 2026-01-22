@@ -13,7 +13,7 @@ namespace BlueMageHelper
 
         public void Save()
         {
-            Plugin.PluginInterface.SavePluginConfig(this);
+            Services.PluginInterface.SavePluginConfig(this);
         }
     }
 }

@@ -10,8 +10,7 @@ namespace BlueMageHelper.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
-    private Configuration Configuration;
-    private Plugin Plugin;
+    private readonly Plugin Plugin;
 
     public ConfigWindow(Plugin plugin) : base("Configuration##BlueMageHelper")
     {
@@ -22,7 +21,6 @@ public class ConfigWindow : Window, IDisposable
         };
 
         Plugin = plugin;
-        Configuration = plugin.Configuration;
     }
 
     public void Dispose() { }
@@ -48,18 +46,20 @@ public class ConfigWindow : Window, IDisposable
 
         ImGui.TextColored(ImGuiColors.DalamudViolet, "Vanilla Spellbook:");
         using (ImRaii.PushIndent(10.0f))
-            changed |= ImGui.Checkbox("Show hint even if a spell is already unlocked.", ref Configuration.ShowHintEvenIfUnlocked);
+            changed |= ImGui.Checkbox("Show hint even if a spell is already unlocked.",
+                ref Plugin.Configuration.ShowHintEvenIfUnlocked);
 
         ImGuiHelpers.ScaledDummy(5.0f);
 
         ImGui.TextColored(ImGuiColors.DalamudViolet, "Spellbook:");
         using (ImRaii.PushIndent(10.0f))
-            changed |= ImGui.Checkbox("Show only unlearned spells.", ref Configuration.ShowOnlyUnlearned);
+            changed |= ImGui.Checkbox("Show only unlearned spells.", ref Plugin.Configuration.ShowOnlyUnlearned);
 
         if (changed)
         {
-            Plugin.MainWindow.SourceOptions = null;
-            Configuration.Save();
+            Plugin.MainWindow.AllBlueSpells = null;
+            Plugin.MainWindow.SelectedIndex = 0;
+            Plugin.Configuration.Save();
         }
     }
 
@@ -78,7 +78,7 @@ public class ConfigWindow : Window, IDisposable
 
                 ImGui.TextUnformatted("Author:");
                 ImGui.SameLine();
-                ImGui.TextColored(ImGuiColors.ParsedGold, Plugin.PluginInterface.Manifest.Author);
+                ImGui.TextColored(ImGuiColors.ParsedGold, Services.PluginInterface.Manifest.Author);
 
                 ImGui.TextUnformatted("Discord:");
                 ImGui.SameLine();
@@ -86,7 +86,8 @@ public class ConfigWindow : Window, IDisposable
 
                 ImGui.TextUnformatted("Version:");
                 ImGui.SameLine();
-                ImGui.TextColored(ImGuiColors.ParsedOrange, Plugin.PluginInterface.Manifest.AssemblyVersion.ToString());
+                ImGui.TextColored(ImGuiColors.ParsedOrange,
+                    Services.PluginInterface.Manifest.AssemblyVersion.ToString());
             }
         }
 
@@ -100,7 +101,8 @@ public class ConfigWindow : Window, IDisposable
                 using (ImRaii.PushColor(ImGuiCol.Button, ImGuiColors.ParsedBlue))
                 {
                     if (ImGui.Button("Discord Thread"))
-                        Dalamud.Utility.Util.OpenLink("https://discord.com/channels/581875019861328007/1067487937735970846");
+                        Dalamud.Utility.Util.OpenLink(
+                            "https://discord.com/channels/581875019861328007/1067487937735970846");
                 }
 
                 ImGui.SameLine();
@@ -111,13 +113,6 @@ public class ConfigWindow : Window, IDisposable
                         Dalamud.Utility.Util.OpenLink("https://github.com/harbingerftw/BlueMageHelper");
                 }
 
-                // ImGui.SameLine();
-                //
-                // using (ImRaii.PushColor(ImGuiCol.Button, new Vector4(0.12549f, 0.74902f, 0.33333f, 0.6f)))
-                // {
-                //     if (ImGui.Button("Ko-Fi Tip"))
-                //         Dalamud.Utility.Util.OpenLink("https://ko-fi.com/infiii");
-                // }
             }
         }
     }
