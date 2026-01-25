@@ -42,7 +42,7 @@ public class MainWindow : Window, IDisposable
         Flags = ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse;
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new Vector2(370, 500),
+            MinimumSize = new Vector2(372, 500),
             MaximumSize = new Vector2(float.MaxValue, float.MaxValue)
         };
 
@@ -55,13 +55,13 @@ public class MainWindow : Window, IDisposable
 
         Plugin = plugin;
         SelectedIndex = 0;
-
     }
 
     public void Dispose() { }
 
     public override void Draw()
     {
+        var itemSpacing = (float)(ImGui.GetStyle().ItemSpacing.Y * Math.Pow(ImGuiHelpers.GlobalScale, 1.8));
         if (AllBlueSpells == null || SpellSelector == null)
         {
             AllBlueSpells = Plugin.AozActionsCache
@@ -95,8 +95,8 @@ public class MainWindow : Window, IDisposable
 
         SelectedIndex = SelectedIndex < 0 ? 0 : SelectedIndex;
 
-        Helper.DrawArrows(ref SelectedIndex, AllBlueSpells.Count, 0);
-        ImGui.SameLine();
+        Helper.DrawArrows(ref SelectedIndex, AllBlueSpells.Count, 0, itemSpacing);
+        ImGui.SameLine(0, itemSpacing);
         if (ImGui.Checkbox("##unlearnedSpells", ref Plugin.Configuration.ShowOnlyUnlearned))
         {
             SpellSelector = null;

@@ -31,7 +31,7 @@ public static class Helper
         ImGui.Image(texture.Handle, iconSize);
     }
 
-    public static bool DrawArrows(ref int selected, int length, int id = 0)
+    public static bool DrawArrows(ref int selected, int length, int id = 0, float padding = -1)
     {
         var changed = false;
 
@@ -39,7 +39,7 @@ public static class Helper
         var isMin = selected == 0;
         var isMax = selected + 1 == length;
 
-        ImGui.SameLine();
+        ImGui.SameLine(0, padding);
         using (ImRaii.Disabled(isMin))
         {
             if (ImGuiComponents.IconButton(id, FontAwesomeIcon.ArrowLeft))
@@ -49,7 +49,7 @@ public static class Helper
             }
         }
 
-        ImGui.SameLine();
+        ImGui.SameLine(0, padding);
         using (ImRaii.Disabled(isMax))
         {
             if (ImGuiComponents.IconButton(id + 1, FontAwesomeIcon.ArrowRight))
