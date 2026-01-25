@@ -226,24 +226,16 @@ public class MainWindow : Window, IDisposable
 
                 if (source is { TerritoryType: not null, IsDuty: true })
                 {
-                    unsafe
+                    if (source.Type != RegionType.MaskedCarnivale)
                     {
-                        using var font = ImRaii.PushFont(UiBuilder.IconFont);
-                        if (ImGui.Button($"{FontAwesomeIcon.ArrowUpRightFromSquare.ToIconString()}"))
-                        {
-                            var territory = Plugin.TerritorySheet.GetRowOrDefault(source.TerritoryTypeID);
-                            if (territory.HasValue)
-                            {
-                                AgentContentsFinder.Instance()->OpenRegularDuty(territory.Value.ContentFinderCondition
-                                    .RowId);
-                            }
-                        }
+                        DrawOpenDutyButton(source.TerritoryTypeID);
+                        ImGui.SameLine();
                     }
 
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip("Open duty finder");
-                    ImGui.SameLine();
-                    ImGui.TextUnformatted($"Duty: {source.DutyName}");
+                    ImGui.TextUnformatted(
+                        $"{(source.Type == RegionType.MaskedCarnivale ? "Masked Carnivale" : "Duty")}: " +
+                        $"{source.DutyName}"
+                    );
                 }
 
                 var isHunt = source.Type is RegionType.ARank or RegionType.BRank or RegionType.SRank;
@@ -344,7 +336,25 @@ public class MainWindow : Window, IDisposable
         }
     }
 
-    private static void DrawUnlockSymbol(bool done)
+    private static unsafe void DrawOpenDutyButton(uint territoryType)
+    {
+        using var font = ImRaii.PushFont(UiBuilder.IconFont);
+        if (ImGui.Button(FontAwesomeIcon.ArrowUpRightFromSquare.ToIconString()))
+        {
+            var territory = Plugin.TerritorySheet.GetRowOrDefault(territoryType);
+            if (territory.HasValue)
+            {
+                AgentContentsFinder.Instance()->OpenRegularDuty(territory.Value
+                    .ContentFinderCondition
+                    .RowId);
+            }
+        }
+
+        font.Pop();
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip("Open in duty finder");
+    }
+
     private static void DrawUnlockSymbol(bool done, Vector2 size)
     {
         var color = done ? ImGuiColors.HealerGreen : ImGuiColors.DalamudRed;

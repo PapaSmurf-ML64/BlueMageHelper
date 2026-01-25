@@ -28,6 +28,7 @@ public class SpellSource
 
     public RegionType Type = RegionType.Default;
     public uint TerritoryTypeID = 0;
+    public uint? ContentFinderCondition = 0;
     public float xCoord = 0;
     public float yCoord = 0;
 
@@ -62,13 +63,19 @@ public class SpellSource
             TerritoryType = Plugin.TerritorySheet.GetRow(TerritoryTypeID);
             PlaceName = TerritoryType.Value.PlaceName.Value.Name.ExtractText();
 
-            var content = Plugin.ContentFinderSheet.FirstOrNull(content =>
-                content.TerritoryType.RowId == TerritoryType.Value.RowId);
+            var content = Type is RegionType.MaskedCarnivale
+                ? Plugin.ContentFinderSheet.FirstOrNull(c => c.RowId == ContentFinderCondition)
+                : Plugin.ContentFinderSheet.FirstOrNull(c =>
+                    c.TerritoryType.RowId == TerritoryType.Value.RowId);
             if (content != null && content.Value.Name.ExtractText() != "")
             {
                 IsDuty = true;
                 DutyName = Utils.ToTitleCaseExtended(content.Value.Name);
                 DutyMinLevel = content.Value.ClassJobLevelRequired.ToString();
+                if (Type is RegionType.MaskedCarnivale)
+                {
+                    DutyName = $"{content.Value.ShortCode.ToString()[^2..].TrimStart('0')} - {DutyName}";
+                }
             }
         }
 

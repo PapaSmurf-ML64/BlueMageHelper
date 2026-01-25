@@ -122,10 +122,11 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Beastial Node (Stage 15 Masked Carnivale - The Me Nobody Nodes)",
+        "Info": "Beastial Node",
         "AcquiringTips": "",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 625,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -272,10 +273,11 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Azulmagia (Stage 25 Masked Carnivale - Dirty Rotten Azulmagia)",
+        "Info": "Azulmagia",
         "AcquiringTips": "",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 635,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -374,10 +376,11 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Azulmagia (Stage 25 Masked Carnivale - Dirty Rotten Azulmagia)",
+        "Info": "Azulmagia",
         "AcquiringTips": "Azulmagia will open with the spell as his barrier for Act 1 and will alternate it with his magic-counter barrier in Act 3 at certain intervals in the fight.",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 635,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -572,10 +575,11 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Arena Cherry Bomb (Stage 8 Masked Carnivale - The Bomb-edy of Errors)",
+        "Info": "Arena Cherry Bomb",
         "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 618,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -660,18 +664,20 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Typhon (Stage 20 Masked Carnivale - Miss Typhon)",
+        "Info": "Typhon",
         "AcquiringTips": "Typhon will use it as part of a devastating Fireball combo. Use Diamondback in order to survive this.",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 630,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
       {
-        "Info": "Typhon (Stage 27 Masked Carnivale - Lock up Your Snorters)",
+        "Info": "Typhon",
         "AcquiringTips": "Typhon uses this after the bombs drop every time.",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 696,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -758,10 +764,11 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Reflective Rebekkah (Stage 19 Masked Carnivale - On a Clear Day You Can Smell Forever)",
+        "Info": "Reflective Rebekkah",
         "AcquiringTips": "",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 629,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -860,18 +867,20 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Apademak (Stage 21 Masked Carnivale - Chimera on a Hot Tin Roof)",
+        "Info": "Apademak",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 631,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
       {
-        "Info": "Azulmagia (Stage 25 Masked Carnivale - Dirty Rotten Azulmagia)",
+        "Info": "Azulmagia",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 635,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -898,18 +907,20 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Apademak (Stage 21 Masked Carnivale - Chimera on a Hot Tin Roof)",
+        "Info": "Apademak",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 631,
         "xCoord": 0.0,
         "yCoord": 0.0
       },
       {
-        "Info": "Azulmagia (Stage 25 Masked Carnivale - Dirty Rotten Azulmagia)",
+        "Info": "Azulmagia",
         "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 635,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -1248,10 +1259,11 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Shikigami of the Undertow (Stage 29 Masked Carnivale Red, Fraught, and Blue)",
+        "Info": "Shikigami of the Undertow",
         "AcquiringTips": "In Stage 29 of the Masked Carnivale, you can get Protean Wave not just from the boss, but also from the water column adds once they explode.",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 698,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -1438,10 +1450,11 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Epilogi (Stage 24 Masked Carnivale - Amazing Technicolor Pit Fiends)",
+        "Info": "Epilogi",
         "AcquiringTips": "",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 634,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
@@ -1734,10 +1747,11 @@
         "yCoord": 0.0
       },
       {
-        "Info": "Arena Scribe (Stage 24 Masked Carnivale - Amazing Technicolor Pit Fiends)",
+        "Info": "Arena Scribe",
         "AcquiringTips": "",
         "Type": 103,
         "TerritoryTypeID": 796,
+        "ContentFinderCondition": 634,
         "xCoord": 0.0,
         "yCoord": 0.0
       }
