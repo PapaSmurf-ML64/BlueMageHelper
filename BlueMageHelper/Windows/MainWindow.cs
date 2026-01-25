@@ -15,7 +15,7 @@ namespace BlueMageHelper.Windows;
 
 public class MainWindow : Window, IDisposable
 {
-    private Plugin Plugin;
+    private readonly Plugin Plugin;
 
     /// <summary>
     /// Index of the selected spell, NOT the spell id
@@ -96,6 +96,7 @@ public class MainWindow : Window, IDisposable
         SelectedIndex = SelectedIndex < 0 ? 0 : SelectedIndex;
 
         Helper.DrawArrows(ref SelectedIndex, AllBlueSpells.Count, 0, itemSpacing);
+        var arrowSize = ImGui.GetItemRectSize();
         ImGui.SameLine(0, itemSpacing);
         if (ImGui.Checkbox("##unlearnedSpells", ref Plugin.Configuration.ShowOnlyUnlearned))
         {
@@ -193,9 +194,11 @@ public class MainWindow : Window, IDisposable
                         .Select(x => $"{x.Type.GetDisplay()}: " + (x.IsDuty ? x.DutyName : x.PlaceName))
                         .ToArray();
 
+                    ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X -
+                                           (arrowSize.X * 2 + itemSpacing * 2));
                     ImGui.Combo("##sourcesSelector", ref SelectedSource, sourcesList, sourcesList.Length);
 
-                    Helper.DrawArrows(ref SelectedSource, selectedSpell.Sources.Count, 2);
+                    Helper.DrawArrows(ref SelectedSource, selectedSpell.Sources.Count, 2, itemSpacing);
                     source = selectedSpell.Sources[SelectedSource];
                     ImGui.TextWrapped($"Target: {(source.Type == RegionType.Unknown ? "Currently Unknown" : source.Info)}");
                 }

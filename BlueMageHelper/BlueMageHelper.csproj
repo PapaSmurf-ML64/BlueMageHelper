@@ -2,7 +2,7 @@
     <PropertyGroup>
         <Name>Blue Mage Helper</Name>
         <Author>Infi, Sl0nderman, harbingerftw</Author>
-        <Version>3.2.0.0</Version>
+        <Version>3.2.1.0</Version>
         <Punchline>Helps you fill out your Blue Mage Spellbook</Punchline>
         <Description>Adds a window to show all missing Blue Magic, allowing you to search for spells and teleport or mark the source on your map. Adds monster names and coordinates to the "Where to Learn" section of your blue mage spellbook.</Description>
         <Tags>spells;spellbook;blu</Tags>
