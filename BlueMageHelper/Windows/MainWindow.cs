@@ -152,18 +152,22 @@ public class MainWindow : Window, IDisposable
         Helper.DrawScaledIcon(AllBlueSpells[SelectedIndex].IconId, IconSize);
         screenCursor = ImGui.GetCursorScreenPos();
         cursor = ImGui.GetCursorPos();
+
+        var learnedMarkerSize = new Vector2(25, 25) * ImGuiHelpers.GlobalScale;
+        var learnedMarkerBgSize = 40 * ImGuiHelpers.GlobalScale;
+
         var p1 = scaledIconSize with { Y = -4 };
-        var p2 = p1 with { Y = p1.Y - 50 };
-        var p3 = p1 with { X = p1.X - 50 };
+        var p2 = p1 with { Y = p1.Y - learnedMarkerBgSize };
+        var p3 = p1 with { X = p1.X - learnedMarkerBgSize };
 
         drawList.AddTriangleFilled(screenCursor + p1,
             screenCursor + p2,
             screenCursor + p3,
             ImGui.GetColorU32(new Vector4(0, 0, 0, 0.8f)));
 
-        ImGui.SetCursorPos(cursor + p1 + new Vector2(-30, -30));
+        ImGui.SetCursorPos(cursor + p1 + (-1 * learnedMarkerSize));
         var exists = Plugin.UnlockedSpells.TryGetValue(AllBlueSpells[SelectedIndex].Number, out var unlocked);
-        DrawUnlockSymbol(exists && unlocked);
+        DrawUnlockSymbol(exists && unlocked, learnedMarkerSize);
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip(unlocked ? "Spell learned" : "Spell not learned");
@@ -191,10 +195,9 @@ public class MainWindow : Window, IDisposable
 
                     ImGui.Combo("##sourcesSelector", ref SelectedSource, sourcesList, sourcesList.Length);
 
-
                     Helper.DrawArrows(ref SelectedSource, selectedSpell.Sources.Count, 2);
                     source = selectedSpell.Sources[SelectedSource];
-                    ImGui.Text($"Target: {(source.Type == RegionType.Unknown ? "Currently Unknown" : source.Info)}");
+                    ImGui.TextWrapped($"Target: {(source.Type == RegionType.Unknown ? "Currently Unknown" : source.Info)}");
                 }
                 else
                 {
@@ -342,11 +345,12 @@ public class MainWindow : Window, IDisposable
     }
 
     private static void DrawUnlockSymbol(bool done)
+    private static void DrawUnlockSymbol(bool done, Vector2 size)
     {
         var color = done ? ImGuiColors.HealerGreen : ImGuiColors.DalamudRed;
         if (Services.TextureProvider.GetFromGameIcon(done ? 60081 : 61552)
             .TryGetWrap(out var texture, out var exception))
-            ImGui.Image(texture.Handle, new Vector2(30, 30), color);
+            ImGui.Image(texture.Handle, size, color);
     }
 
     private bool IsUnlocked(int num) => !Plugin.Configuration.ShowOnlyUnlearned ||
