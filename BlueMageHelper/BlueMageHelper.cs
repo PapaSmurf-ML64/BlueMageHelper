@@ -18,6 +18,7 @@ using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Newtonsoft.Json;
 using static BlueMageHelper.SpellSources;
+using Map = Lumina.Excel.Sheets.Map;
 
 namespace BlueMageHelper;
 
@@ -39,10 +40,19 @@ public sealed class Plugin : IDalamudPlugin
     private bool OnCooldown;
     private readonly Timer Cooldown = new(3 * 1000);
 
-    public readonly Dictionary<int, bool> UnlockedSpells = new();
+    public static readonly Dictionary<int, bool> UnlockedSpells = new();
+
+    public class TerritoryNpcRecords
+    {
+        public readonly List<uint> NpcIds = [];
+        public readonly List<SpellSource> SpellSources = [];
+    }
+
+    public static readonly Dictionary<uint, TerritoryNpcRecords> MobsByTerritory = new();
 
     public static ExcelSheet<Aetheryte> AetheryteSheet = null!;
     public static ExcelSheet<TerritoryType> TerritorySheet = null!;
+    public static ExcelSheet<Map> MapSheet = null!;
     public static SubrowExcelSheet<MapMarker> MapMarkerSheet = null!;
     public static ExcelSheet<ContentFinderCondition> ContentFinderSheet = null!;
     public static ExcelSheet<ActionTransient> ActionTransient = null!;
@@ -57,6 +67,7 @@ public sealed class Plugin : IDalamudPlugin
 
         AetheryteSheet = Services.DataManager.GetExcelSheet<Aetheryte>();
         TerritorySheet = Services.DataManager.GetExcelSheet<TerritoryType>();
+        MapSheet = Services.DataManager.GetExcelSheet<Map>();
         MapMarkerSheet = Services.DataManager.GetSubrowExcelSheet<MapMarker>();
         ContentFinderSheet = Services.DataManager.GetExcelSheet<ContentFinderCondition>();
         ActionTransient = Services.DataManager.GetExcelSheet<ActionTransient>();
@@ -79,17 +90,39 @@ public sealed class Plugin : IDalamudPlugin
             HelpMessage = "Opens a small guide book"
         });
 
-        Services.PluginInterface.UiBuilder.Draw += DrawUI;
-        Services.PluginInterface.UiBuilder.OpenMainUi += DrawMainUI;
-        Services.PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
+        Services.PluginInterface.UiBuilder.Draw += DrawUi;
+        Services.PluginInterface.UiBuilder.OpenMainUi += DrawMainUi;
+        Services.PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUi;
         Services.Framework.Update += AozNotebookAddonManager;
         Services.Framework.Update += CheckLearnedSpells;
+
+        NamePlateMarkerService.Init();
 
         try
         {
             var path = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, "spells.json");
             var jsonString = File.ReadAllText(path);
             Spells = JsonConvert.DeserializeObject<Dictionary<int, Spell>>(jsonString)!;
+            foreach (var kvp in Spells)
+            {
+                kvp.Value.Number = kvp.Key;
+                foreach (var src in kvp.Value.Sources)
+                {
+                    src.Spell = kvp.Value;
+
+                    if (!MobsByTerritory.TryGetValue(src.TerritoryTypeId, out var record))
+                    {
+                        record = new TerritoryNpcRecords();
+                        MobsByTerritory[src.TerritoryTypeId] = record;
+                    }
+
+                    if (src.NpcId is { } ids && kvp.Value is not null && IsSpellUnlocked(kvp.Key))
+                    {
+                        record.NpcIds.AddRange(ids.Select(i => (uint)i));
+                        record.SpellSources.Add(src);
+                    }
+                }
+            }
         }
         catch (Exception e)
         {
@@ -189,15 +222,17 @@ public sealed class Plugin : IDalamudPlugin
         Services.Framework.Update -= AozNotebookAddonManager;
         Services.Framework.Update -= CheckLearnedSpells;
 
-        Services.PluginInterface.UiBuilder.Draw -= DrawUI;
-        Services.PluginInterface.UiBuilder.OpenMainUi -= DrawMainUI;
-        Services.PluginInterface.UiBuilder.OpenConfigUi -= DrawConfigUI;
+        NamePlateMarkerService.Dispose();
+
+        Services.PluginInterface.UiBuilder.Draw -= DrawUi;
+        Services.PluginInterface.UiBuilder.OpenMainUi -= DrawMainUi;
+        Services.PluginInterface.UiBuilder.OpenConfigUi -= DrawConfigUi;
     }
 
-    private void OnCommand(string command, string args) => DrawMainUI();
-    private void DrawUI() => WindowSystem.Draw();
-    private void DrawMainUI() => MainWindow.Toggle();
-    private void DrawConfigUI() => ConfigWindow.Toggle();
+    private void OnCommand(string command, string args) => DrawMainUi();
+    private void DrawUi() => WindowSystem.Draw();
+    private void DrawMainUi() => MainWindow.Toggle();
+    private void DrawConfigUi() => ConfigWindow.Toggle();
     public void SetMapMarker(MapLinkPayload map) => Services.GameGui.OpenMapWithMapLink(map);
 
     private unsafe bool SpellUnlocked(uint unlockLink)
@@ -210,6 +245,8 @@ public sealed class Plugin : IDalamudPlugin
         if (location.TerritoryType == null)
             return;
 
+        Services.Log.Info($"ttid: {location.TerritoryTypeId}");
+
         var map = location.TerritoryType.Value.Map.Value;
         var nearestAetheryteId = MapMarkerSheet
             .SelectMany(x => x)
@@ -217,23 +254,27 @@ public sealed class Plugin : IDalamudPlugin
             .Select(marker => new
             {
                 distance = Vector2.DistanceSquared(
-                    new Vector2(location.xCoord, location.yCoord),
+                    new Vector2(location.Location[0], location.Location[1]),
                     ConvertLocationToRaw(marker.X, marker.Y, map.SizeFactor)),
                 rowId = marker.DataKey.RowId
             })
-            .MinBy(x => x.distance)!.rowId;
+            .MinBy(x => x.distance);
 
         // Support the unique case of aetheryte not being in the same map
-        var nearestAetheryte = location.TerritoryTypeID == 399
+        var nearestAetheryte = nearestAetheryteId == null
             ? map.TerritoryType.Value.Aetheryte.Value
             : AetheryteSheet.FirstOrNull(x =>
-                x.IsAetheryte && x.Territory.RowId == location.TerritoryTypeID && x.RowId == nearestAetheryteId);
+                x.IsAetheryte && x.Territory.RowId == location.TerritoryTypeId && x.RowId == nearestAetheryteId.rowId);
 
         if (nearestAetheryte == null)
             return;
 
         TeleportConsumer.UseTeleport(nearestAetheryte.Value.RowId);
     }
+
+    public static bool IsSpellUnlocked(int num) => !Configuration.ShowOnlyUnlearned ||
+                                                   (UnlockedSpells.TryGetValue(num, out var isUnlocked) &&
+                                                    !isUnlocked);
 
 
     private static Vector2 ConvertLocationToRaw(int x, int y, float scale)

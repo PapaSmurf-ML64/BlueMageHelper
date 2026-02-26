@@ -9,7 +9,9 @@ using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
+using Lumina.Excel.Sheets;
 using static BlueMageHelper.SpellSources;
+using MapType = FFXIVClientStructs.FFXIV.Client.UI.Agent.MapType;
 
 namespace BlueMageHelper.Windows;
 
@@ -22,7 +24,7 @@ public class MainWindow : Window, IDisposable
     /// </summary>
     public int SelectedIndex;
 
-    private int SelectedSource;
+    public int SelectedSource;
     private static readonly Vector2 IconSize = new(110, 110);
     public List<BlueSpell>? AllBlueSpells;
 
@@ -72,7 +74,7 @@ public class MainWindow : Window, IDisposable
                     Number = Plugin.AozTransientCache[(int)a.RowId - 1].Number,
                     IconId = Plugin.AozTransientCache[(int)a.RowId - 1].Icon
                 })
-                .Where(a => IsUnlocked(a.Number))
+                .Where(a => Plugin.IsSpellUnlocked(a.Number))
                 .OrderBy(a => a.Number)
                 .ToList();
 
@@ -119,6 +121,11 @@ public class MainWindow : Window, IDisposable
         ImGuiHelpers.ScaledDummy(5);
         ImGui.Separator();
         ImGuiHelpers.ScaledDummy(5);
+
+        // if (Services.TargetManager.Target is not null && Services.TargetManager.Target?.Address != 0)
+        // {
+        //     ImGui.Text($"Target: '{Services.TargetManager.Target?.Name}'\t base_id:{Services.TargetManager.Target?.BaseId}");
+        // }
 
         var scaledIconSize = IconSize * ImGuiHelpers.GlobalScale;
         var screenCursor = ImGui.GetCursorScreenPos();
@@ -187,15 +194,15 @@ public class MainWindow : Window, IDisposable
         {
             if (contentChild.Success)
             {
+                SelectedSource = Math.Clamp(SelectedSource, 0, selectedSpell.Sources.Count - 1);
                 var source = selectedSpell.Sources[SelectedSource];
                 if (selectedSpell.HasMultipleSources)
                 {
                     var sourcesList = selectedSpell.Sources
-                        .Select(x => $"{x.Type.GetDisplay()}: " + (x.IsDuty ? x.DutyName : x.PlaceName))
+                        .Select(x => $"{x.Type.GetDisplayName()}: " + (x.IsDuty ? x.DutyName : x.PlaceName))
                         .ToArray();
 
-                    ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X -
-                                           (arrowSize.X * 2 + itemSpacing * 2));
+                    ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - (arrowSize.X * 2 + itemSpacing * 2));
                     ImGui.Combo("##sourcesSelector", ref SelectedSource, sourcesList, sourcesList.Length);
 
                     Helper.DrawArrows(ref SelectedSource, selectedSpell.Sources.Count, 2, itemSpacing);
@@ -205,78 +212,79 @@ public class MainWindow : Window, IDisposable
                 else
                 {
                     ImGui.Text(source.Type != RegionType.Unknown
-                        ? $"{source.Type.GetDisplay()}: {source.Info}"
+                        ? $"{source.Type.GetDisplayName()}: {source.Info}"
                         : "Currently Unknown");
                 }
 
-                switch (source.Type)
-                {
-                    case RegionType.ARank:
-                        ImGui.Text($"Note: Rank A Elite Mark");
-                        break;
-                    case RegionType.BRank:
-                        ImGui.Text($"Note: Rank B Elite Mark");
-                        break;
-                    case RegionType.SRank:
-                        ImGui.Text($"Note: Rank S Elite Mark");
-                        break;
-                }
+                // switch (source.Type)
+                // {
+                //     case RegionType.ARank:
+                //         ImGui.Text($"Note: Rank A Elite Mark");
+                //         break;
+                //     case RegionType.BRank:
+                //         ImGui.Text($"Note: Rank B Elite Mark");
+                //         break;
+                //     case RegionType.SRank:
+                //         ImGui.Text($"Note: Rank S Elite Mark");
+                //         break;
+                // }
 
-                if (source.Type != RegionType.Buy && source.DutyMinLevel != "1")
-                    ImGui.Text($"Min Lvl: {source.DutyMinLevel}");
+                // if (source.TerritoryTypeId != 0)
+                //     ImGui.Text($"Location: {source.Location[0]}, {source.Location[1]}");
+
+                if (source.Type != RegionType.Buy && source.DutyMinLevel != "1" || source.LevelMin != 0)
+                    ImGui.Text($"Min Level: {source.DutyMinLevel}");
 
                 ImGuiHelpers.ScaledDummy(4);
 
-                if (source is { TerritoryType: not null, IsDuty: true })
-                {
-                    if (source.Type != RegionType.MaskedCarnivale)
-                    {
-                        DrawOpenDutyButton(source.TerritoryTypeID);
-                        ImGui.SameLine();
-                    }
-
-                    ImGui.TextUnformatted(
-                        $"{(source.Type == RegionType.MaskedCarnivale ? "Masked Carnivale" : "Duty")}: " +
-                        $"{source.DutyName}"
-                    );
-                }
-
                 var isHunt = source.Type is RegionType.ARank or RegionType.BRank or RegionType.SRank;
-                if (source.MapLink != null || isHunt)
+                if (source.HasValidLocation || isHunt)
                 {
-                    if (Plugin.TeleportConsumer.IsAvailable)
+                    if (source is { IsDuty: false })
                     {
                         using var font = ImRaii.PushFont(UiBuilder.IconFont);
-                        if (ImGui.Button($"{FontAwesomeIcon.StreetView.ToIconString()}"))
+                        if (ImGui.Button($"{FontAwesomeIcon.StreetView.ToIconString()}", new Vector2(35, 36)))
                             Plugin.TeleportToNearestAetheryte(source);
                         font.Pop();
                         if (ImGui.IsItemHovered())
                             ImGui.SetTooltip("Teleport to nearest aetheryte");
                         ImGui.SameLine();
                     }
-
-                    if (source.MapLink != null)
+                    else if (source is { IsDuty: true } && source.Type != RegionType.MaskedCarnivale)
                     {
-                        using var font = ImRaii.PushFont(UiBuilder.IconFont);
-                        if (ImGui.Button($"{FontAwesomeIcon.MapMarkedAlt.ToIconString()}"))
-                            Plugin.SetMapMarker(source.MapLink);
-                        font.Pop();
-                        if (ImGui.IsItemHovered())
-                            ImGui.SetTooltip("Place map flag");
+                        DrawOpenDutyButton(source);
                         ImGui.SameLine();
                     }
 
-                    if (source.CurrentlyUnknown)
+                    if (source.HasValidLocation)
                     {
-                        ImGui.Text("Location: ???");
+                        using var font = ImRaii.PushFont(UiBuilder.IconFont);
+                        if (ImGui.Button($"{FontAwesomeIcon.MapMarkedAlt.ToIconString()}", new Vector2(35, 36)))
+                            PlaceMapMarker(source);
+                        font.Pop();
+                        if (ImGui.IsItemHovered())
+                            ImGui.SetTooltip("Place map marker");
+                        ImGui.SameLine();
                     }
-                    else
+
+                    var display = source.Type switch
                     {
-                        var text = isHunt
-                            ? source.PlaceName
-                            : $"{source.PlaceName} {source.MapLink?.CoordinateString ?? "???"}";
-                        ImGui.Text($"Location: {text}");
+                        RegionType.ARank or RegionType.BRank or RegionType.SRank or RegionType.OpenWorld =>
+                            $"Zone: {source.PlaceName} {source.MapLink?.CoordinateString}",
+                        RegionType.Dungeon or RegionType.Trial or RegionType.Raid =>
+                            $"{source.Type.GetDisplayName()}: {source.DutyName}",
+                        RegionType.MaskedCarnivale => $"{source.Type.GetDisplayName()}: {source.DutyName}",
+                        RegionType.Unknown => "Currently Unknown",
+                        _ => $"{source.Type.GetDisplayName()}"
+                    };
+
+                    if (ImGui.Selectable(display))
+                    {
+                        PlaceMapMarker(source);
                     }
+
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(source.PlaceName);
                 }
 
                 if (source.TerritoryType != null && source.Type != RegionType.Buy)
@@ -303,7 +311,7 @@ public class MainWindow : Window, IDisposable
                             if (ImGui.Selectable($"#{key} - {value.Name}"))
                             {
                                 SelectedSource = value.Sources
-                                    .FindIndex(x => x.TerritoryTypeID == source.TerritoryTypeID);
+                                    .FindIndex(x => x.TerritoryTypeId == source.TerritoryTypeId);
                                 SelectedIndex = AllBlueSpells
                                     .FindIndex(val => val.Number == key);
                             }
@@ -339,12 +347,58 @@ public class MainWindow : Window, IDisposable
         }
     }
 
-    private static unsafe void DrawOpenDutyButton(uint territoryType)
+    // From MapLinkPayload
+    private static int ConvertMapCoordinateToRawPosition(float pos, float scale, short offset)
+    {
+        const float networkAdjustment = 1f;
+
+        // scaling
+        var trueScale = scale / 100f;
+
+        var num2 = (((pos - networkAdjustment) * trueScale / 41f * 2048f) - 1024f) / trueScale;
+        // (pos - offset) / scale, with the scaling on num2 done before for precision
+        num2 *= 1000f;
+        return (int)num2 - (offset * 1000);
+    }
+
+    private static (int X, int Y) MapToWorldCoordinates(Vector2 pos, Map map)
+    {
+        var x1 = ConvertMapCoordinateToRawPosition(pos.X, map.SizeFactor, map.OffsetX) / 1000;
+        var y1 = ConvertMapCoordinateToRawPosition(pos.Y, map.SizeFactor, map.OffsetY) / 1000;
+        return (x1, y1);
+    }
+
+    private unsafe void PlaceMapMarker(SpellSource src)
+    {
+        var instance = AgentMap.Instance();
+
+        if (src.Location[0] == 0 && src.Location[1] == 0)
+        {
+            if (src.TerritoryType != null)
+                instance->OpenMapByMapId(src.MapId);
+            return;
+        }
+
+        if (src is { TerritoryType: { } terr, Map: { } map })
+        {
+            var sizeFactor = map.SizeFactor / 100f;
+            var (x1, y2) = MapToWorldCoordinates(new Vector2(src.Location[0], src.Location[1]), map);
+            // Services.Log.Info($"Placing map marker for {src.Info} {src.Location[0]}, {src.Location[1]}");
+            // Services.Log.Info($" terr={terr.RowId} map={map.RowId} radius={src.Radius}");
+            instance->TempMapMarkerCount = 0;
+            // instance->FlagMarkerCount = 0;
+            instance->AddGatheringTempMarker(x1, y2, src.Radius, 94129, 4u, src.Info);
+            // instance->SetFlagMapMarker(tt.RowId, tt.Map.RowId, x, y);
+            instance->OpenMap(map.RowId, terr.RowId, src.Info, MapType.QuestLog);
+        }
+    }
+
+    private static unsafe void DrawOpenDutyButton(SpellSource src)
     {
         using var font = ImRaii.PushFont(UiBuilder.IconFont);
-        if (ImGui.Button(FontAwesomeIcon.ArrowUpRightFromSquare.ToIconString()))
+        if (GameIconButton(src.Type.GetDisplayIcon()))
         {
-            var territory = Plugin.TerritorySheet.GetRowOrDefault(territoryType);
+            var territory = Plugin.TerritorySheet.GetRowOrDefault(src.TerritoryTypeId);
             if (territory.HasValue)
             {
                 AgentContentsFinder.Instance()->OpenRegularDuty(territory.Value
@@ -366,6 +420,9 @@ public class MainWindow : Window, IDisposable
             ImGui.Image(texture.Handle, size, color);
     }
 
-    private bool IsUnlocked(int num) => !Plugin.Configuration.ShowOnlyUnlearned ||
-                                        (Plugin.UnlockedSpells.TryGetValue(num, out var isUnlocked) && !isUnlocked);
+    public static bool GameIconButton(uint iconId)
+    {
+        var iconTexture = Services.TextureProvider.GetFromGameIcon(iconId);
+        return ImGui.ImageButton(iconTexture.GetWrapOrEmpty().Handle, new Vector2(31, 31));
+    }
 }

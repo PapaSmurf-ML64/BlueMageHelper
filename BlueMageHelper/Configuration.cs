@@ -10,6 +10,7 @@ namespace BlueMageHelper
 
         public bool ShowHintEvenIfUnlocked = false;
         public bool ShowOnlyUnlearned = false;
+        public bool MarkMobsInWorld = true;
 
         public void Save()
         {

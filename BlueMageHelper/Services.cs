@@ -18,4 +18,6 @@ public class Services
     [PluginService] public static IChatGui ChatGui { get; set; } = null!;
     [PluginService] public static IObjectTable ObjectTable { get; set; } = null!;
     [PluginService] public static IGameGui GameGui { get; private set; } = null!;
+    [PluginService] public static INamePlateGui NamePlateGui { get; private set; } = null!;
+    [PluginService] public static ITargetManager TargetManager { get; private set; } = null!;
 }

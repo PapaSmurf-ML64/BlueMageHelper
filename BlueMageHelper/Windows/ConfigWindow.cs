@@ -50,15 +50,22 @@ public class ConfigWindow : Window, IDisposable
                 ref Plugin.Configuration.ShowHintEvenIfUnlocked);
 
         ImGuiHelpers.ScaledDummy(5.0f);
-
         ImGui.TextColored(ImGuiColors.DalamudViolet, "Spellbook:");
         using (ImRaii.PushIndent(10.0f))
             changed |= ImGui.Checkbox("Show only unlearned spells.", ref Plugin.Configuration.ShowOnlyUnlearned);
 
+        ImGuiHelpers.ScaledDummy(5.0f);
+        ImGui.TextColored(ImGuiColors.DalamudViolet, "Mob Head Markers:");
+        using (ImRaii.PushIndent(10.0f))
+            changed |= ImGui.Checkbox("Mark mobs that drop a Blue spell.",
+                ref Plugin.Configuration.MarkMobsInWorld);
+
         if (changed)
         {
+            Services.Log.Info("Configuration changed, resetting.");
             Plugin.MainWindow.AllBlueSpells = null;
             Plugin.MainWindow.SelectedIndex = 0;
+            Plugin.MainWindow.SelectedSource = 0;
             Plugin.Configuration.Save();
         }
     }
@@ -112,7 +119,6 @@ public class ConfigWindow : Window, IDisposable
                     if (ImGui.Button("Issues"))
                         Dalamud.Utility.Util.OpenLink("https://github.com/harbingerftw/BlueMageHelper");
                 }
-
             }
         }
     }

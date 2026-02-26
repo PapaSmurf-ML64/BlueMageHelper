@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.Utility;
@@ -12,6 +13,7 @@ namespace BlueMageHelper;
 public class Spell
 {
     public string? Name;
+    [NonSerialized] public int Number = 0;
     public uint Icon;
     public readonly List<SpellSource> Sources = [];
 
@@ -27,20 +29,29 @@ public class SpellSource
     public string AcquiringTips = "";
 
     public RegionType Type = RegionType.Default;
-    public uint TerritoryTypeID = 0;
-    public uint? ContentFinderCondition = 0;
-    public float xCoord = 0;
-    public float yCoord = 0;
+    public uint TerritoryTypeId = 0;
+    public uint MapId = 0;
+    public List<int>? NpcId;
+    public int NpcNameId = 0;
+    public int LevelMin = 0;
+    public int LevelMax = 0;
+    public uint ContentFinderCondition = 0;
+    public float[] Location = [0, 0];
+    public int Radius = 0;
 
     [NonSerialized] public TerritoryType? TerritoryType = null;
+    [NonSerialized] public Map? Map = null;
     [NonSerialized] public MapLinkPayload? MapLink = null;
+    [NonSerialized] public Spell? Spell;
 
-    [NonSerialized] public bool IsDuty = false;
+    [NonSerialized] public bool IsDuty;
     [NonSerialized] public string DutyName = "";
     [NonSerialized] public string DutyMinLevel = "1";
     [NonSerialized] public string PlaceName = "";
 
-    [NonSerialized] public bool CurrentlyUnknown = false;
+    [NonSerialized] public bool CurrentlyUnknown;
+
+    public bool HasValidLocation => Location.All(x => x != 0) && MapId != 0 && TerritoryTypeId != 0;
 
     public SpellSource() { }
 
@@ -58,9 +69,10 @@ public class SpellSource
     [OnDeserialized]
     public void Initialize(StreamingContext _)
     {
-        if (TerritoryTypeID != 0 && Plugin.TerritorySheet.HasRow(TerritoryTypeID))
+        if (TerritoryTypeId != 0 && Plugin.TerritorySheet.HasRow(TerritoryTypeId))
         {
-            TerritoryType = Plugin.TerritorySheet.GetRow(TerritoryTypeID);
+            TerritoryType = Plugin.TerritorySheet.GetRow(TerritoryTypeId);
+            Map = Plugin.MapSheet.GetRow(MapId);
             PlaceName = TerritoryType.Value.PlaceName.Value.Name.ExtractText();
 
             var content = Type is RegionType.MaskedCarnivale
@@ -81,7 +93,7 @@ public class SpellSource
 
         if (Type == RegionType.OpenWorld && TerritoryType != null)
         {
-            if (xCoord == 0 || yCoord == 0)
+            if (Location.All(x => x == 0))
             {
                 CurrentlyUnknown = true;
                 MapLink = new MapLinkPayload(TerritoryType.Value.RowId, TerritoryType.Value.Map.RowId, 15, 15);
@@ -90,7 +102,8 @@ public class SpellSource
 
             try
             {
-                MapLink = new MapLinkPayload(TerritoryType.Value.RowId, TerritoryType.Value.Map.RowId, xCoord, yCoord);
+                MapLink = new MapLinkPayload(TerritoryType.Value.RowId, TerritoryType.Value.Map.RowId,
+                    Location[0], Location[1]);
             }
             catch
             {
@@ -102,6 +115,7 @@ public class SpellSource
             // Ul'dah - Steps of Thal - (x12.5, y12.9)
             TerritoryType = Plugin.TerritorySheet.GetRow(131);
             PlaceName = TerritoryType.Value.PlaceName.Value.Name.ExtractText();
+            Location = [12.5f, 12.9f];
             MapLink = new MapLinkPayload(TerritoryType.Value.RowId, TerritoryType.Value.Map.RowId, 12.5f, 12.9f);
         }
     }
@@ -125,7 +139,6 @@ public class SpellSource
         };
 
         if (text != "") region->SetText(text);
-        if (Type != RegionType.Default) regionType->PartId = (ushort)Type;
     }
 }
 
@@ -134,18 +147,18 @@ public enum RegionType
 {
     [Display("Mob")] OpenWorld = 2,
     [Display("Totem Purchase")] Buy = 3,
-    [Display("Dungeon")] Dungeon = 13,
+    [Display("Dungeon", 60831)] Dungeon = 13,
     [Display("Fate Mob")] Fate = 26,
 
     // non PartIDs
     [Display("Info")] Default = 99,
-    [Display("A Rank")] ARank = 100,
-    [Display("B Rank")] BRank = 101,
-    [Display("S Rank")] SRank = 102,
+    [Display("A Rank", 60856)] ARank = 100,
+    [Display("B Rank", 60856)] BRank = 101,
+    [Display("S Rank", 60856)] SRank = 102,
 
-    [Display("Masked Carnivale")] MaskedCarnivale = 103,
-    [Display("Raid")] Raid = 104,
-    [Display("Trial")] Trial = 105,
+    [Display("Masked Carnivale", 60983)] MaskedCarnivale = 103,
+    [Display("Raid", 60832)] Raid = 104,
+    [Display("Trial", 60834)] Trial = 105,
 
     // New Patch
     Unknown = 999,
@@ -157,17 +170,31 @@ public class DisplayAttribute : Attribute
     internal DisplayAttribute(string name)
     {
         DisplayName = name;
+        IconId = 0;
+    }
+
+    internal DisplayAttribute(string name, uint iconId)
+    {
+        DisplayName = name;
+        IconId = iconId;
     }
 
     public string DisplayName { get; }
+    public uint IconId { get; }
 }
 
 public static class RegionTypeDisplayExtension
 {
-    public static string GetDisplay(this RegionType region)
+    public static string GetDisplayName(this RegionType region)
     {
         var a = region.GetAttribute<DisplayAttribute>();
         return a == null ? "" : a.DisplayName;
+    }
+
+    public static uint GetDisplayIcon(this RegionType region)
+    {
+        var a = region.GetAttribute<DisplayAttribute>();
+        return a?.IconId ?? 60837; //? duty roulette icon
     }
 }
 

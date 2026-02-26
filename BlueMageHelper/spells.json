@@ -4,12 +4,10 @@
     "Icon": 72203,
     "Sources": [
       {
-        "Info": "Become a Blue Mage",
-        "AcquiringTips": "",
         "Type": 99,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Become a Blue Mage",
+        "TerritoryTypeId": 0,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -18,28 +16,58 @@
     "Icon": 72220,
     "Sources": [
       {
+        "Type": 13,
         "Info": "(Last Boss) Gobmachine G-VI",
+        "NpcNameId": 2547,
+        "NpcId": [
+          2796
+        ],
+        "TerritoryTypeId": 362,
+        "MapId": 146,
         "AcquiringTips": "",
-        "Type": 13,
-        "TerritoryTypeID": 362,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          10.7,
+          6.5
+        ],
+        "Radius": 20,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
+        "Type": 13,
         "Info": "Einhander",
+        "NpcNameId": 3369,
+        "NpcId": [
+          14631
+        ],
+        "TerritoryTypeId": 1063,
+        "MapId": 201,
         "AcquiringTips": "Einhander will only use Flame Thrower if it has the weapon in its talons. If it is holding the gatling gun, it will not cast it.",
-        "Type": 13,
-        "TerritoryTypeID": 1063,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          11.528,
+          10.947
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Omega",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 800,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Omega",
+        "NpcNameId": 7695,
+        "NpcId": [
+          9335
+        ],
+        "TerritoryTypeId": 800,
+        "MapId": 486,
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          5.92
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -48,20 +76,46 @@
     "Icon": 72208,
     "Sources": [
       {
-        "Info": "Ultros",
-        "AcquiringTips": "Aqua Breath is the signature attack of Ultros. He will use it frequently.",
         "Type": 105,
-        "TerritoryTypeID": 142,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Ultros",
+        "NpcNameId": 3047,
+        "NpcId": [
+          3369,
+          3373,
+          3367
+        ],
+        "TerritoryTypeId": 142,
+        "MapId": 195,
+        "AcquiringTips": "Aqua Breath is the signature attack of Ultros. He will use it frequently.",
+        "Location": [
+          16.293,
+          21.837
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Leviathan",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 359,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Leviathan",
+        "NpcNameId": 2550,
+        "NpcId": [
+          2696,
+          2695,
+          2765,
+          2663
+        ],
+        "TerritoryTypeId": 281,
+        "MapId": 147,
+        "ContentFinderCondition": 72,
+        "AcquiringTips": "",
+        "Location": [
+          6.205,
+          6.12
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -70,20 +124,41 @@
     "Icon": 72207,
     "Sources": [
       {
-        "Info": "(2nd Boss) Zu",
-        "AcquiringTips": "Zu will only use the ability when you break the eggs at the perimeter. Only 2 eggs need to be broken.\nThe spell has no cast bar, but is animated as a body slam against the top aggro'd player.",
         "Type": 13,
-        "TerritoryTypeID": 160,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Zu",
+        "NpcNameId": 2261,
+        "NpcId": [
+          2297,
+          2292
+        ],
+        "TerritoryTypeId": 160,
+        "MapId": 132,
+        "AcquiringTips": "Zu will only use the ability when you break the eggs at the perimeter. Only 2 eggs need to be broken.\nThe spell has no cast bar, but is animated as a body slam against the top aggro'd player.",
+        "Location": [
+          11.399,
+          10.949
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Cornu",
-        "AcquiringTips": "The spell has no cast bar, but is animated as a body slam against the top aggro'd player.",
         "Type": 100,
-        "TerritoryTypeID": 180,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Cornu",
+        "NpcNameId": 2950,
+        "NpcId": [
+          3206
+        ],
+        "TerritoryTypeId": 180,
+        "MapId": 30,
+        "AcquiringTips": "The spell has no cast bar, but is animated as a body slam against the top aggro'd player.",
+        "Location": [
+          20.969,
+          11.65
+        ],
+        "Radius": 436,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -92,20 +167,41 @@
     "Icon": 72216,
     "Sources": [
       {
-        "Info": "Magitek Vanguard H-2",
-        "AcquiringTips": "Drill Cannon is used only when enemies are at 50% or below HP.",
         "Type": 2,
-        "TerritoryTypeID": 147,
-        "xCoord": 16.0,
-        "yCoord": 15.0
+        "Info": "Magitek Vanguard H-2",
+        "NpcNameId": 8138,
+        "NpcId": [
+          10133
+        ],
+        "TerritoryTypeId": 147,
+        "MapId": 24,
+        "AcquiringTips": "Drill Cannon is used only when enemies are at 50% or below HP.",
+        "Location": [
+          17.172,
+          17.103
+        ],
+        "Radius": 77,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "(2nd Boss) Magitek Vangob G-III",
-        "AcquiringTips": "Drill Cannon is used only when enemies are at 50% or below HP.",
         "Type": 13,
-        "TerritoryTypeID": 362,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Magitek Vangob G-III",
+        "NpcNameId": 2549,
+        "NpcId": [
+          2793,
+          434
+        ],
+        "TerritoryTypeId": 362,
+        "MapId": 146,
+        "AcquiringTips": "Drill Cannon is used only when enemies are at 50% or below HP.",
+        "Location": [
+          10.838,
+          7.746
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -114,21 +210,41 @@
     "Icon": 72205,
     "Sources": [
       {
-        "Info": "(1st Boss) ADS",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 241,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(1st Boss) ADS",
+        "NpcNameId": 1459,
+        "NpcId": [
+          2183
+        ],
+        "TerritoryTypeId": 241,
+        "MapId": 57,
+        "AcquiringTips": "",
+        "Location": [
+          11.189,
+          11.243
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Beastial Node",
-        "AcquiringTips": "",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Beastial Node",
+        "NpcNameId": 8109,
+        "NpcId": [
+          9977
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 625,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          6.12
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -137,28 +253,77 @@
     "Icon": 72219,
     "Sources": [
       {
+        "Type": 13,
         "Info": "(Trash) Baalzephon",
+        "NpcNameId": 2573,
+        "NpcId": [
+          2706
+        ],
+        "TerritoryTypeId": 363,
+        "MapId": 152,
         "AcquiringTips": "Loom is a teleport ability, move out of melee range while engaged to trigger the cast.",
-        "Type": 13,
-        "TerritoryTypeID": 363,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          11.86,
+          11.069
+        ],
+        "Radius": 27,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Flame Sergeant Dalvag",
-        "AcquiringTips": "Engage Flame Sergeant Dalvag from range. If you are far enough, he will use Loom to start the fight.",
         "Type": 101,
-        "TerritoryTypeID": 147,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Flame Sergeant Dalvag",
+        "NpcNameId": 2927,
+        "NpcId": [
+          3183
+        ],
+        "TerritoryTypeId": 147,
+        "MapId": 24,
+        "AcquiringTips": "Engage Flame Sergeant Dalvag from range. If you are far enough, he will use Loom to start the fight.",
+        "Location": [
+          18.796,
+          21.128
+        ],
+        "Radius": 348,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "(Trash) Dantalion and (Trash) Phantom Knight",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 373,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Dantalion",
+        "NpcNameId": 2846,
+        "NpcId": [
+          434,
+          3091
+        ],
+        "TerritoryTypeId": 373,
+        "MapId": 165,
+        "AcquiringTips": "",
+        "Location": [
+          9.832,
+          9.766
+        ],
+        "Radius": 18,
+        "LevelMin": 50,
+        "LevelMax": 50
+      },
+      {
+        "Type": 13,
+        "Info": "(Trash) Phantom Knight",
+        "NpcNameId": 2847,
+        "NpcId": [
+          3092
+        ],
+        "TerritoryTypeId": 373,
+        "MapId": 165,
+        "AcquiringTips": "",
+        "Location": [
+          10.4,
+          9.172
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -167,20 +332,40 @@
     "Icon": 72225,
     "Sources": [
       {
-        "Info": "Lvl. 13. Killer Wespe",
-        "AcquiringTips": "Wait for the enemy to cast Final Sting. Tag it (ie, hit it at least once), but do not kill it.\nMake sure you keep your HP high or full since Final Sting will kill the enemy using it. You don't need to worry about how to kill the target, but you do need to be concerned about staying alive! If you die, you will not learn the spell.",
         "Type": 2,
-        "TerritoryTypeID": 134,
-        "xCoord": 15.0,
-        "yCoord": 15.0
+        "Info": "Killer Wespe",
+        "NpcNameId": 8134,
+        "NpcId": [
+          10129
+        ],
+        "TerritoryTypeId": 134,
+        "MapId": 15,
+        "AcquiringTips": "Wait for the enemy to cast Final Sting. Tag it (ie, hit it at least once), but do not kill it.\nMake sure you keep your HP high or full since Final Sting will kill the enemy using it. You don't need to worry about how to kill the target, but you do need to be concerned about staying alive! If you die, you will not learn the spell.",
+        "Location": [
+          15.327,
+          14.399
+        ],
+        "Radius": 52,
+        "LevelMin": 13,
+        "LevelMax": 13
       },
       {
-        "Info": "Temple Bee (Trash Before & After 1st Boss)",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1267,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Temple Bee (Trash Before & After 1st Boss)",
+        "NpcNameId": 1575,
+        "NpcId": [
+          1763
+        ],
+        "TerritoryTypeId": 1267,
+        "MapId": 42,
+        "AcquiringTips": "",
+        "Location": [
+          10.719,
+          10.88
+        ],
+        "Radius": 62,
+        "LevelMin": 35,
+        "LevelMax": 35
       }
     ]
   },
@@ -189,20 +374,41 @@
     "Icon": 72204,
     "Sources": [
       {
-        "Info": "(Last Boss) Siren",
-        "AcquiringTips": "Song of Torment is used in the Phase 1 of battle.",
         "Type": 13,
-        "TerritoryTypeID": 160,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Siren",
+        "NpcNameId": 2265,
+        "NpcId": [
+          434,
+          2287
+        ],
+        "TerritoryTypeId": 160,
+        "MapId": 134,
+        "AcquiringTips": "Song of Torment is used in the Phase 1 of battle.",
+        "Location": [
+          11.027,
+          11.24
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Aglaope",
-        "AcquiringTips": "Attempting to get it from Aglaope solo is not recommended as it is a Level 80 Rank S enemy. The cast is also usually interrupted by players, preventing it from being learned.",
         "Type": 102,
-        "TerritoryTypeID": 816,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Aglaope",
+        "NpcNameId": 8653,
+        "NpcId": [
+          10270
+        ],
+        "TerritoryTypeId": 816,
+        "MapId": 494,
+        "AcquiringTips": "Attempting to get it from Aglaope solo is not recommended as it is a Level 80 Rank S enemy. The cast is also usually interrupted by players, preventing it from being learned.",
+        "Location": [
+          23.308,
+          20.49
+        ],
+        "Radius": 866,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -211,20 +417,40 @@
     "Icon": 72222,
     "Sources": [
       {
-        "Info": "(2nd Boss) Coincounter",
-        "AcquiringTips": "Glower is used midway during the fight. Be sure to wait for the one that goes in a straight line, not in a wide arc.",
         "Type": 13,
-        "TerritoryTypeID": 1331,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Coincounter",
+        "NpcNameId": 1533,
+        "NpcId": [
+          19213
+        ],
+        "TerritoryTypeId": 1331,
+        "MapId": 38,
+        "AcquiringTips": "Glower is used midway during the fight. Be sure to wait for the one that goes in a straight line, not in a wide arc.",
+        "Location": [
+          8.356,
+          8.352
+        ],
+        "Radius": 15,
+        "LevelMin": 47,
+        "LevelMax": 47
       },
       {
-        "Info": "Brontes",
-        "AcquiringTips": "Brontes is usually killed fast but occasionally still gets the cast off in morning hours. Unless you have a plan to make it live long enough to cast it, you will have to get it from Coincounter.",
         "Type": 102,
-        "TerritoryTypeID": 271,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Brontes",
+        "NpcNameId": 2958,
+        "NpcId": [
+          3214
+        ],
+        "TerritoryTypeId": 141,
+        "MapId": 21,
+        "AcquiringTips": "Brontes is usually killed fast but occasionally still gets the cast off in morning hours. Unless you have a plan to make it live long enough to cast it, you will have to get it from Coincounter.",
+        "Location": [
+          19.981,
+          23.662
+        ],
+        "Radius": 597,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -233,53 +459,115 @@
     "Icon": 72209,
     "Sources": [
       {
-        "Info": "Lvl. 34 Basalt Golem",
-        "AcquiringTips": "Enemies tend to use this move semi-frequently. As long as you don't stand too close, you should be able to learn this easily.",
         "Type": 2,
-        "TerritoryTypeID": 180,
-        "xCoord": 14.0,
-        "yCoord": 16.0
+        "Info": "Basalt Golem",
+        "NpcNameId": 365,
+        "NpcId": [
+          30
+        ],
+        "TerritoryTypeId": 180,
+        "MapId": 30,
+        "AcquiringTips": "Enemies tend to use this move semi-frequently. As long as you don't stand too close, you should be able to learn this easily.",
+        "Location": [
+          15.197,
+          15.691
+        ],
+        "Radius": 94,
+        "LevelMin": 31,
+        "LevelMax": 34
       },
       {
-        "Info": "Lvl. 28 Clay Golem",
-        "AcquiringTips": "Enemies tend to use this move semi-frequently. As long as you don't stand too close, you should be able to learn this easily.",
         "Type": 2,
-        "TerritoryTypeID": 240,
-        "xCoord": 19.0,
-        "yCoord": 29.0
+        "Info": "Clay Golem",
+        "NpcNameId": 30,
+        "NpcId": [
+          30
+        ],
+        "TerritoryTypeId": 154,
+        "MapId": 7,
+        "AcquiringTips": "Enemies tend to use this move semi-frequently. As long as you don't stand too close, you should be able to learn this easily.",
+        "Location": [
+          18.117,
+          28.987
+        ],
+        "Radius": 78,
+        "LevelMin": 28,
+        "LevelMax": 28
       },
       {
-        "Info": "Lvl. 25 Stone Golem",
-        "AcquiringTips": "Enemies tend to use this move semi-frequently. As long as you don't stand too close, you should be able to learn this easily.",
         "Type": 2,
-        "TerritoryTypeID": 240,
-        "xCoord": 17.0,
-        "yCoord": 28.0
+        "Info": "Stone Golem",
+        "NpcNameId": 552,
+        "NpcId": [
+          30
+        ],
+        "TerritoryTypeId": 154,
+        "MapId": 7,
+        "AcquiringTips": "Enemies tend to use this move semi-frequently. As long as you don't stand too close, you should be able to learn this easily.",
+        "Location": [
+          16.912,
+          27.942
+        ],
+        "Radius": 38,
+        "LevelMin": 25,
+        "LevelMax": 25
       },
       {
-        "Info": "Lvl. 29  Sandstone Golem",
-        "AcquiringTips": "Enemies tend to use this move semi-frequently. As long as you don't stand too close, you should be able to learn this easily.",
         "Type": 2,
-        "TerritoryTypeID": 146,
-        "xCoord": 24.0,
-        "yCoord": 13.0
+        "Info": "Sandstone Golem",
+        "NpcNameId": 280,
+        "NpcId": [
+          30
+        ],
+        "TerritoryTypeId": 146,
+        "MapId": 23,
+        "AcquiringTips": "Enemies tend to use this move semi-frequently. As long as you don't stand too close, you should be able to learn this easily.",
+        "Location": [
+          23.652,
+          12.4
+        ],
+        "Radius": 76,
+        "LevelMin": 29,
+        "LevelMax": 29
       },
       {
-        "Info": "(2nd Boss) Gogmagolem",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 349,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Gogmagolem",
+        "NpcNameId": 2285,
+        "NpcId": [
+          2381
+        ],
+        "TerritoryTypeId": 349,
+        "MapId": 142,
+        "AcquiringTips": "",
+        "Location": [
+          11.793,
+          13.476
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Azulmagia",
-        "AcquiringTips": "",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Azulmagia",
+        "NpcNameId": 8129,
+        "NpcId": [
+          9848,
+          9856,
+          9855
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 635,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -288,12 +576,22 @@
     "Icon": 72211,
     "Sources": [
       {
-        "Info": "Lvl. 20 Wild Boar",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 152,
-        "xCoord": 18.3,
-        "yCoord": 24.7
+        "Info": "Wild Boar",
+        "NpcNameId": 16,
+        "NpcId": [
+          15
+        ],
+        "TerritoryTypeId": 152,
+        "MapId": 5,
+        "AcquiringTips": "",
+        "Location": [
+          17.523,
+          25.405
+        ],
+        "Radius": 194,
+        "LevelMin": 18,
+        "LevelMax": 21
       }
     ]
   },
@@ -302,12 +600,10 @@
     "Icon": 72224,
     "Sources": [
       {
-        "Info": "Available after learning 10 spells.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after learning 10 spells.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -316,12 +612,24 @@
     "Icon": 72232,
     "Sources": [
       {
-        "Info": "(Trash) Manor Sentry",
-        "AcquiringTips": "There is a Manor Sentry enemy just outside the first boss room of Haukke Manor. More importantly, it will use Level 5 Petrify regardless of its health status. So you can choose to run this unsync'd and just run to the first boss room and hope to learn it, or form a sync'd party and just make it this far to guarantee learning it.",
         "Type": 13,
-        "TerritoryTypeID": 1040,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Manor Sentry",
+        "NpcNameId": 428,
+        "NpcId": [
+          14505,
+          14698,
+          275
+        ],
+        "TerritoryTypeId": 1040,
+        "MapId": 48,
+        "AcquiringTips": "There is a Manor Sentry enemy just outside the first boss room of Haukke Manor. More importantly, it will use Level 5 Petrify regardless of its health status. So you can choose to run this unsync'd and just run to the first boss room and hope to learn it, or form a sync'd party and just make it this far to guarantee learning it.",
+        "Location": [
+          10.932,
+          11.127
+        ],
+        "Radius": 23,
+        "LevelMin": 28,
+        "LevelMax": 28
       }
     ]
   },
@@ -330,20 +638,40 @@
     "Icon": 72218,
     "Sources": [
       {
-        "Info": "(Last Boss) Tonberry King",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 159,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Tonberry King",
+        "NpcNameId": 1547,
+        "NpcId": [
+          884
+        ],
+        "TerritoryTypeId": 159,
+        "MapId": 32,
+        "AcquiringTips": "",
+        "Location": [
+          12.7,
+          2.266
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Marberry",
-        "AcquiringTips": "",
         "Type": 100,
-        "TerritoryTypeID": 328,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Marberry",
+        "NpcNameId": 2949,
+        "NpcId": [
+          3205
+        ],
+        "TerritoryTypeId": 139,
+        "MapId": 19,
+        "AcquiringTips": "",
+        "Location": [
+          22.883,
+          22.58
+        ],
+        "Radius": 617,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -352,37 +680,79 @@
     "Icon": 72236,
     "Sources": [
       {
-        "Info": "Lvl. 9 Trickster Imp",
-        "AcquiringTips": "Used very early in the fight when encountered.",
         "Type": 2,
-        "TerritoryTypeID": 148,
-        "xCoord": 27.3,
-        "yCoord": 24.8
+        "Info": "Trickster Imp",
+        "NpcNameId": 21,
+        "NpcId": [
+          21
+        ],
+        "TerritoryTypeId": 148,
+        "MapId": 4,
+        "AcquiringTips": "Used very early in the fight when encountered.",
+        "Location": [
+          26.729,
+          25.061
+        ],
+        "Radius": 65,
+        "LevelMin": 9,
+        "LevelMax": 9
       },
       {
-        "Info": "Lvl. 16 Vandalous Imp",
-        "AcquiringTips": "Used very early in the fight when encountered.",
         "Type": 2,
-        "TerritoryTypeID": 494,
-        "xCoord": 14.4,
-        "yCoord": 18.7
+        "Info": "Vandalous Imp",
+        "NpcNameId": 1198,
+        "NpcId": [
+          21
+        ],
+        "TerritoryTypeId": 145,
+        "MapId": 22,
+        "AcquiringTips": "Used very early in the fight when encountered.",
+        "Location": [
+          14.307,
+          17.926
+        ],
+        "Radius": 58,
+        "LevelMin": 16,
+        "LevelMax": 16
       },
       {
-        "Info": "(2nd Boss) Manor Jester",
-        "AcquiringTips": "Used very early in the fight when encountered.",
         "Type": 13,
-        "TerritoryTypeID": 1040,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Manor Jester",
+        "NpcNameId": 426,
+        "NpcId": [
+          273
+        ],
+        "TerritoryTypeId": 1040,
+        "MapId": 55,
+        "AcquiringTips": "Used very early in the fight when encountered.",
+        "Location": [
+          11.585,
+          11.32
+        ],
+        "Radius": 15,
+        "LevelMin": 28,
+        "LevelMax": 28
       },
       {
-        "Info": "Azulmagia",
-        "AcquiringTips": "Azulmagia will open with the spell as his barrier for Act 1 and will alternate it with his magic-counter barrier in Act 3 at certain intervals in the fight.",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Azulmagia",
+        "NpcNameId": 8129,
+        "NpcId": [
+          9848,
+          9856,
+          9855
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 635,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "Azulmagia will open with the spell as his barrier for Act 1 and will alternate it with his magic-counter barrier in Act 3 at certain intervals in the fight.",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -391,68 +761,148 @@
     "Icon": 72213,
     "Sources": [
       {
-        "Info": "Lvl. 7 Cave Bat",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 135,
-        "xCoord": 27.0,
-        "yCoord": 16.0
+        "Info": "Cave Bat",
+        "NpcNameId": 364,
+        "NpcId": [
+          38
+        ],
+        "TerritoryTypeId": 135,
+        "MapId": 16,
+        "AcquiringTips": "",
+        "Location": [
+          26.997,
+          16.854
+        ],
+        "Radius": 103,
+        "LevelMin": 4,
+        "LevelMax": 7
       },
       {
-        "Info": "Lvl. 5-7 Chigoe",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 148,
-        "xCoord": 25.0,
-        "yCoord": 20.0
+        "Info": "Chigoe",
+        "NpcNameId": 43,
+        "NpcId": [
+          43
+        ],
+        "TerritoryTypeId": 148,
+        "MapId": 4,
+        "AcquiringTips": "",
+        "Location": [
+          26.294,
+          20.497
+        ],
+        "Radius": 170,
+        "LevelMin": 5,
+        "LevelMax": 9
       },
       {
-        "Info": "Lvl. 10-14 Sun Bat",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 314,
-        "xCoord": 26.0,
-        "yCoord": 18.0
+        "Info": "Sun Bat",
+        "NpcNameId": 279,
+        "NpcId": [
+          38
+        ],
+        "TerritoryTypeId": 141,
+        "MapId": 21,
+        "AcquiringTips": "",
+        "Location": [
+          26.499,
+          19.147
+        ],
+        "Radius": 199,
+        "LevelMin": 10,
+        "LevelMax": 14
       },
       {
-        "Info": "Lvl. 15 Dusk Bat",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 280,
-        "xCoord": 27.0,
-        "yCoord": 24.0
+        "Info": "Dusk Bat",
+        "NpcNameId": 363,
+        "NpcId": [
+          38
+        ],
+        "TerritoryTypeId": 138,
+        "MapId": 18,
+        "AcquiringTips": "",
+        "Location": [
+          25.31,
+          22.274
+        ],
+        "Radius": 187,
+        "LevelMin": 13,
+        "LevelMax": 16
       },
       {
-        "Info": "Lvl 20-21 Black Bat",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 277,
-        "xCoord": 17.0,
-        "yCoord": 23.0
+        "Info": "Black Bat",
+        "NpcNameId": 38,
+        "NpcId": [
+          38
+        ],
+        "TerritoryTypeId": 152,
+        "MapId": 5,
+        "AcquiringTips": "",
+        "Location": [
+          17.712,
+          22.315
+        ],
+        "Radius": 150,
+        "LevelMin": 20,
+        "LevelMax": 24
       },
       {
-        "Info": "Barbastelle",
-        "AcquiringTips": "",
         "Type": 101,
-        "TerritoryTypeID": 265,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Barbastelle",
+        "NpcNameId": 2929,
+        "NpcId": [
+          3185
+        ],
+        "TerritoryTypeId": 135,
+        "MapId": 16,
+        "AcquiringTips": "",
+        "Location": [
+          25.293,
+          25.942
+        ],
+        "Radius": 631,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
+        "Type": 13,
         "Info": "Attic Bat (Trash before 1st Boss)",
+        "NpcNameId": 430,
+        "NpcId": [
+          1362
+        ],
+        "TerritoryTypeId": 1040,
+        "MapId": 48,
         "AcquiringTips": "",
-        "Type": 13,
-        "TerritoryTypeID": 1040,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          11.479,
+          11.75
+        ],
+        "Radius": 39,
+        "LevelMin": 28,
+        "LevelMax": 28
       },
       {
-        "Info": "(Trash) Sand Bat",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1303,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Sand Bat",
+        "NpcNameId": 1592,
+        "NpcId": [
+          1615
+        ],
+        "TerritoryTypeId": 1303,
+        "MapId": 52,
+        "AcquiringTips": "",
+        "Location": [
+          13.182,
+          13.223
+        ],
+        "Radius": 86,
+        "LevelMin": 38,
+        "LevelMax": 38
       }
     ]
   },
@@ -461,28 +911,58 @@
     "Icon": 72210,
     "Sources": [
       {
-        "Info": "Lvl 12-17 Treant Sapling",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 154,
-        "xCoord": 30.0,
-        "yCoord": 26.5
+        "Info": "Treant Sapling",
+        "NpcNameId": 128,
+        "NpcId": [
+          1446
+        ],
+        "TerritoryTypeId": 154,
+        "MapId": 7,
+        "AcquiringTips": "",
+        "Location": [
+          26.899,
+          24.982
+        ],
+        "Radius": 196,
+        "LevelMin": 12,
+        "LevelMax": 17
       },
       {
-        "Info": "Lvl 12-17 Treant Sapling",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 148,
-        "xCoord": 27.0,
-        "yCoord": 15.0
+        "Info": "Treant Sapling",
+        "NpcNameId": 128,
+        "NpcId": [
+          1446
+        ],
+        "TerritoryTypeId": 148,
+        "MapId": 4,
+        "AcquiringTips": "",
+        "Location": [
+          25.681,
+          19.456
+        ],
+        "Radius": 266,
+        "LevelMin": 12,
+        "LevelMax": 17
       },
       {
-        "Info": "Lvl 14 Treant Sapling",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 152,
-        "xCoord": 13.0,
-        "yCoord": 25.0
+        "Info": "Treant Sapling",
+        "NpcNameId": 128,
+        "NpcId": [
+          1446
+        ],
+        "TerritoryTypeId": 152,
+        "MapId": 5,
+        "AcquiringTips": "",
+        "Location": [
+          13.359,
+          24.382
+        ],
+        "Radius": 68,
+        "LevelMin": 14,
+        "LevelMax": 14
       }
     ]
   },
@@ -491,36 +971,112 @@
     "Icon": 72214,
     "Sources": [
       {
-        "Info": "Lvl. 5-7 Goblin Fisher & Goblin Gambler",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 134,
-        "xCoord": 23.8,
-        "yCoord": 21.6
+        "Info": "Goblin Gambler",
+        "NpcNameId": 3099,
+        "NpcId": [
+          769
+        ],
+        "TerritoryTypeId": 134,
+        "MapId": 15,
+        "AcquiringTips": "",
+        "Location": [
+          23.784,
+          21.722
+        ],
+        "Radius": 25,
+        "LevelMin": 7,
+        "LevelMax": 7
       },
       {
-        "Info": "Lvl. 58 Goblin Glider & Goblin Brandisher",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 399,
-        "xCoord": 29.0,
-        "yCoord": 23.0
+        "Info": "Goblin Fisher",
+        "NpcNameId": 367,
+        "NpcId": [
+          769
+        ],
+        "TerritoryTypeId": 134,
+        "MapId": 15,
+        "AcquiringTips": "",
+        "Location": [
+          23.777,
+          21.778
+        ],
+        "Radius": 32,
+        "LevelMin": 5,
+        "LevelMax": 5
       },
       {
-        "Info": "Slipkinx Steeljoints",
+        "Type": 2,
+        "Info": "Goblin Brandisher",
+        "NpcNameId": 3598,
+        "NpcId": [
+          4019
+        ],
+        "TerritoryTypeId": 399,
+        "MapId": 213,
         "AcquiringTips": "",
+        "Location": [
+          30.875,
+          22.998
+        ],
+        "Radius": 126,
+        "LevelMin": 55,
+        "LevelMax": 58
+      },
+      {
+        "Type": 2,
+        "Info": "Goblin Glider",
+        "NpcNameId": 3601,
+        "NpcId": [
+          4032
+        ],
+        "TerritoryTypeId": 399,
+        "MapId": 213,
+        "AcquiringTips": "",
+        "Location": [
+          27.089,
+          21.426
+        ],
+        "Radius": 329,
+        "LevelMin": 55,
+        "LevelMax": 58
+      },
+      {
         "Type": 100,
-        "TerritoryTypeID": 399,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Slipkinx Steeljoints",
+        "NpcNameId": 4366,
+        "NpcId": [
+          4543
+        ],
+        "TerritoryTypeId": 399,
+        "MapId": 213,
+        "AcquiringTips": "",
+        "Location": [
+          21.6,
+          25.51
+        ],
+        "Radius": 895,
+        "LevelMin": 60,
+        "LevelMax": 60
       },
       {
-        "Info": "(1st Boss) Illuminati Commander",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 362,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(1st Boss) Illuminati Commander",
+        "NpcNameId": 2548,
+        "NpcId": [
+          2791
+        ],
+        "TerritoryTypeId": 362,
+        "MapId": 146,
+        "AcquiringTips": "",
+        "Location": [
+          13.469,
+          10.436
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -529,12 +1085,10 @@
     "Icon": 72229,
     "Sources": [
       {
-        "Info": "Available after learning 5 spells.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after learning 5 spells.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -543,45 +1097,115 @@
     "Icon": 72226,
     "Sources": [
       {
-        "Info": "Lvl. 12 Glide Bomb",
-        "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
         "Type": 2,
-        "TerritoryTypeID": 140,
-        "xCoord": 27.5,
-        "yCoord": 17.0
-      },
-      {
-        "Info": "(Trash) Blasting Cap & Flambeau",
+        "Info": "Glide Bomb",
+        "NpcNameId": 8135,
+        "NpcId": [
+          10128
+        ],
+        "TerritoryTypeId": 140,
+        "MapId": 20,
         "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
-        "Type": 13,
-        "TerritoryTypeID": 1038,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          27.541,
+          17.072
+        ],
+        "Radius": 35,
+        "LevelMin": 12,
+        "LevelMax": 12
       },
       {
+        "Type": 13,
+        "Info": "Flambeau",
+        "NpcNameId": 983,
+        "NpcId": [
+          2379
+        ],
+        "TerritoryTypeId": 349,
+        "MapId": 141,
+        "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
+        "Location": [
+          12.604,
+          10.274
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
+      },
+      {
+        "Type": 13,
+        "Info": "(Trash) Blasting Cap",
+        "NpcNameId": 1303,
+        "NpcId": [
+          1400
+        ],
+        "TerritoryTypeId": 1038,
+        "MapId": 40,
+        "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
+        "Location": [
+          12.419,
+          12.02
+        ],
+        "Radius": 19,
+        "LevelMin": 17,
+        "LevelMax": 17
+      },
+      {
+        "Type": 13,
         "Info": "(Trash) Gas Bomb",
+        "NpcNameId": 1193,
+        "NpcId": [
+          980,
+          1415
+        ],
+        "TerritoryTypeId": 1245,
+        "MapId": 46,
         "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
-        "Type": 13,
-        "TerritoryTypeID": 162,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          11.279,
+          10.587
+        ],
+        "Radius": 79,
+        "LevelMin": 20,
+        "LevelMax": 20
       },
       {
+        "Type": 13,
         "Info": "(Trash) Shrapnel",
+        "NpcNameId": 1799,
+        "NpcId": [
+          1618
+        ],
+        "TerritoryTypeId": 1303,
+        "MapId": 52,
         "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
-        "Type": 13,
-        "TerritoryTypeID": 1303,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          10.892,
+          13.961
+        ],
+        "Radius": 15,
+        "LevelMin": 38,
+        "LevelMax": 38
       },
       {
-        "Info": "Arena Cherry Bomb",
-        "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Arena Cherry Bomb",
+        "NpcNameId": 8140,
+        "NpcId": [
+          9992,
+          9996
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 618,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "Be sure to wait until the enemy uses Self-Destruct to kill itself. Do NOT kill it beforehand, only tag it (ie, hit it at least once).",
+        "Location": [
+          6.12,
+          5.88
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -590,12 +1214,10 @@
     "Icon": 72227,
     "Sources": [
       {
-        "Info": "Available after learning 20 spells.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after learning 20 spells.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -604,28 +1226,58 @@
     "Icon": 72221,
     "Sources": [
       {
-        "Info": "Lvl. 32 Qiqirn Gullroaster",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 137,
-        "xCoord": 26.0,
-        "yCoord": 32.0
+        "Info": "Qiqirn Gullroaster",
+        "NpcNameId": 351,
+        "NpcId": [
+          170
+        ],
+        "TerritoryTypeId": 137,
+        "MapId": 17,
+        "AcquiringTips": "",
+        "Location": [
+          27.623,
+          32.969
+        ],
+        "Radius": 85,
+        "LevelMin": 30,
+        "LevelMax": 32
       },
       {
-        "Info": "Lvl. 9 Qiqirn Shellsweeper",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 141,
-        "xCoord": 16.0,
-        "yCoord": 19.0
+        "Info": "Qiqirn Shellsweeper",
+        "NpcNameId": 266,
+        "NpcId": [
+          771
+        ],
+        "TerritoryTypeId": 141,
+        "MapId": 21,
+        "AcquiringTips": "",
+        "Location": [
+          17.841,
+          20.215
+        ],
+        "Radius": 110,
+        "LevelMin": 4,
+        "LevelMax": 9
       },
       {
-        "Info": "Lvl. 13 Qiqirn Eggdigger",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 135,
-        "xCoord": 18.0,
-        "yCoord": 35.0
+        "Info": "Qiqirn Eggdigger",
+        "NpcNameId": 350,
+        "NpcId": [
+          771
+        ],
+        "TerritoryTypeId": 135,
+        "MapId": 16,
+        "AcquiringTips": "",
+        "Location": [
+          18.867,
+          35.267
+        ],
+        "Radius": 49,
+        "LevelMin": 13,
+        "LevelMax": 13
       }
     ]
   },
@@ -634,20 +1286,40 @@
     "Icon": 72241,
     "Sources": [
       {
-        "Info": "Lvl. 30 Apkallu",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 137,
-        "xCoord": 30.0,
-        "yCoord": 35.0
+        "Info": "Apkallu",
+        "NpcNameId": 341,
+        "NpcId": [
+          314
+        ],
+        "TerritoryTypeId": 137,
+        "MapId": 17,
+        "AcquiringTips": "",
+        "Location": [
+          28.823,
+          35.362
+        ],
+        "Radius": 96,
+        "LevelMin": 30,
+        "LevelMax": 30
       },
       {
-        "Info": "Bloody Mary",
-        "AcquiringTips": "",
         "Type": 101,
-        "TerritoryTypeID": 137,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Bloody Mary",
+        "NpcNameId": 2930,
+        "NpcId": [
+          3186
+        ],
+        "TerritoryTypeId": 137,
+        "MapId": 17,
+        "AcquiringTips": "",
+        "Location": [
+          23.749,
+          31.578
+        ],
+        "Radius": 467,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -656,30 +1328,67 @@
     "Icon": 72201,
     "Sources": [
       {
-        "Info": "Typhon",
-        "AcquiringTips": "Typhon will use Snort around 3~3.5min of the fight.\"Severe snort\" or \"snortassault\" will not count towards the learning of the spell.",
         "Type": 105,
-        "TerritoryTypeID": 142,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Typhon",
+        "NpcNameId": 3046,
+        "NpcId": [
+          3368,
+          3371,
+          3372,
+          3366
+        ],
+        "TerritoryTypeId": 142,
+        "MapId": 195,
+        "AcquiringTips": "Typhon will use Snort around 3~3.5min of the fight.\"Severe snort\" or \"snortassault\" will not count towards the learning of the spell.",
+        "Location": [
+          16.298,
+          21.933
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Typhon",
-        "AcquiringTips": "Typhon will use it as part of a devastating Fireball combo. Use Diamondback in order to survive this.",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Typhon",
+        "NpcNameId": 3046,
+        "NpcId": [
+          11512,
+          10026,
+          10028
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 630,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "Typhon will use it as part of a devastating Fireball combo. Use Diamondback in order to survive this.",
+        "Location": [
+          6.12,
+          6.06
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 60
       },
       {
-        "Info": "Typhon",
-        "AcquiringTips": "Typhon uses this after the bombs drop every time.",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Typhon",
+        "NpcNameId": 3046,
+        "NpcId": [
+          11512,
+          10026,
+          10028
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 696,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "Typhon uses this after the bombs drop every time.",
+        "Location": [
+          6.12,
+          6.06
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 60
       }
     ]
   },
@@ -688,12 +1397,24 @@
     "Icon": 72202,
     "Sources": [
       {
-        "Info": "Ultros",
-        "AcquiringTips": "This is used in the Phase 2 of the battle when Ultros is below 80% HP.",
         "Type": 105,
-        "TerritoryTypeID": 142,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Ultros",
+        "NpcNameId": 3047,
+        "NpcId": [
+          3369,
+          3373,
+          3367
+        ],
+        "TerritoryTypeId": 142,
+        "MapId": 195,
+        "AcquiringTips": "This is used in the Phase 2 of the battle when Ultros is below 80% HP.",
+        "Location": [
+          16.293,
+          21.837
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -702,28 +1423,59 @@
     "Icon": 72217,
     "Sources": [
       {
+        "Type": 13,
         "Info": "(Last Boss) Anantaboga",
+        "NpcNameId": 1696,
+        "NpcId": [
+          1484
+        ],
+        "TerritoryTypeId": 167,
+        "MapId": 85,
         "AcquiringTips": "The Look is used by Anantaboga in the beginning of the battle.",
-        "Type": 13,
-        "TerritoryTypeID": 167,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          11.239,
+          11.24
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
+        "Type": 13,
         "Info": "(Trash) Bibliolater",
+        "NpcNameId": 5223,
+        "NpcId": [
+          6003
+        ],
+        "TerritoryTypeId": 578,
+        "MapId": 311,
         "AcquiringTips": "",
-        "Type": 13,
-        "TerritoryTypeID": 578,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          9.45,
+          9.96
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       },
       {
-        "Info": "(Trash) Valefor",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 174,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Valefor",
+        "NpcNameId": 820,
+        "NpcId": [
+          2404,
+          2398
+        ],
+        "TerritoryTypeId": 174,
+        "MapId": 71,
+        "AcquiringTips": "",
+        "Location": [
+          9.771,
+          16.605
+        ],
+        "Radius": 162,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -732,45 +1484,96 @@
     "Icon": 72206,
     "Sources": [
       {
-        "Info": "Lvl. 31 Stroper",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 148,
-        "xCoord": 13.7,
-        "yCoord": 22.7
+        "Info": "Stroper",
+        "NpcNameId": 238,
+        "NpcId": [
+          304
+        ],
+        "TerritoryTypeId": 148,
+        "MapId": 4,
+        "AcquiringTips": "",
+        "Location": [
+          13.291,
+          22.028
+        ],
+        "Radius": 44,
+        "LevelMin": 31,
+        "LevelMax": 31
       },
       {
-        "Info": "Lvl. 31 Halitostroper",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 148,
-        "xCoord": 15.0,
-        "yCoord": 21.0
+        "Info": "Halitostroper",
+        "NpcNameId": 2057,
+        "NpcId": [
+          2193
+        ],
+        "TerritoryTypeId": 148,
+        "MapId": 4,
+        "AcquiringTips": "",
+        "Location": [
+          15.143,
+          21.303
+        ],
+        "Radius": 37,
+        "LevelMin": 31,
+        "LevelMax": 31
       },
       {
-        "Info": "Lvl. 34 Stroper",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 153,
-        "xCoord": 20.0,
-        "yCoord": 28.0
+        "Info": "Stroper",
+        "NpcNameId": 238,
+        "NpcId": [
+          304
+        ],
+        "TerritoryTypeId": 153,
+        "MapId": 6,
+        "AcquiringTips": "",
+        "Location": [
+          18.728,
+          29.165
+        ],
+        "Radius": 168,
+        "LevelMin": 28,
+        "LevelMax": 34
       },
       {
-        "Info": "(Trash) Morbol",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1331,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Goldvine (Morbol)",
+        "NpcNameId": 1538,
+        "NpcId": [
+          1472
+        ],
+        "TerritoryTypeId": 1331,
+        "MapId": 38,
+        "AcquiringTips": "",
+        "Location": [
+          7.445,
+          8.772
+        ],
+        "Radius": 77,
+        "LevelMin": 47,
+        "LevelMax": 47
       },
       {
-        "Info": "Reflective Rebekkah",
-        "AcquiringTips": "",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Reflective Rebekkah",
+        "NpcNameId": 8117,
+        "NpcId": [
+          10024,
+          10023
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 629,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -779,12 +1582,23 @@
     "Icon": 72242,
     "Sources": [
       {
-        "Info": "(2nd Boss) Cuca Fera",
-        "AcquiringTips": "Cuca Fera actually CAN be damaged heavily without use of the cannons. Use Missile to half his HP over and over till he's low enough to where you can kill him with standard skills. Alternatively, Level 5 Death can be used to finish the battle off instantly; just ensure Cuca Fera has used Diamondback first.",
         "Type": 13,
-        "TerritoryTypeID": 365,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Cuca Fera",
+        "NpcNameId": 2775,
+        "NpcId": [
+          3000,
+          3365
+        ],
+        "TerritoryTypeId": 365,
+        "MapId": 157,
+        "AcquiringTips": "Cuca Fera actually CAN be damaged heavily without use of the cannons. Use Missile to half his HP over and over till he's low enough to where you can kill him with standard skills. Alternatively, Level 5 Death can be used to finish the battle off instantly; just ensure Cuca Fera has used Diamondback first.",
+        "Location": [
+          11.24,
+          6.554
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -793,12 +1607,10 @@
     "Icon": 72235,
     "Sources": [
       {
-        "Info": "Available after learning 10 spells.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after learning 10 spells.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -807,28 +1619,58 @@
     "Icon": 72230,
     "Sources": [
       {
-        "Info": "Lvl. 23 Laughing Toad",
-        "AcquiringTips": "Sticky Tongue is the first move used by the Toad when you attack from a distance.",
         "Type": 2,
-        "TerritoryTypeID": 140,
-        "xCoord": 15.2,
-        "yCoord": 6.4
+        "Info": "Laughing Toad",
+        "NpcNameId": 217,
+        "NpcId": [
+          26
+        ],
+        "TerritoryTypeId": 140,
+        "MapId": 20,
+        "AcquiringTips": "Sticky Tongue is the first move used by the Toad when you attack from a distance.",
+        "Location": [
+          15.308,
+          6.441
+        ],
+        "Radius": 41,
+        "LevelMin": 23,
+        "LevelMax": 23
       },
       {
-        "Info": "Lvl. 14 Toxic Toad",
-        "AcquiringTips": "Sticky Tongue is the first move used by the Toad when you attack from a distance.",
         "Type": 2,
-        "TerritoryTypeID": 141,
-        "xCoord": 27.0,
-        "yCoord": 19.0
+        "Info": "Toxic Toad",
+        "NpcNameId": 216,
+        "NpcId": [
+          26
+        ],
+        "TerritoryTypeId": 141,
+        "MapId": 21,
+        "AcquiringTips": "Sticky Tongue is the first move used by the Toad when you attack from a distance.",
+        "Location": [
+          27.652,
+          19.064
+        ],
+        "Radius": 60,
+        "LevelMin": 14,
+        "LevelMax": 14
       },
       {
-        "Info": "Lvl. 33 Gigantoad",
-        "AcquiringTips": "Sticky Tongue is the first move used by the Toad when you attack from a distance.",
         "Type": 2,
-        "TerritoryTypeID": 137,
-        "xCoord": 18.0,
-        "yCoord": 26.0
+        "Info": "Gigantoad",
+        "NpcNameId": 26,
+        "NpcId": [
+          26
+        ],
+        "TerritoryTypeId": 137,
+        "MapId": 17,
+        "AcquiringTips": "Sticky Tongue is the first move used by the Toad when you attack from a distance.",
+        "Location": [
+          17.683,
+          27.336
+        ],
+        "Radius": 149,
+        "LevelMin": 33,
+        "LevelMax": 33
       }
     ]
   },
@@ -837,12 +1679,22 @@
     "Icon": 72228,
     "Sources": [
       {
-        "Info": "Lvl. 24 Giggling Gigantoad",
-        "AcquiringTips": "Toad Oil will be used when you're in melee range of the enemy.",
         "Type": 2,
-        "TerritoryTypeID": 140,
-        "xCoord": 15.2,
-        "yCoord": 6.4
+        "Info": "Giggling Gigantoad",
+        "NpcNameId": 8136,
+        "NpcId": [
+          10130
+        ],
+        "TerritoryTypeId": 140,
+        "MapId": 20,
+        "AcquiringTips": "Toad Oil will be used when you're in melee range of the enemy.",
+        "Location": [
+          15.312,
+          6.732
+        ],
+        "Radius": 38,
+        "LevelMin": 24,
+        "LevelMax": 24
       }
     ]
   },
@@ -851,38 +1703,80 @@
     "Icon": 72237,
     "Sources": [
       {
-        "Info": "(Last Boss) Chimera",
-        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 13,
-        "TerritoryTypeID": 1303,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Chimera",
+        "NpcNameId": 1590,
+        "NpcId": [
+          18688
+        ],
+        "TerritoryTypeId": 1303,
+        "MapId": 97,
+        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
+        "Location": [
+          7.622,
+          7.027
+        ],
+        "Radius": 15,
+        "LevelMin": 38,
+        "LevelMax": 38
       },
       {
-        "Info": "Dhorme Chimera",
-        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 105,
-        "TerritoryTypeID": 369,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Dhorme Chimera",
+        "NpcNameId": 2162,
+        "NpcId": [
+          1699
+        ],
+        "TerritoryTypeId": 368,
+        "MapId": 53,
+        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
+        "Location": [
+          32.428,
+          6.518
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
+        "Type": 103,
         "Info": "Apademak",
-        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 103,
-        "TerritoryTypeID": 796,
+        "NpcNameId": 8121,
+        "NpcId": [
+          10032
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 631,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Azulmagia",
-        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Azulmagia",
+        "NpcNameId": 8129,
+        "NpcId": [
+          9848,
+          9856,
+          9855
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 635,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -891,38 +1785,80 @@
     "Icon": 72238,
     "Sources": [
       {
-        "Info": "(Last Boss) Chimera",
-        "AcquiringTips": "The enemy will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 13,
-        "TerritoryTypeID": 1303,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Chimera",
+        "NpcNameId": 1590,
+        "NpcId": [
+          18688
+        ],
+        "TerritoryTypeId": 1303,
+        "MapId": 97,
+        "AcquiringTips": "The enemy will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
+        "Location": [
+          7.622,
+          7.027
+        ],
+        "Radius": 15,
+        "LevelMin": 38,
+        "LevelMax": 38
       },
       {
-        "Info": "Dhorme Chimera",
-        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 105,
-        "TerritoryTypeID": 369,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Dhorme Chimera",
+        "NpcNameId": 2162,
+        "NpcId": [
+          1699
+        ],
+        "TerritoryTypeId": 368,
+        "MapId": 53,
+        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
+        "Location": [
+          32.428,
+          6.518
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
+        "Type": 103,
         "Info": "Apademak",
-        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
-        "Type": 103,
-        "TerritoryTypeID": 796,
+        "NpcNameId": 8121,
+        "NpcId": [
+          10032
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 631,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Azulmagia",
-        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Azulmagia",
+        "NpcNameId": 8129,
+        "NpcId": [
+          9848,
+          9856,
+          9855
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 635,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "Will always start with The Ram's Voice and then follow up with The Dragon's Voice or vice-versa.",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -931,20 +1867,42 @@
     "Icon": 72223,
     "Sources": [
       {
-        "Info": "(First Part) Enkidu",
-        "AcquiringTips": "Enkidu casts Missile during the Chicken debuff cast by Gilgamesh.\nCleanse the minimise debuffs ASAP, reduce Enkidu to between 40% and 50% HP, and then wait until Chicken/Missile are cast.",
         "Type": 105,
-        "TerritoryTypeID": 396,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(First Part) Enkidu",
+        "NpcNameId": 3304,
+        "NpcId": [
+          3625,
+          3622
+        ],
+        "TerritoryTypeId": 396,
+        "MapId": 210,
+        "AcquiringTips": "Enkidu casts Missile during the Chicken debuff cast by Gilgamesh.\nCleanse the minimise debuffs ASAP, reduce Enkidu to between 40% and 50% HP, and then wait until Chicken/Missile are cast.",
+        "Location": [
+          8.802,
+          11.332
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Guardian",
-        "AcquiringTips": "Guardian puts a red Prey marker on a player and fires a Missile at them that leaves a Burns debuff.",
         "Type": 104,
-        "TerritoryTypeID": 750,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Guardian",
+        "NpcNameId": 7107,
+        "NpcId": [
+          8395,
+          6358
+        ],
+        "TerritoryTypeId": 750,
+        "MapId": 448,
+        "AcquiringTips": "Guardian puts a red Prey marker on a player and fires a Missile at them that leaves a Burns debuff.",
+        "Location": [
+          5.984,
+          5.703
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -953,20 +1911,40 @@
     "Icon": 72215,
     "Sources": [
       {
-        "Info": "Lvl. 26 Sabotender Bailaor",
-        "AcquiringTips": "Helpful Hint: You can find one that's close enough to pull up to the Lvl. 35 Brass Blade at the entrance to Little Ala Mhigo. The little guy will help you beat them if you're struggling!",
         "Type": 2,
-        "TerritoryTypeID": 146,
-        "xCoord": 16.3,
-        "yCoord": 15.7
+        "Info": "Sabotender Bailaor",
+        "NpcNameId": 8137,
+        "NpcId": [
+          10131
+        ],
+        "TerritoryTypeId": 146,
+        "MapId": 23,
+        "AcquiringTips": "Helpful Hint: You can find one that's close enough to pull up to the Lvl. 35 Brass Blade at the entrance to Little Ala Mhigo. The little guy will help you beat them if you're struggling!",
+        "Location": [
+          15.388,
+          15.138
+        ],
+        "Radius": 69,
+        "LevelMin": 26,
+        "LevelMax": 26
       },
       {
-        "Info": "(Trash) Sabotender Desertor",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1303,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Sabotender Desertor",
+        "NpcNameId": 1594,
+        "NpcId": [
+          1622
+        ],
+        "TerritoryTypeId": 1303,
+        "MapId": 96,
+        "AcquiringTips": "",
+        "Location": [
+          17.567,
+          7.984
+        ],
+        "Radius": 33,
+        "LevelMin": 38,
+        "LevelMax": 38
       }
     ]
   },
@@ -975,12 +1953,22 @@
     "Icon": 72240,
     "Sources": [
       {
-        "Info": "(Last Boss) Kraken",
-        "AcquiringTips": "Kraken's attack is called Ink Blast and is an AoE attack. Simply dodge them and focus on killing the main body and Kraken arms, not the tentacles.",
         "Type": 13,
-        "TerritoryTypeID": 387,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Kraken",
+        "NpcNameId": 2904,
+        "NpcId": [
+          3264
+        ],
+        "TerritoryTypeId": 387,
+        "MapId": 169,
+        "AcquiringTips": "Kraken's attack is called Ink Blast and is an AoE attack. Simply dodge them and focus on killing the main body and Kraken arms, not the tentacles.",
+        "Location": [
+          4.31,
+          17.601
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -989,12 +1977,23 @@
     "Icon": 72243,
     "Sources": [
       {
-        "Info": "(1st Boss) Frumious Koheel Ja",
-        "AcquiringTips": "Will cast Blazing Angon, which is the spears he tosses to the ground. Destroy those to keep from occasional flame damage.",
         "Type": 13,
-        "TerritoryTypeID": 188,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(1st Boss) Frumious Koheel Ja",
+        "NpcNameId": 3091,
+        "NpcId": [
+          3530,
+          434
+        ],
+        "TerritoryTypeId": 188,
+        "MapId": 188,
+        "AcquiringTips": "Will cast Blazing Angon, which is the spears he tosses to the ground. Destroy those to keep from occasional flame damage.",
+        "Location": [
+          13.702,
+          13.303
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1003,12 +2002,10 @@
     "Icon": 72233,
     "Sources": [
       {
-        "Info": "Clear 10 stages in The Masked Carnivale",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Clear 10 stages in The Masked Carnivale",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -1017,44 +2014,96 @@
     "Icon": 72231,
     "Sources": [
       {
+        "Type": 13,
         "Info": "(1st Boss) Karlabos",
+        "NpcNameId": 3014,
+        "NpcId": [
+          3336,
+          3258
+        ],
+        "TerritoryTypeId": 387,
+        "MapId": 169,
         "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
-        "Type": 13,
-        "TerritoryTypeID": 387,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          14.558,
+          9.528
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
+        "Type": 13,
         "Info": "(Trash) Reflection of Karlabos",
+        "NpcNameId": 6059,
+        "NpcId": [
+          6912
+        ],
+        "TerritoryTypeId": 1142,
+        "MapId": 359,
         "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
-        "Type": 13,
-        "TerritoryTypeID": 1142,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          11.816,
+          5.365
+        ],
+        "Radius": 15,
+        "LevelMin": 61,
+        "LevelMax": 61
       },
       {
-        "Info": "Lvl. 61 Crag Claw",
-        "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
         "Type": 2,
-        "TerritoryTypeID": 620,
-        "xCoord": 25.0,
-        "yCoord": 11.0
+        "Info": "Crag Claw",
+        "NpcNameId": 5705,
+        "NpcId": [
+          6603
+        ],
+        "TerritoryTypeId": 620,
+        "MapId": 368,
+        "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
+        "Location": [
+          25.187,
+          12.145
+        ],
+        "Radius": 257,
+        "LevelMin": 61,
+        "LevelMax": 61
       },
       {
-        "Info": "(Trash) Clay Claw",
-        "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
         "Type": 104,
-        "TerritoryTypeID": 444,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Clay Claw",
+        "NpcNameId": 3764,
+        "NpcId": [
+          434,
+          4434
+        ],
+        "TerritoryTypeId": 444,
+        "MapId": 239,
+        "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
+        "Location": [
+          11.258,
+          11.458
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       },
       {
-        "Info": "Pterygotus",
-        "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
         "Type": 101,
-        "TerritoryTypeID": 399,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Pterygotus",
+        "NpcNameId": 4354,
+        "NpcId": [
+          4531
+        ],
+        "TerritoryTypeId": 399,
+        "MapId": 213,
+        "AcquiringTips": "This can potentially kill a Blue Mage in one shot if they afflicted with Slime. Be sure this is removed in order to survive and stay alive to learn the spell.",
+        "Location": [
+          14.879,
+          27.081
+        ],
+        "Radius": 578,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1063,20 +2112,40 @@
     "Icon": 72212,
     "Sources": [
       {
-        "Info": "(Last Boss) Galvanth the Dominator",
-        "AcquiringTips": "Getting from Galvanth is guaranteed, regardless of what the unrestricted party option is set to.",
         "Type": 13,
-        "TerritoryTypeID": 1037,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Galvanth the Dominator",
+        "NpcNameId": 73,
+        "NpcId": [
+          76
+        ],
+        "TerritoryTypeId": 1037,
+        "MapId": 8,
+        "AcquiringTips": "Getting from Galvanth is guaranteed, regardless of what the unrestricted party option is set to.",
+        "Location": [
+          6.85,
+          7.548
+        ],
+        "Radius": 15,
+        "LevelMin": 16,
+        "LevelMax": 16
       },
       {
-        "Info": "Blaster",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 523,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Blaster",
+        "NpcNameId": 4699,
+        "NpcId": [
+          5592
+        ],
+        "TerritoryTypeId": 523,
+        "MapId": 290,
+        "AcquiringTips": "",
+        "Location": [
+          11.3,
+          11.3
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1085,12 +2154,10 @@
     "Icon": 72234,
     "Sources": [
       {
-        "Info": "Clear 20 Stages in The Masked Carnivale",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Clear 20 Stages in The Masked Carnivale",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -1099,36 +2166,76 @@
     "Icon": 72239,
     "Sources": [
       {
-        "Info": "Lvl. 45 Lentic Mudpuppy",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 156,
-        "xCoord": 13.1,
-        "yCoord": 10.4
+        "Info": "Lentic Mudpuppy",
+        "NpcNameId": 8139,
+        "NpcId": [
+          10132
+        ],
+        "TerritoryTypeId": 156,
+        "MapId": 25,
+        "AcquiringTips": "",
+        "Location": [
+          13.445,
+          11.305
+        ],
+        "Radius": 66,
+        "LevelMin": 45,
+        "LevelMax": 45
       },
       {
+        "Type": 13,
         "Info": "(Trash) Surf Eft",
+        "NpcNameId": 1294,
+        "NpcId": [
+          1048
+        ],
+        "TerritoryTypeId": 1041,
+        "MapId": 45,
         "AcquiringTips": "",
-        "Type": 13,
-        "TerritoryTypeID": 1041,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          10.187,
+          11.534
+        ],
+        "Radius": 27,
+        "LevelMin": 32,
+        "LevelMax": 32
       },
       {
+        "Type": 13,
         "Info": "(Second Boss) Hellbender",
+        "NpcNameId": 1286,
+        "NpcId": [
+          427
+        ],
+        "TerritoryTypeId": 1041,
+        "MapId": 45,
         "AcquiringTips": "",
-        "Type": 13,
-        "TerritoryTypeID": 1041,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          9.036,
+          10.568
+        ],
+        "Radius": 15,
+        "LevelMin": 32,
+        "LevelMax": 32
       },
       {
-        "Info": "Lvl. 69 Loch Nanka",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 687,
-        "xCoord": 17.0,
-        "yCoord": 20.0
+        "Info": "Loch Nanka",
+        "NpcNameId": 5730,
+        "NpcId": [
+          6673
+        ],
+        "TerritoryTypeId": 621,
+        "MapId": 369,
+        "AcquiringTips": "",
+        "Location": [
+          16.649,
+          18.446
+        ],
+        "Radius": 197,
+        "LevelMin": 66,
+        "LevelMax": 69
       }
     ]
   },
@@ -1137,12 +2244,25 @@
     "Icon": 72244,
     "Sources": [
       {
-        "Info": "Garuda",
-        "AcquiringTips": "When Garuda disappears, the random AoE circles that follows after are the spell.",
         "Type": 105,
-        "TerritoryTypeID": 297,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Garuda",
+        "NpcNameId": 1644,
+        "NpcId": [
+          434,
+          1573,
+          245,
+          1574
+        ],
+        "TerritoryTypeId": 297,
+        "MapId": 402,
+        "AcquiringTips": "When Garuda disappears, the random AoE circles that follows after are the spell.",
+        "Location": [
+          5.94,
+          5.856
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1151,12 +2271,23 @@
     "Icon": 72245,
     "Sources": [
       {
-        "Info": "Ifrit",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 295,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Ifrit",
+        "NpcNameId": 1185,
+        "NpcId": [
+          2312,
+          211
+        ],
+        "TerritoryTypeId": 295,
+        "MapId": 401,
+        "AcquiringTips": "",
+        "Location": [
+          6.32,
+          6.122
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1165,12 +2296,23 @@
     "Icon": 72246,
     "Sources": [
       {
-        "Info": "Titan",
-        "AcquiringTips": "Spell has no cast timer and is only cast late in the fight, so it's possible to kill Titan without having seen this. Watch your combat log and flying text!",
         "Type": 105,
-        "TerritoryTypeID": 296,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Titan",
+        "NpcNameId": 1801,
+        "NpcId": [
+          248,
+          434
+        ],
+        "TerritoryTypeId": 296,
+        "MapId": 403,
+        "AcquiringTips": "Spell has no cast timer and is only cast late in the fight, so it's possible to kill Titan without having seen this. Watch your combat log and flying text!",
+        "Location": [
+          6.12,
+          5.76
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1179,12 +2321,23 @@
     "Icon": 72247,
     "Sources": [
       {
-        "Info": "Ramuh",
-        "AcquiringTips": "Shock Strike is a frequent cast for Ramuh, so no need to worry if he's cast it.",
         "Type": 105,
-        "TerritoryTypeID": 375,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Ramuh",
+        "NpcNameId": 2832,
+        "NpcId": [
+          2990,
+          2991
+        ],
+        "TerritoryTypeId": 375,
+        "MapId": 166,
+        "AcquiringTips": "Shock Strike is a frequent cast for Ramuh, so no need to worry if he's cast it.",
+        "Location": [
+          6.17,
+          6.158
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1193,12 +2346,25 @@
     "Icon": 72248,
     "Sources": [
       {
-        "Info": "Shiva",
-        "AcquiringTips": "Shiva casts Glass Dance after bringing out her bow late in the fight. After her add phase, burn her to 10% or so and wait for her to say \"Arrows of frost--\", perform the bow-drawing animation, and actually cast Glass Dance!",
         "Type": 105,
-        "TerritoryTypeID": 378,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Shiva",
+        "NpcNameId": 2994,
+        "NpcId": [
+          3329,
+          3332,
+          3333,
+          3334
+        ],
+        "TerritoryTypeId": 378,
+        "MapId": 173,
+        "AcquiringTips": "Shiva casts Glass Dance after bringing out her bow late in the fight. After her add phase, burn her to 10% or so and wait for her to say \"Arrows of frost--\", perform the bow-drawing animation, and actually cast Glass Dance!",
+        "Location": [
+          6.138,
+          6.031
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1207,12 +2373,26 @@
     "Icon": 72249,
     "Sources": [
       {
-        "Info": "Leviathan",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 359,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Leviathan",
+        "NpcNameId": 2550,
+        "NpcId": [
+          2696,
+          2695,
+          2765,
+          2663
+        ],
+        "TerritoryTypeId": 281,
+        "MapId": 147,
+        "ContentFinderCondition": 72,
+        "AcquiringTips": "",
+        "Location": [
+          6.205,
+          6.12
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1221,28 +2401,59 @@
     "Icon": 72251,
     "Sources": [
       {
-        "Info": "(Last Boss) Opinicus",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 434,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Opinicus",
+        "NpcNameId": 3409,
+        "NpcId": [
+          3819,
+          3725
+        ],
+        "TerritoryTypeId": 434,
+        "MapId": 243,
+        "AcquiringTips": "",
+        "Location": [
+          10.595,
+          9.003
+        ],
+        "Radius": 142,
+        "LevelMin": 51,
+        "LevelMax": 51
       },
       {
-        "Info": "Lvl. 59 Griffin",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 401,
-        "xCoord": 36.0,
-        "yCoord": 9.0
+        "Info": "Griffin",
+        "NpcNameId": 3526,
+        "NpcId": [
+          4048
+        ],
+        "TerritoryTypeId": 401,
+        "MapId": 215,
+        "AcquiringTips": "",
+        "Location": [
+          22.737,
+          8.127
+        ],
+        "Radius": 867,
+        "LevelMin": 59,
+        "LevelMax": 59
       },
       {
-        "Info": "Lvl. 68 True Griffin",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 620,
-        "xCoord": 27.0,
-        "yCoord": 25.0
+        "Info": "True Griffin",
+        "NpcNameId": 5711,
+        "NpcId": [
+          6602
+        ],
+        "TerritoryTypeId": 620,
+        "MapId": 368,
+        "AcquiringTips": "",
+        "Location": [
+          21.296,
+          25.426
+        ],
+        "Radius": 334,
+        "LevelMin": 65,
+        "LevelMax": 68
       }
     ]
   },
@@ -1251,21 +2462,43 @@
     "Icon": 72252,
     "Sources": [
       {
-        "Info": "(Boss) Living Liquid",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 444,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Boss) Living Liquid",
+        "NpcNameId": 3765,
+        "NpcId": [
+          4914,
+          4909
+        ],
+        "TerritoryTypeId": 444,
+        "MapId": 239,
+        "AcquiringTips": "",
+        "Location": [
+          12.32,
+          9.87
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       },
       {
-        "Info": "Shikigami of the Undertow",
-        "AcquiringTips": "In Stage 29 of the Masked Carnivale, you can get Protean Wave not just from the boss, but also from the water column adds once they explode.",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Shikigami of the Undertow",
+        "NpcNameId": 9241,
+        "NpcId": [
+          11360,
+          11357
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 698,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "In Stage 29 of the Masked Carnivale, you can get Protean Wave not just from the boss, but also from the water column adds once they explode.",
+        "Location": [
+          6.12,
+          5.92
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1274,28 +2507,58 @@
     "Icon": 72253,
     "Sources": [
       {
-        "Info": "Lvl. 51 Lone Yeti",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 397,
-        "xCoord": 20.0,
-        "yCoord": 31.0
+        "Info": "Lone Yeti",
+        "NpcNameId": 3483,
+        "NpcId": [
+          3992
+        ],
+        "TerritoryTypeId": 397,
+        "MapId": 211,
+        "AcquiringTips": "",
+        "Location": [
+          15.726,
+          22.942
+        ],
+        "Radius": 798,
+        "LevelMin": 48,
+        "LevelMax": 51
       },
       {
-        "Info": "Lvl. 56 Slate Yeti",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 397,
-        "xCoord": 17.0,
-        "yCoord": 27.0
+        "Info": "Slate Yeti",
+        "NpcNameId": 3490,
+        "NpcId": [
+          3992
+        ],
+        "TerritoryTypeId": 397,
+        "MapId": 211,
+        "AcquiringTips": "",
+        "Location": [
+          20.444,
+          30.104
+        ],
+        "Radius": 298,
+        "LevelMin": 56,
+        "LevelMax": 56
       },
       {
-        "Info": "(Trash) Yeti",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1062,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Yeti",
+        "NpcNameId": 3040,
+        "NpcId": [
+          14711
+        ],
+        "TerritoryTypeId": 1062,
+        "MapId": 174,
+        "AcquiringTips": "",
+        "Location": [
+          9.126,
+          8.848
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1304,20 +2567,40 @@
     "Icon": 72254,
     "Sources": [
       {
-        "Info": "Lvl. 50 Conodont",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 401,
-        "xCoord": 26.0,
-        "yCoord": 33.0
+        "Info": "Conodont",
+        "NpcNameId": 3496,
+        "NpcId": [
+          4815
+        ],
+        "TerritoryTypeId": 401,
+        "MapId": 215,
+        "AcquiringTips": "",
+        "Location": [
+          28.914,
+          33.771
+        ],
+        "Radius": 177,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "(Trash) Hikagiri",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 616,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Hikagiri",
+        "NpcNameId": 6228,
+        "NpcId": [
+          6941
+        ],
+        "TerritoryTypeId": 616,
+        "MapId": 336,
+        "AcquiringTips": "",
+        "Location": [
+          10.868,
+          15.604
+        ],
+        "Radius": 28,
+        "LevelMin": 63,
+        "LevelMax": 63
       }
     ]
   },
@@ -1326,20 +2609,40 @@
     "Icon": 72255,
     "Sources": [
       {
-        "Info": "(1st Boss) Faust",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 442,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(1st Boss) Faust",
+        "NpcNameId": 3745,
+        "NpcId": [
+          4448
+        ],
+        "TerritoryTypeId": 442,
+        "MapId": 237,
+        "AcquiringTips": "",
+        "Location": [
+          11.24,
+          10.0
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       },
       {
-        "Info": "Jagd Doll",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 443,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Jagd Doll",
+        "NpcNameId": 3759,
+        "NpcId": [
+          3862
+        ],
+        "TerritoryTypeId": 443,
+        "MapId": 255,
+        "AcquiringTips": "",
+        "Location": [
+          11.238,
+          9.898
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1348,20 +2651,41 @@
     "Icon": 72256,
     "Sources": [
       {
-        "Info": "(2nd Boss) Ash",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 350,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Ash",
+        "NpcNameId": 2341,
+        "NpcId": [
+          2415
+        ],
+        "TerritoryTypeId": 350,
+        "MapId": 137,
+        "AcquiringTips": "",
+        "Location": [
+          10.997,
+          11.239
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "(Last Boss) Everliving Bibliotaph",
-        "AcquiringTips": "Fail the mechanic and summon the third set of mobs",
         "Type": 13,
-        "TerritoryTypeID": 1109,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Everliving Bibliotaph",
+        "NpcNameId": 3930,
+        "NpcId": [
+          3716,
+          3748
+        ],
+        "TerritoryTypeId": 1109,
+        "MapId": 241,
+        "AcquiringTips": "Fail the mechanic and summon the third set of mobs",
+        "Location": [
+          18.744,
+          10.103
+        ],
+        "Radius": 15,
+        "LevelMin": 59,
+        "LevelMax": 59
       }
     ]
   },
@@ -1370,12 +2694,22 @@
     "Icon": 72257,
     "Sources": [
       {
-        "Info": "Lvl. 50 Paissa",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 401,
-        "xCoord": 24.0,
-        "yCoord": 33.0
+        "Info": "Paissa",
+        "NpcNameId": 3499,
+        "NpcId": [
+          4811
+        ],
+        "TerritoryTypeId": 401,
+        "MapId": 215,
+        "AcquiringTips": "",
+        "Location": [
+          27.585,
+          33.998
+        ],
+        "Radius": 490,
+        "LevelMin": 47,
+        "LevelMax": 50
       }
     ]
   },
@@ -1384,28 +2718,59 @@
     "Icon": 72258,
     "Sources": [
       {
-        "Info": "Lvl. 59 Empuse",
-        "AcquiringTips": "Cast a buff on yourself (ex: Bristle) and the Empuse will try to remove it (Circular Telegraph) if you are in melee range.",
         "Type": 2,
-        "TerritoryTypeID": 402,
-        "xCoord": 29.5,
-        "yCoord": 12.2
+        "Info": "Empuse",
+        "NpcNameId": 3541,
+        "NpcId": [
+          4072
+        ],
+        "TerritoryTypeId": 402,
+        "MapId": 216,
+        "AcquiringTips": "Cast a buff on yourself (ex: Bristle) and the Empuse will try to remove it (Circular Telegraph) if you are in melee range.",
+        "Location": [
+          33.887,
+          11.0
+        ],
+        "Radius": 350,
+        "LevelMin": 56,
+        "LevelMax": 59
       },
       {
+        "Type": 105,
         "Info": "Enkidu",
+        "NpcNameId": 3304,
+        "NpcId": [
+          3625,
+          3622
+        ],
+        "TerritoryTypeId": 396,
+        "MapId": 210,
         "AcquiringTips": "",
-        "Type":105,
-        "TerritoryTypeID": 396,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          8.802,
+          11.332
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "(2nd Boss) Arioch",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 363,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Arioch",
+        "NpcNameId": 2560,
+        "NpcId": [
+          2701
+        ],
+        "TerritoryTypeId": 363,
+        "MapId": 151,
+        "AcquiringTips": "",
+        "Location": [
+          10.743,
+          12.551
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1414,12 +2779,22 @@
     "Icon": 72259,
     "Sources": [
       {
+        "Type": 105,
         "Info": "(White Mage) Furryfoot Kupli Kipp",
+        "NpcNameId": 720,
+        "NpcId": [
+          14622
+        ],
+        "TerritoryTypeId": 1067,
+        "MapId": 36,
         "AcquiringTips": "This spell is still obtainable since the rework of trial Thornmarch (Hard).\nWhen the Furryfoot Kupli Kipp (WHM Moogle) spawns, you must simply damage its companion (but not kill it) and then wait. After a few minutes, the Moogle should cast Pom Cure.",
-        "Type":105,
-        "TerritoryTypeID": 1067,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          6.12,
+          6.24
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1428,12 +2803,22 @@
     "Icon": 72260,
     "Sources": [
       {
-        "Info": "(Trash) Alexandrian Hider",
-        "AcquiringTips": "Trash mob appearing in the second and third pack respectively.",
         "Type": 13,
-        "TerritoryTypeID": 581,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Alexandrian Hider",
+        "NpcNameId": 5206,
+        "NpcId": [
+          6142
+        ],
+        "TerritoryTypeId": 581,
+        "MapId": 328,
+        "AcquiringTips": "Trash mob appearing in the second and third pack respectively.",
+        "Location": [
+          10.485,
+          11.675
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1442,21 +2827,41 @@
     "Icon": 72261,
     "Sources": [
       {
-        "Info": "(3rd Boss) Apanda",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 578,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(3rd Boss) Apanda",
+        "NpcNameId": 5238,
+        "NpcId": [
+          6018
+        ],
+        "TerritoryTypeId": 578,
+        "MapId": 312,
+        "AcquiringTips": "",
+        "Location": [
+          11.979,
+          10.498
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       },
       {
-        "Info": "Epilogi",
-        "AcquiringTips": "",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Epilogi",
+        "NpcNameId": 8125,
+        "NpcId": [
+          10041
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 634,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1465,12 +2870,22 @@
     "Icon": 72262,
     "Sources": [
       {
-        "Info": "(2nd Boss) Queen Hawk",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 511,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Queen Hawk",
+        "NpcNameId": 4656,
+        "NpcId": [
+          5170
+        ],
+        "TerritoryTypeId": 511,
+        "MapId": 268,
+        "AcquiringTips": "",
+        "Location": [
+          6.554,
+          8.857
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1479,12 +2894,22 @@
     "Icon": 72263,
     "Sources": [
       {
-        "Info": "Lvl. 59 Poroggo",
-        "AcquiringTips": "Standing in melee range makes the enemy more likely to use Frog Legs.",
         "Type": 2,
-        "TerritoryTypeID": 399,
-        "xCoord": 12.0,
-        "yCoord": 34.0
+        "Info": "Poroggo",
+        "NpcNameId": 3607,
+        "NpcId": [
+          4025
+        ],
+        "TerritoryTypeId": 399,
+        "MapId": 213,
+        "AcquiringTips": "Standing in melee range makes the enemy more likely to use Frog Legs.",
+        "Location": [
+          15.057,
+          36.499
+        ],
+        "Radius": 296,
+        "LevelMin": 56,
+        "LevelMax": 59
       }
     ]
   },
@@ -1493,20 +2918,41 @@
     "Icon": 72264,
     "Sources": [
       {
-        "Info": "(2nd Boss) Zu",
-        "AcquiringTips": "This attack doesn't have a visible cast bar. You will know that the monster already used it because you will have a debuff called Windburn.",
         "Type": 13,
-        "TerritoryTypeID": 160,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Zu",
+        "NpcNameId": 2261,
+        "NpcId": [
+          2297,
+          2292
+        ],
+        "TerritoryTypeId": 160,
+        "MapId": 132,
+        "AcquiringTips": "This attack doesn't have a visible cast bar. You will know that the monster already used it because you will have a debuff called Windburn.",
+        "Location": [
+          11.399,
+          10.949
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Lvl. 59 Anzu",
-        "AcquiringTips": "This attack doesn't have a visible cast bar. You will know that the monster already used it because you will have a debuff called Windburn.",
         "Type": 2,
-        "TerritoryTypeID": 401,
-        "xCoord": 25.0,
-        "yCoord": 6.0
+        "Info": "Anzu",
+        "NpcNameId": 3524,
+        "NpcId": [
+          4064
+        ],
+        "TerritoryTypeId": 401,
+        "MapId": 215,
+        "AcquiringTips": "This attack doesn't have a visible cast bar. You will know that the monster already used it because you will have a debuff called Windburn.",
+        "Location": [
+          28.642,
+          22.182
+        ],
+        "Radius": 952,
+        "LevelMin": 59,
+        "LevelMax": 59
       }
     ]
   },
@@ -1515,28 +2961,58 @@
     "Icon": 72265,
     "Sources": [
       {
-        "Info": "Lvl. 56 Dhalmel",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 401,
-        "xCoord": 17.0,
-        "yCoord": 32.5
+        "Info": "Dhalmel",
+        "NpcNameId": 3505,
+        "NpcId": [
+          4069
+        ],
+        "TerritoryTypeId": 401,
+        "MapId": 215,
+        "AcquiringTips": "",
+        "Location": [
+          21.911,
+          30.222
+        ],
+        "Radius": 302,
+        "LevelMin": 56,
+        "LevelMax": 56
       },
       {
-        "Info": "Lvl. 68 Jhammel",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 868,
-        "xCoord": 24.8,
-        "yCoord": 28.5
+        "Info": "Jhammel",
+        "NpcNameId": 5712,
+        "NpcId": [
+          6605
+        ],
+        "TerritoryTypeId": 620,
+        "MapId": 368,
+        "AcquiringTips": "",
+        "Location": [
+          27.442,
+          29.542
+        ],
+        "Radius": 141,
+        "LevelMin": 68,
+        "LevelMax": 68
       },
       {
-        "Info": "(Trash) Dhalmel",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 420,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Divine Dhalmel",
+        "NpcNameId": 3739,
+        "NpcId": [
+          3966
+        ],
+        "TerritoryTypeId": 420,
+        "MapId": 230,
+        "AcquiringTips": "",
+        "Location": [
+          14.502,
+          6.705
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1545,12 +3021,22 @@
     "Icon": 72266,
     "Sources": [
       {
-        "Info": "(Trash) White Knight",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1066,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) White Knight",
+        "NpcNameId": 3845,
+        "NpcId": [
+          4198
+        ],
+        "TerritoryTypeId": 1066,
+        "MapId": 249,
+        "AcquiringTips": "",
+        "Location": [
+          10.434,
+          12.041
+        ],
+        "Radius": 36,
+        "LevelMin": 57,
+        "LevelMax": 57
       }
     ]
   },
@@ -1559,12 +3045,22 @@
     "Icon": 72267,
     "Sources": [
       {
-        "Info": "(Trash) Black Knight",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1066,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Black Knight",
+        "NpcNameId": 3846,
+        "NpcId": [
+          4199
+        ],
+        "TerritoryTypeId": 1066,
+        "MapId": 249,
+        "AcquiringTips": "",
+        "Location": [
+          10.434,
+          11.882
+        ],
+        "Radius": 36,
+        "LevelMin": 57,
+        "LevelMax": 57
       }
     ]
   },
@@ -1573,12 +3069,23 @@
     "Icon": 72268,
     "Sources": [
       {
-        "Info": "(Trash) Page 64",
-        "AcquiringTips": "If Page 64 won't cast, try standing far enough away for everyone to untether.",
         "Type": 13,
-        "TerritoryTypeID": 1109,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Page 64",
+        "NpcNameId": 3915,
+        "NpcId": [
+          4279,
+          3791
+        ],
+        "TerritoryTypeId": 1109,
+        "MapId": 241,
+        "AcquiringTips": "If Page 64 won't cast, try standing far enough away for everyone to untether.",
+        "Location": [
+          14.626,
+          11.292
+        ],
+        "Radius": 55,
+        "LevelMin": 59,
+        "LevelMax": 59
       }
     ]
   },
@@ -1587,20 +3094,41 @@
     "Icon": 72269,
     "Sources": [
       {
-        "Info": "(2nd Boss) Armored Weapon",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1114,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Armored Weapon",
+        "NpcNameId": 5562,
+        "NpcId": [
+          410,
+          6458
+        ],
+        "TerritoryTypeId": 1114,
+        "MapId": 338,
+        "AcquiringTips": "",
+        "Location": [
+          13.682,
+          11.202
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       },
       {
-        "Info": "(Trash) Doman Armored Weapon",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 660,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Doman Armored Weapon",
+        "NpcNameId": 6220,
+        "NpcId": [
+          7143
+        ],
+        "TerritoryTypeId": 1144,
+        "MapId": 396,
+        "AcquiringTips": "",
+        "Location": [
+          6.425,
+          8.945
+        ],
+        "Radius": 15,
+        "LevelMin": 67,
+        "LevelMax": 67
       }
     ]
   },
@@ -1609,12 +3137,23 @@
     "Icon": 72270,
     "Sources": [
       {
-        "Info": "The Manipulator",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 445,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "The Manipulator",
+        "NpcNameId": 3772,
+        "NpcId": [
+          3902,
+          3903
+        ],
+        "TerritoryTypeId": 445,
+        "MapId": 240,
+        "AcquiringTips": "",
+        "Location": [
+          12.26,
+          11.261
+        ],
+        "Radius": 26,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1623,12 +3162,22 @@
     "Icon": 72271,
     "Sources": [
       {
-        "Info": "(2nd Boss - Trash) Sabotender Gaurdia",
-        "AcquiringTips": "Sabotender Gaurdia will spawn during the last phase of the fight against Sabotender Emperatriz (the 2nd boss of the dungeon).\nOnce a diamond shaped barrier appears around the boss, the spell has been cast.",
         "Type": 13,
-        "TerritoryTypeID": 367,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss - Trash) Sabotender Gaurdia",
+        "NpcNameId": 3074,
+        "NpcId": [
+          3347
+        ],
+        "TerritoryTypeId": 367,
+        "MapId": 182,
+        "AcquiringTips": "Sabotender Gaurdia will spawn during the last phase of the fight against Sabotender Emperatriz (the 2nd boss of the dungeon).\nOnce a diamond shaped barrier appears around the boss, the spell has been cast.",
+        "Location": [
+          15.98,
+          11.162
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1637,12 +3186,10 @@
     "Icon": 72272,
     "Sources": [
       {
-        "Info": "Available after learning 50 spells.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after learning 50 spells.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -1651,12 +3198,10 @@
     "Icon": 72273,
     "Sources": [
       {
-        "Info": "Clear 30 Stages in The Masked Carnivale",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Clear 30 Stages in The Masked Carnivale",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -1665,20 +3210,40 @@
     "Icon": 72274,
     "Sources": [
       {
-        "Info": "Lvl. 57-58 Abalathian Wamoura",
-        "AcquiringTips": "If acquiring this from Abalathian Wamoura, you may need to pull at least two enemies so that the Abalathian Wamoura has a target to cast Exuviation on.\nExample: Pull a Window Wamoura along with an Abalathian Wamoura, then use Aqua Breath (or a similar spell that causes a debuff) on the Window Wamoura that entices the Abalathian Wamoura to cast Exuviation.",
         "Type": 2,
-        "TerritoryTypeID": 401,
-        "xCoord": 10.0,
-        "yCoord": 17.0
+        "Info": "Abalathian Wamoura",
+        "NpcNameId": 9249,
+        "NpcId": [
+          11516
+        ],
+        "TerritoryTypeId": 401,
+        "MapId": 215,
+        "AcquiringTips": "If acquiring this from Abalathian Wamoura, you may need to pull at least two enemies so that the Abalathian Wamoura has a target to cast Exuviation on.\nExample: Pull a Window Wamoura along with an Abalathian Wamoura, then use Aqua Breath (or a similar spell that causes a debuff) on the Window Wamoura that entices the Abalathian Wamoura to cast Exuviation.",
+        "Location": [
+          8.159,
+          18.011
+        ],
+        "Radius": 88,
+        "LevelMin": 58,
+        "LevelMax": 58
       },
       {
-        "Info": "(Trash) Wamoura",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 363,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Wamoura",
+        "NpcNameId": 2579,
+        "NpcId": [
+          2712
+        ],
+        "TerritoryTypeId": 363,
+        "MapId": 151,
+        "AcquiringTips": "",
+        "Location": [
+          13.055,
+          10.375
+        ],
+        "Radius": 62,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1687,12 +3252,22 @@
     "Icon": 72275,
     "Sources": [
       {
-        "Info": "Lvl. 56 Cloud Wyvern",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 400,
-        "xCoord": 24.0,
-        "yCoord": 28.5
+        "Info": "Cloud Wyvern",
+        "NpcNameId": 9248,
+        "NpcId": [
+          11515
+        ],
+        "TerritoryTypeId": 400,
+        "MapId": 214,
+        "AcquiringTips": "",
+        "Location": [
+          24.958,
+          28.386
+        ],
+        "Radius": 84,
+        "LevelMin": 56,
+        "LevelMax": 56
       }
     ]
   },
@@ -1701,36 +3276,78 @@
     "Icon": 72276,
     "Sources": [
       {
+        "Type": 104,
         "Info": "(Last Boss) Caduceus",
+        "NpcNameId": 1466,
+        "NpcId": [
+          434,
+          2007
+        ],
+        "TerritoryTypeId": 241,
+        "MapId": 57,
         "AcquiringTips": "",
-        "Type": 104,
-        "TerritoryTypeID": 241,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          10.785,
+          3.199
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
+        "Type": 13,
         "Info": "(1st Boss) Decaying Gourmand",
+        "NpcNameId": 2556,
+        "NpcId": [
+          2688
+        ],
+        "TerritoryTypeId": 363,
+        "MapId": 151,
         "AcquiringTips": "A party member is normally required if attempting to acquire it from Decaying Gourmand. If you get eaten, you will need an ally to get you out if you don't have any damage over time spells.\nThis spell can be obtained solo from Decaying Gourmand by reducing it to low HP, putting a damage over time effect on it, then being Devoured. So long as it gets the spell off, then dies from the DoT before killing you, you can learn it.",
-        "Type": 13,
-        "TerritoryTypeID": 363,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          13.2,
+          10.452
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "Rafflesia",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 355,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Rafflesia",
+        "NpcNameId": 2609,
+        "NpcId": [
+          2731,
+          2726
+        ],
+        "TerritoryTypeId": 355,
+        "MapId": 148,
+        "AcquiringTips": "",
+        "Location": [
+          5.732,
+          11.875
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       },
       {
-        "Info": "(Trash) Nullchu",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 788,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Nullchu",
+        "NpcNameId": 7659,
+        "NpcId": [
+          9263
+        ],
+        "TerritoryTypeId": 788,
+        "MapId": 481,
+        "AcquiringTips": "",
+        "Location": [
+          11.032,
+          9.696
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1739,21 +3356,41 @@
     "Icon": 72277,
     "Sources": [
       {
-        "Info": "(Trash) Mechanoscribe",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 578,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Trash) Mechanoscribe",
+        "NpcNameId": 5236,
+        "NpcId": [
+          6016
+        ],
+        "TerritoryTypeId": 578,
+        "MapId": 312,
+        "AcquiringTips": "",
+        "Location": [
+          9.98,
+          10.5
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       },
       {
-        "Info": "Arena Scribe",
-        "AcquiringTips": "",
         "Type": 103,
-        "TerritoryTypeID": 796,
+        "Info": "Arena Scribe",
+        "NpcNameId": 8128,
+        "NpcId": [
+          10038
+        ],
+        "TerritoryTypeId": 796,
+        "MapId": 490,
         "ContentFinderCondition": 634,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          6.0
+        ],
+        "Radius": 15,
+        "LevelMin": 50,
+        "LevelMax": 50
       }
     ]
   },
@@ -1762,12 +3399,22 @@
     "Icon": 72278,
     "Sources": [
       {
-        "Info": "(1st Boss) Ghrah Luminary",
-        "AcquiringTips": "Ghrah Luminary will summon a monster called \"Corruption\". Killing the corruption is enough to obtain Aetheric Mimicry.",
         "Type": 13,
-        "TerritoryTypeID": 510,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(1st Boss) Ghrah Luminary",
+        "NpcNameId": 4567,
+        "NpcId": [
+          5180
+        ],
+        "TerritoryTypeId": 510,
+        "MapId": 262,
+        "AcquiringTips": "Ghrah Luminary will summon a monster called \"Corruption\". Killing the corruption is enough to obtain Aetheric Mimicry.",
+        "Location": [
+          11.244,
+          11.467
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1776,12 +3423,25 @@
     "Icon": 72279,
     "Sources": [
       {
-        "Info": "Ravana",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 432,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Ravana",
+        "NpcNameId": 3660,
+        "NpcId": [
+          4609,
+          5074,
+          3764,
+          4917
+        ],
+        "TerritoryTypeId": 432,
+        "MapId": 256,
+        "AcquiringTips": "",
+        "Location": [
+          6.15,
+          6.114
+        ],
+        "Radius": 15,
+        "LevelMin": 53,
+        "LevelMax": 53
       }
     ]
   },
@@ -1790,12 +3450,24 @@
     "Icon": 72280,
     "Sources": [
       {
-        "Info": "Sophia",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 576,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Sophia",
+        "NpcNameId": 5199,
+        "NpcId": [
+          434,
+          410,
+          6026
+        ],
+        "TerritoryTypeId": 576,
+        "MapId": 334,
+        "AcquiringTips": "",
+        "Location": [
+          6.119,
+          6.05
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1804,12 +3476,23 @@
     "Icon": 72281,
     "Sources": [
       {
-        "Info": "(Last Phase) Brute Justice",
-        "AcquiringTips": "Naturally performs J Kick at the start of the boss group attack. Be aware of all the mechanics and dodge or heal through all the attacks.",
         "Type": 104,
-        "TerritoryTypeID": 523,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Phase) Brute Justice",
+        "NpcNameId": 4708,
+        "NpcId": [
+          5597,
+          5599
+        ],
+        "TerritoryTypeId": 523,
+        "MapId": 290,
+        "AcquiringTips": "Naturally performs J Kick at the start of the boss group attack. Be aware of all the mechanics and dodge or heal through all the attacks.",
+        "Location": [
+          11.316,
+          11.065
+        ],
+        "Radius": 15,
+        "LevelMin": 60,
+        "LevelMax": 60
       }
     ]
   },
@@ -1818,20 +3501,40 @@
     "Icon": 72282,
     "Sources": [
       {
-        "Info": "Lvl. 67 Ebisu Catfish",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 614,
-        "xCoord": 28.0,
-        "yCoord": 6.0
+        "Info": "Ebisu Catfish",
+        "NpcNameId": 5769,
+        "NpcId": [
+          6627
+        ],
+        "TerritoryTypeId": 614,
+        "MapId": 354,
+        "AcquiringTips": "",
+        "Location": [
+          25.901,
+          7.273
+        ],
+        "Radius": 310,
+        "LevelMin": 64,
+        "LevelMax": 67
       },
       {
-        "Info": "Gyorai Quickstrike",
-        "AcquiringTips": "",
         "Type": 101,
-        "TerritoryTypeID": 614,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Gyorai Quickstrike",
+        "NpcNameId": 6005,
+        "NpcId": [
+          6854
+        ],
+        "TerritoryTypeId": 614,
+        "MapId": 354,
+        "AcquiringTips": "",
+        "Location": [
+          23.019,
+          12.771
+        ],
+        "Radius": 308,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1840,20 +3543,40 @@
     "Icon": 72283,
     "Sources": [
       {
-        "Info": "Lvl. 67 Ebisu Catfish",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 614,
-        "xCoord": 28.0,
-        "yCoord": 6.0
+        "Info": "Ebisu Catfish",
+        "NpcNameId": 5769,
+        "NpcId": [
+          6627
+        ],
+        "TerritoryTypeId": 614,
+        "MapId": 354,
+        "AcquiringTips": "",
+        "Location": [
+          25.901,
+          7.273
+        ],
+        "Radius": 310,
+        "LevelMin": 64,
+        "LevelMax": 67
       },
       {
-        "Info": "Gyorai Quickstrike",
-        "AcquiringTips": "",
         "Type": 101,
-        "TerritoryTypeID": 614,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Gyorai Quickstrike",
+        "NpcNameId": 6005,
+        "NpcId": [
+          6854
+        ],
+        "TerritoryTypeId": 614,
+        "MapId": 354,
+        "AcquiringTips": "",
+        "Location": [
+          23.019,
+          12.771
+        ],
+        "Radius": 308,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1862,12 +3585,23 @@
     "Icon": 72284,
     "Sources": [
       {
-        "Info": "(2nd Boss) Dojun-maru",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 662,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(2nd Boss) Dojun-maru",
+        "NpcNameId": 6087,
+        "NpcId": [
+          6774,
+          6358
+        ],
+        "TerritoryTypeId": 662,
+        "MapId": 361,
+        "AcquiringTips": "",
+        "Location": [
+          11.297,
+          11.432
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1876,12 +3610,23 @@
     "Icon": 72285,
     "Sources": [
       {
-        "Info": "(Last Boss) Mist Dragon",
-        "AcquiringTips": "When the Mist Dragon begins casting Vaporize, it will summon 3 Draconic Regards (white dragon heads). You must leave at least one head alive in order for the cast to go off, otherwise the Mist Dragon will cast White Death instead and you will not get the spell.\nUse Diamondback or other mitigation to help survive the damage.",
         "Type": 13,
-        "TerritoryTypeID": 1173,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Mist Dragon",
+        "NpcNameId": 7672,
+        "NpcId": [
+          9265,
+          9268
+        ],
+        "TerritoryTypeId": 1173,
+        "MapId": 480,
+        "AcquiringTips": "When the Mist Dragon begins casting Vaporize, it will summon 3 Draconic Regards (white dragon heads). You must leave at least one head alive in order for the cast to go off, otherwise the Mist Dragon will cast White Death instead and you will not get the spell.\nUse Diamondback or other mitigation to help survive the damage.",
+        "Location": [
+          5.24,
+          3.24
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1890,12 +3635,24 @@
     "Icon": 72286,
     "Sources": [
       {
-        "Info": "Lakshmi",
-        "AcquiringTips": "Stotram is used early on as a party wide unavoidable attack that damages the party and heals adds, so nothing needs to be done to make it be cast.",
         "Type": 105,
-        "TerritoryTypeID": 719,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Lakshmi",
+        "NpcNameId": 6385,
+        "NpcId": [
+          7712,
+          7715,
+          6358
+        ],
+        "TerritoryTypeId": 719,
+        "MapId": 399,
+        "AcquiringTips": "Stotram is used early on as a party wide unavoidable attack that damages the party and heals adds, so nothing needs to be done to make it be cast.",
+        "Location": [
+          6.126,
+          5.81
+        ],
+        "Radius": 15,
+        "LevelMin": 67,
+        "LevelMax": 67
       }
     ]
   },
@@ -1904,12 +3661,24 @@
     "Icon": 72287,
     "Sources": [
       {
-        "Info": "Phantom Train",
-        "AcquiringTips": "This attack targets a different number of people throughout the fight with a marker and creates a large spotlight shining on the ground, exploding into light. The attack is guaranteed to happen early in the fight, so nothing needs to be done to make it be cast.\nIt's important to not get kidnapped by the ghosts when the Phantom Train is killed. If you are taken away by the ghost when the train dies, you will not acquire the ability.",
         "Type": 104,
-        "TerritoryTypeID": 748,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Phantom Train",
+        "NpcNameId": 7127,
+        "NpcId": [
+          8510,
+          6358,
+          8527
+        ],
+        "TerritoryTypeId": 748,
+        "MapId": 446,
+        "AcquiringTips": "This attack targets a different number of people throughout the fight with a marker and creates a large spotlight shining on the ground, exploding into light. The attack is guaranteed to happen early in the fight, so nothing needs to be done to make it be cast.\nIt's important to not get kidnapped by the ghosts when the Phantom Train is killed. If you are taken away by the ghost when the train dies, you will not acquire the ability.",
+        "Location": [
+          6.168,
+          5.713
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1918,12 +3687,22 @@
     "Icon": 72288,
     "Sources": [
       {
-        "Info": "(Last Boss) Tokkapchi",
-        "AcquiringTips": "This attack occurs midway through the Tokkapchi fight, so you may have to wait for it to cast it before killing it. Tokkapchi targets the Mud Slime it has periodically been creating during the fight (the one you should be managing the position of) with a cone shaped AoE attack.",
         "Type": 13,
-        "TerritoryTypeID": 788,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Tokkapchi",
+        "NpcNameId": 7662,
+        "NpcId": [
+          9259
+        ],
+        "TerritoryTypeId": 788,
+        "MapId": 482,
+        "AcquiringTips": "This attack occurs midway through the Tokkapchi fight, so you may have to wait for it to cast it before killing it. Tokkapchi targets the Mud Slime it has periodically been creating during the fight (the one you should be managing the position of) with a cone shaped AoE attack.",
+        "Location": [
+          18.411,
+          4.105
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1932,12 +3711,10 @@
     "Icon": 72289,
     "Sources": [
       {
-        "Info": "Available after reaching level 70",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after reaching level 70",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -1946,12 +3723,23 @@
     "Icon": 72290,
     "Sources": [
       {
-        "Info": "(Last Boss) Genbu",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 742,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Genbu",
+        "NpcNameId": 6996,
+        "NpcId": [
+          6358,
+          8383
+        ],
+        "TerritoryTypeId": 742,
+        "MapId": 439,
+        "AcquiringTips": "",
+        "Location": [
+          12.478,
+          1.682
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1960,12 +3748,23 @@
     "Icon": 72291,
     "Sources": [
       {
-        "Info": "(Last Boss) Ivon Coeurlfish",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 663,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Ivon Coeurlfish",
+        "NpcNameId": 6117,
+        "NpcId": [
+          6998,
+          6358
+        ],
+        "TerritoryTypeId": 663,
+        "MapId": 363,
+        "AcquiringTips": "",
+        "Location": [
+          12.166,
+          5.407
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1974,20 +3773,41 @@
     "Icon": 72292,
     "Sources": [
       {
-        "Info": "Lvl. 24 Master Coeurl",
-        "AcquiringTips": "Master Coeurl uses this immediately. Wait for it to finish casting before slaying it.",
         "Type": 2,
-        "TerritoryTypeID": 139,
-        "xCoord": 8.9,
-        "yCoord": 21.4
+        "Info": "Master Coeurl",
+        "NpcNameId": 9911,
+        "NpcId": [
+          12667
+        ],
+        "TerritoryTypeId": 139,
+        "MapId": 19,
+        "AcquiringTips": "Master Coeurl uses this immediately. Wait for it to finish casting before slaying it.",
+        "Location": [
+          8.754,
+          21.241
+        ],
+        "Radius": 18,
+        "LevelMin": 24,
+        "LevelMax": 24
       },
       {
-        "Info": "(1st Boss) Coeurl Smriti",
-        "AcquiringTips": "Coeurl Smriti casts it if both Coeurls don't die together.",
         "Type": 13,
-        "TerritoryTypeID": 663,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(1st Boss) Coeurl Smriti",
+        "NpcNameId": 6120,
+        "NpcId": [
+          6996,
+          6358
+        ],
+        "TerritoryTypeId": 663,
+        "MapId": 362,
+        "AcquiringTips": "Coeurl Smriti casts it if both Coeurls don't die together.",
+        "Location": [
+          11.17,
+          14.325
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -1996,20 +3816,40 @@
     "Icon": 72293,
     "Sources": [
       {
-        "Info": "Lvl. 68 Kongamato",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 620,
-        "xCoord": 13.5,
-        "yCoord": 26.2
+        "Info": "Kongamato",
+        "NpcNameId": 5714,
+        "NpcId": [
+          6652
+        ],
+        "TerritoryTypeId": 620,
+        "MapId": 368,
+        "AcquiringTips": "",
+        "Location": [
+          18.313,
+          29.711
+        ],
+        "Radius": 385,
+        "LevelMin": 65,
+        "LevelMax": 68
       },
       {
-        "Info": "Gwas-y-neidr",
-        "AcquiringTips": "",
         "Type": 101,
-        "TerritoryTypeID": 620,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Gwas-y-neidr",
+        "NpcNameId": 6010,
+        "NpcId": [
+          6859
+        ],
+        "TerritoryTypeId": 620,
+        "MapId": 368,
+        "AcquiringTips": "",
+        "Location": [
+          16.047,
+          31.515
+        ],
+        "Radius": 544,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2018,12 +3858,23 @@
     "Icon": 72294,
     "Sources": [
       {
-        "Info": "Alte Roite",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 691,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Alte Roite",
+        "NpcNameId": 5629,
+        "NpcId": [
+          6358,
+          6767
+        ],
+        "TerritoryTypeId": 691,
+        "MapId": 390,
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          5.99
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2032,12 +3883,22 @@
     "Icon": 72295,
     "Sources": [
       {
-        "Info": "Omega",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 800,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Omega",
+        "NpcNameId": 7695,
+        "NpcId": [
+          9335
+        ],
+        "TerritoryTypeId": 800,
+        "MapId": 486,
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          5.92
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2046,12 +3907,10 @@
     "Icon": 72296,
     "Sources": [
       {
-        "Info": "Available after learning 100 spells.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after learning 100 spells.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -2060,12 +3919,22 @@
     "Icon": 72297,
     "Sources": [
       {
-        "Info": "Lvl. 69 Salt Dhruva",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 621,
-        "xCoord": 22.4,
-        "yCoord": 22.8
+        "Info": "Salt Dhruva",
+        "NpcNameId": 5722,
+        "NpcId": [
+          6610
+        ],
+        "TerritoryTypeId": 621,
+        "MapId": 369,
+        "AcquiringTips": "",
+        "Location": [
+          26.053,
+          22.331
+        ],
+        "Radius": 315,
+        "LevelMin": 69,
+        "LevelMax": 69
       }
     ]
   },
@@ -2074,12 +3943,23 @@
     "Icon": 72298,
     "Sources": [
       {
-        "Info": "(1st Boss) Kelpie",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 1172,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(1st Boss) Kelpie",
+        "NpcNameId": 6907,
+        "NpcId": [
+          8107,
+          6358
+        ],
+        "TerritoryTypeId": 1172,
+        "MapId": 413,
+        "AcquiringTips": "",
+        "Location": [
+          10.66,
+          11.42
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2088,12 +3968,23 @@
     "Icon": 72299,
     "Sources": [
       {
-        "Info": "(Corridor Wave) Sai Taisui",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 768,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Corridor Wave) Sai Taisui",
+        "NpcNameId": 7206,
+        "NpcId": [
+          8737,
+          8780
+        ],
+        "TerritoryTypeId": 768,
+        "MapId": 464,
+        "AcquiringTips": "",
+        "Location": [
+          10.73,
+          11.8
+        ],
+        "Radius": 108,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2102,12 +3993,22 @@
     "Icon": 72300,
     "Sources": [
       {
-        "Info": "Lvl. 53 Courser Chocobo",
-        "AcquiringTips": "Courser Chocobo will cast this after attacking a few times. Be sure to get out of the way as it can cause heavy damage!",
         "Type": 2,
-        "TerritoryTypeID": 398,
-        "xCoord": 37.5,
-        "yCoord": 23.7
+        "Info": "Courser Chocobo",
+        "NpcNameId": 9912,
+        "NpcId": [
+          12668
+        ],
+        "TerritoryTypeId": 398,
+        "MapId": 212,
+        "AcquiringTips": "Courser Chocobo will cast this after attacking a few times. Be sure to get out of the way as it can cause heavy damage!",
+        "Location": [
+          37.154,
+          26.979
+        ],
+        "Radius": 183,
+        "LevelMin": 53,
+        "LevelMax": 53
       }
     ]
   },
@@ -2116,12 +4017,10 @@
     "Icon": 72301,
     "Sources": [
       {
-        "Info": "Available after learning 100 spells.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after learning 100 spells.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -2130,12 +4029,22 @@
     "Icon": 72302,
     "Sources": [
       {
-        "Info": "Omega",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 800,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Omega",
+        "NpcNameId": 7695,
+        "NpcId": [
+          9335
+        ],
+        "TerritoryTypeId": 800,
+        "MapId": 486,
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          5.92
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2144,12 +4053,23 @@
     "Icon": 72303,
     "Sources": [
       {
-        "Info": "(Last Boss) Qitian Dasheng",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 768,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "(Last Boss) Qitian Dasheng",
+        "NpcNameId": 7203,
+        "NpcId": [
+          8665,
+          6358
+        ],
+        "TerritoryTypeId": 768,
+        "MapId": 466,
+        "AcquiringTips": "",
+        "Location": [
+          11.097,
+          6.237
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2158,12 +4078,23 @@
     "Icon": 72304,
     "Sources": [
       {
-        "Info": "Suzaku",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 810,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Suzaku",
+        "NpcNameId": 7702,
+        "NpcId": [
+          9305,
+          9311
+        ],
+        "TerritoryTypeId": 810,
+        "MapId": 503,
+        "AcquiringTips": "",
+        "Location": [
+          6.26,
+          5.94
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2172,12 +4103,23 @@
     "Icon": 72305,
     "Sources": [
       {
-        "Info": "Tsukuyomi",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 778,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Tsukuyomi",
+        "NpcNameId": 7225,
+        "NpcId": [
+          8720,
+          6358
+        ],
+        "TerritoryTypeId": 778,
+        "MapId": 476,
+        "AcquiringTips": "",
+        "Location": [
+          6.207,
+          6.046
+        ],
+        "Radius": 15,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2186,12 +4128,40 @@
     "Icon": 72306,
     "Sources": [
       {
-        "Info": "Hobgoblin",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 870,
-        "xCoord": 34.0,
-        "yCoord": 32.5
+        "Info": "Hobgoblin",
+        "NpcNameId": 8518,
+        "NpcId": [
+          10392
+        ],
+        "TerritoryTypeId": 814,
+        "MapId": 492,
+        "AcquiringTips": "",
+        "Location": [
+          34.544,
+          30.059
+        ],
+        "Radius": 192,
+        "LevelMin": 70,
+        "LevelMax": 70
+      },
+      {
+        "Type": 2,
+        "Info": "Hobgoblin Guard",
+        "NpcNameId": 8526,
+        "NpcId": [
+          10401
+        ],
+        "TerritoryTypeId": 814,
+        "MapId": 492,
+        "AcquiringTips": "",
+        "Location": [
+          26.318,
+          9.536
+        ],
+        "Radius": 79,
+        "LevelMin": 78,
+        "LevelMax": 78
       }
     ]
   },
@@ -2200,12 +4170,22 @@
     "Icon": 72307,
     "Sources": [
       {
-        "Info": "Greater Armadillo",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 836,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Greater Armadillo",
+        "NpcNameId": 8252,
+        "NpcId": [
+          9849
+        ],
+        "TerritoryTypeId": 836,
+        "MapId": 541,
+        "AcquiringTips": "",
+        "Location": [
+          12.467,
+          10.86
+        ],
+        "Radius": 15,
+        "LevelMin": 77,
+        "LevelMax": 77
       }
     ]
   },
@@ -2214,12 +4194,40 @@
     "Icon": 72308,
     "Sources": [
       {
-        "Info": "Hardscale Armadillo",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 872,
-        "xCoord": 15.3,
-        "yCoord": 29.3
+        "Info": "Hardscale Armadillo",
+        "NpcNameId": 10903,
+        "NpcId": [
+          16349
+        ],
+        "TerritoryTypeId": 815,
+        "MapId": 493,
+        "AcquiringTips": "",
+        "Location": [
+          15.386,
+          29.534
+        ],
+        "Radius": 21,
+        "LevelMin": 77,
+        "LevelMax": 77
+      },
+      {
+        "Type": 2,
+        "Info": "Long-tailed Armadillo",
+        "NpcNameId": 8546,
+        "NpcId": [
+          10332
+        ],
+        "TerritoryTypeId": 815,
+        "MapId": 493,
+        "AcquiringTips": "",
+        "Location": [
+          16.2,
+          29.972
+        ],
+        "Radius": 181,
+        "LevelMin": 77,
+        "LevelMax": 77
       }
     ]
   },
@@ -2228,12 +4236,22 @@
     "Icon": 72309,
     "Sources": [
       {
-        "Info": "Slippery Armadillo",
-        "AcquiringTips": "",
         "Type": 2,
-        "TerritoryTypeID": 872,
-        "xCoord": 32.2,
-        "yCoord": 9.2
+        "Info": "Slippery Armadillo",
+        "NpcNameId": 10902,
+        "NpcId": [
+          16348
+        ],
+        "TerritoryTypeId": 815,
+        "MapId": 493,
+        "AcquiringTips": "",
+        "Location": [
+          32.562,
+          9.359
+        ],
+        "Radius": 17,
+        "LevelMin": 70,
+        "LevelMax": 70
       }
     ]
   },
@@ -2242,12 +4260,10 @@
     "Icon": 72310,
     "Sources": [
       {
-        "Info": "Achieve Blue Mage level 80.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Achieve Blue Mage level 80.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -2256,12 +4272,22 @@
     "Icon": 72311,
     "Sources": [
       {
-        "Info": "Spectral Berserker",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 916,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Spectral Berserker",
+        "NpcNameId": 9511,
+        "NpcId": [
+          12029
+        ],
+        "TerritoryTypeId": 916,
+        "MapId": 594,
+        "AcquiringTips": "",
+        "Location": [
+          14.9,
+          10.999
+        ],
+        "Radius": 15,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2270,12 +4296,22 @@
     "Icon": 72312,
     "Sources": [
       {
-        "Info": "Mudman",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 933,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Mudman",
+        "NpcNameId": 9735,
+        "NpcId": [
+          12300
+        ],
+        "TerritoryTypeId": 933,
+        "MapId": 628,
+        "AcquiringTips": "",
+        "Location": [
+          11.239,
+          8.232
+        ],
+        "Radius": 15,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2284,12 +4320,22 @@
     "Icon": 72313,
     "Sources": [
       {
-        "Info": "Seeker Of Solitude",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 884,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Seeker Of Solitude",
+        "NpcNameId": 9041,
+        "NpcId": [
+          11290
+        ],
+        "TerritoryTypeId": 884,
+        "MapId": 567,
+        "AcquiringTips": "",
+        "Location": [
+          11.24,
+          14.84
+        ],
+        "Radius": 15,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2298,12 +4344,23 @@
     "Icon": 72314,
     "Sources": [
       {
-        "Info": "The Ruby Weapon",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 897,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "The Ruby Weapon",
+        "NpcNameId": 9250,
+        "NpcId": [
+          11484,
+          11487
+        ],
+        "TerritoryTypeId": 897,
+        "MapId": 0,
+        "AcquiringTips": "",
+        "Location": [
+          23.48,
+          23.42
+        ],
+        "Radius": 15,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2312,12 +4369,22 @@
     "Icon": 72315,
     "Sources": [
       {
-        "Info": "Titania",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 845,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Titania",
+        "NpcNameId": 8361,
+        "NpcId": [
+          10221
+        ],
+        "TerritoryTypeId": 845,
+        "MapId": 556,
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          5.92
+        ],
+        "Radius": 15,
+        "LevelMin": 73,
+        "LevelMax": 73
       }
     ]
   },
@@ -2326,12 +4393,22 @@
     "Icon": 72316,
     "Sources": [
       {
+        "Type": 104,
         "Info": "Eden Prime",
+        "NpcNameId": 8345,
+        "NpcId": [
+          9369
+        ],
+        "TerritoryTypeId": 849,
+        "MapId": 559,
         "AcquiringTips": "",
-        "Type":104,
-        "TerritoryTypeID": 849,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Location": [
+          6.122,
+          5.92
+        ],
+        "Radius": 15,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2340,12 +4417,24 @@
     "Icon": 72317,
     "Sources": [
       {
-        "Info": "Forgiven Obscenity",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 822,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Forgiven Obscenity",
+        "NpcNameId": 8262,
+        "NpcId": [
+          10477,
+          10190,
+          10191
+        ],
+        "TerritoryTypeId": 822,
+        "MapId": 537,
+        "AcquiringTips": "",
+        "Location": [
+          12.494,
+          11.064
+        ],
+        "Radius": 83,
+        "LevelMin": 79,
+        "LevelMax": 79
       }
     ]
   },
@@ -2354,12 +4443,10 @@
     "Icon": 72318,
     "Sources": [
       {
-        "Info": "Available after learning 120 spells.",
-        "AcquiringTips": "",
         "Type": 3,
-        "TerritoryTypeID": 0,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Available after learning 120 spells.",
+        "TerritoryTypeId": 131,
+        "AcquiringTips": ""
       }
     ]
   },
@@ -2368,12 +4455,24 @@
     "Icon": 72319,
     "Sources": [
       {
-        "Info": "Innocence",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 846,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Innocence",
+        "NpcNameId": 8353,
+        "NpcId": [
+          10491,
+          11245,
+          10494
+        ],
+        "TerritoryTypeId": 846,
+        "MapId": 557,
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          6.02
+        ],
+        "Radius": 15,
+        "LevelMin": 79,
+        "LevelMax": 79
       }
     ]
   },
@@ -2382,12 +4481,23 @@
     "Icon": 72320,
     "Sources": [
       {
-        "Info": "Eden's Promise",
-        "AcquiringTips": "",
         "Type": 104,
-        "TerritoryTypeID": 945,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Eden's Promise",
+        "NpcNameId": 9813,
+        "NpcId": [
+          12429,
+          12430
+        ],
+        "TerritoryTypeId": 945,
+        "MapId": 632,
+        "AcquiringTips": "",
+        "Location": [
+          4.624,
+          6.141
+        ],
+        "Radius": 16,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2396,12 +4506,23 @@
     "Icon": 72321,
     "Sources": [
       {
-        "Info": "Aenc Thon",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 821,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Aenc Thon, Lord of the Lingering Gaze",
+        "NpcNameId": 8141,
+        "NpcId": [
+          10185,
+          1010
+        ],
+        "TerritoryTypeId": 821,
+        "MapId": 528,
+        "AcquiringTips": "",
+        "Location": [
+          11.24,
+          15.669
+        ],
+        "Radius": 15,
+        "LevelMin": 73,
+        "LevelMax": 73
       }
     ]
   },
@@ -2410,12 +4531,22 @@
     "Icon": 72322,
     "Sources": [
       {
-        "Info": "Lugus",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 884,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Lugus",
+        "NpcNameId": 9046,
+        "NpcId": [
+          11283
+        ],
+        "TerritoryTypeId": 884,
+        "MapId": 567,
+        "AcquiringTips": "",
+        "Location": [
+          11.24,
+          4.25
+        ],
+        "Radius": 15,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2424,12 +4555,22 @@
     "Icon": 72323,
     "Sources": [
       {
-        "Info": "Nixie",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 933,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Nixie",
+        "NpcNameId": 9738,
+        "NpcId": [
+          12415
+        ],
+        "TerritoryTypeId": 933,
+        "MapId": 630,
+        "AcquiringTips": "",
+        "Location": [
+          11.3,
+          11.3
+        ],
+        "Radius": 25,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2438,12 +4579,23 @@
     "Icon": 72324,
     "Sources": [
       {
-        "Info": "Therion",
-        "AcquiringTips": "",
         "Type": 13,
-        "TerritoryTypeID": 838,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Therion",
+        "NpcNameId": 8210,
+        "NpcId": [
+          10177,
+          10154
+        ],
+        "TerritoryTypeId": 838,
+        "MapId": 533,
+        "AcquiringTips": "",
+        "Location": [
+          21.5,
+          20.3
+        ],
+        "Radius": 30,
+        "LevelMin": 80,
+        "LevelMax": 80
       }
     ]
   },
@@ -2452,12 +4604,22 @@
     "Icon": 72325,
     "Sources": [
       {
-        "Info": "Titania",
-        "AcquiringTips": "",
         "Type": 105,
-        "TerritoryTypeID": 845,
-        "xCoord": 0.0,
-        "yCoord": 0.0
+        "Info": "Titania",
+        "NpcNameId": 8361,
+        "NpcId": [
+          10221
+        ],
+        "TerritoryTypeId": 845,
+        "MapId": 556,
+        "AcquiringTips": "",
+        "Location": [
+          6.12,
+          5.92
+        ],
+        "Radius": 15,
+        "LevelMin": 73,
+        "LevelMax": 73
       }
     ]
   }
