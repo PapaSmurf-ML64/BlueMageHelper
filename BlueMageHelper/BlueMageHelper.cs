@@ -116,7 +116,7 @@ public sealed class Plugin : IDalamudPlugin
                         MobsByTerritory[src.TerritoryTypeId] = record;
                     }
 
-                    if (src.NpcId is { } ids && kvp.Value is not null && IsSpellUnlocked(kvp.Key))
+                    if (src.NpcId is { } ids && kvp.Value is not null && !IsSpellUnlocked(kvp.Key))
                     {
                         record.NpcIds.AddRange(ids.Select(i => (uint)i));
                         record.SpellSources.Add(src);
