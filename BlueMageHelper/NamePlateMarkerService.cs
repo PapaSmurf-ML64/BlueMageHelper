@@ -21,6 +21,7 @@ public static class NamePlateMarkerService
         if (localPlayer == null) return;
         try
         {
+            if (!Plugin.Configuration.MarkMobsInWorld) return;
             if (!Plugin.MobsByTerritory.TryGetValue(Services.ClientState.TerritoryType, out var record)) return;
 
             foreach (var h in handlers)

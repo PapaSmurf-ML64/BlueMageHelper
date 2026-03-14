@@ -103,26 +103,7 @@ public sealed class Plugin : IDalamudPlugin
             var path = Path.Combine(Services.PluginInterface.AssemblyLocation.Directory?.FullName!, "spells.json");
             var jsonString = File.ReadAllText(path);
             Spells = JsonConvert.DeserializeObject<Dictionary<int, Spell>>(jsonString)!;
-            foreach (var kvp in Spells)
-            {
-                kvp.Value.Number = kvp.Key;
-                foreach (var src in kvp.Value.Sources)
-                {
-                    src.Spell = kvp.Value;
-
-                    if (!MobsByTerritory.TryGetValue(src.TerritoryTypeId, out var record))
-                    {
-                        record = new TerritoryNpcRecords();
-                        MobsByTerritory[src.TerritoryTypeId] = record;
-                    }
-
-                    if (src.NpcId is { } ids && kvp.Value is not null && !IsSpellUnlocked(kvp.Key))
-                    {
-                        record.NpcIds.AddRange(ids.Select(i => (uint)i));
-                        record.SpellSources.Add(src);
-                    }
-                }
-            }
+            GenerateSpellsByTerritory();
         }
         catch (Exception e)
         {
@@ -157,12 +138,16 @@ public sealed class Plugin : IDalamudPlugin
             return;
 
         UnlockedSpells.Clear();
+        MobsByTerritory.Clear();
 
         foreach (var (transient, action) in AozTransientCache.Zip(AozActionsCache).OrderBy(pair => pair.First.Number))
         {
             var unlocked = SpellUnlocked(action.Action.Value.UnlockLink.RowId);
+            // MobsByTerritory.ContainsKey()
             UnlockedSpells.Add(transient.Number, unlocked);
         }
+
+        GenerateSpellsByTerritory();
     }
 
     private void AozNotebookAddonManager(IFramework framework)
@@ -289,6 +274,38 @@ public sealed class Plugin : IDalamudPlugin
         var num1 = scale / 100f;
         var num2 = (float)(pos * (double)num1 / 1000.0f);
         return (40.96f / num1 * ((num2 + 1024.0f) / 2048.0f)) + 1.0f;
+    }
+
+    private void GenerateSpellsByTerritory()
+    {
+        var added = 0;
+        foreach (var kvp in Spells)
+        {
+            kvp.Value.Number = kvp.Key;
+            foreach (var src in kvp.Value.Sources)
+            {
+                src.Spell = kvp.Value;
+
+                if (!MobsByTerritory.TryGetValue(src.TerritoryTypeId, out var record))
+                {
+                    record = new TerritoryNpcRecords();
+                    MobsByTerritory[src.TerritoryTypeId] = record;
+                }
+
+                if (src.NpcId is { } ids &&
+                    kvp.Value is not null &&
+                    (!Configuration.ShowOnlyUnlearned ||
+                     IsSpellUnlocked(kvp.Key))
+                   )
+                {
+                    record.NpcIds.AddRange(ids.Select(i => (uint)i));
+                    added += ids.Count;
+                    record.SpellSources.Add(src);
+                }
+            }
+        }
+
+        Services.Log.Verbose($"Spells generated - {MobsByTerritory.Count} ({added})");
     }
 
     #region internal

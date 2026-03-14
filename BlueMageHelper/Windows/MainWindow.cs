@@ -29,12 +29,19 @@ public class MainWindow : Window, IDisposable
     public List<BlueSpell>? AllBlueSpells;
 
 
-    public record BlueSpell
+    public record BlueSpell : NumberedItem
     {
         public required string Name;
         public required string Description;
-        public int Number;
+        public required string Location;
         public uint IconId;
+
+        public static bool SearchPredicate(BlueSpell spell, string search)
+        {
+            return spell.Name.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                   spell.Location.Contains(search, StringComparison.OrdinalIgnoreCase) ||
+                   Int16.TryParse(search, out var id) && spell.Number == id;
+        }
     }
 
     public ClippedCombo<BlueSpell>? SpellSelector;
@@ -71,6 +78,7 @@ public class MainWindow : Window, IDisposable
                 {
                     Name = a.Action.Value.Name.ToString(),
                     Description = Plugin.ActionTransient.GetRow(a.Action.RowId).Description.ToString(),
+                    Location = string.Join("|",Spells[Plugin.AozTransientCache[(int)a.RowId - 1].Number].Sources.Select(s=>s.PlaceName)),
                     Number = Plugin.AozTransientCache[(int)a.RowId - 1].Number,
                     IconId = Plugin.AozTransientCache[(int)a.RowId - 1].Icon
                 })
@@ -82,6 +90,7 @@ public class MainWindow : Window, IDisposable
                 string.Empty,
                 275,
                 AllBlueSpells,
+                BlueSpell.SearchPredicate,
                 g => $"{g.Name} (#{g.Number})");
         }
 

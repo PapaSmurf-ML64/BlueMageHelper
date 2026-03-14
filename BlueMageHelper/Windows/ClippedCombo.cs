@@ -9,28 +9,31 @@ using Dalamud.Interface.Utility.Raii;
 namespace BlueMageHelper.Windows;
 
 // https://github.com/Ottermandias/OtterGui/blob/5a9ca815a981802cf56cb11267a0c3a9aa583d72/Widgets/ClippedSelectableCombo.cs
-public class ClippedCombo<T>
+public class ClippedCombo<T> where T : NumberedItem
 {
-    private readonly int _pushId;
-    private readonly string _label;
+    private readonly int PushId;
+    private readonly string Label;
 
-    private readonly IList<T> _items;
-    private readonly Func<T, string> _itemToName;
+    private readonly IList<T> Items;
+    private readonly Func<T, string> ItemToName;
+    private readonly Func<T, string, bool> ItemFilter;
 
-    private string _filter = string.Empty;
-    private readonly List<(string, int)> _remainingItems;
+    private string Filter = string.Empty;
+    private readonly List<(int num, int idx)> RemainingItems;
 
-    private readonly float _previewSize;
-    public const int ItemsAtOnce = 15;
+    private readonly float PreviewSize;
+    private const int ItemsAtOnce = 15;
 
-    public ClippedCombo(string id, string label, float previewSize, IList<T> items, Func<T, string> itemToName)
+    public ClippedCombo(string id, string label, float previewSize, IList<T> items, Func<T, string, bool> filterPredicate,
+        Func<T, string> itemToName)
     {
-        _pushId = id.GetHashCode();
-        _label = label;
-        _items = items;
-        _itemToName = itemToName;
-        _remainingItems = items.Select((s, i) => (itemToName(s).ToLowerInvariant(), i)).ToList();
-        _previewSize = previewSize;
+        PushId = id.GetHashCode();
+        Label = label;
+        Items = items;
+        ItemFilter = filterPredicate;
+        ItemToName = itemToName;
+        RemainingItems = items.Select((s, i) => (s.Number, i)).ToList();
+        PreviewSize = previewSize;
     }
 
     private bool DrawList(string currentName, out int selectedIdx)
@@ -38,20 +41,20 @@ public class ClippedCombo<T>
         selectedIdx = -1;
         var height = ImGui.GetTextLineHeightWithSpacing();
         using var child = ImRaii.Child("##List",
-            new Vector2(_previewSize * ImGuiHelpers.GlobalScale, height * ItemsAtOnce));
+            new Vector2(PreviewSize * ImGuiHelpers.GlobalScale, height * ItemsAtOnce));
         if (!child)
             return false;
 
         var tmpIdx = selectedIdx;
 
-        void DrawItemInternal((string, int) p)
+        void DrawItemInternal((int, int) p)
         {
-            var name = _itemToName(_items[p.Item2]);
+            var name = ItemToName(Items[p.Item2]);
             if (ImGui.Selectable(name, currentName == name))
                 tmpIdx = p.Item2;
         }
 
-        ImGuiClip.ClippedDraw(_remainingItems, DrawItemInternal, height);
+        ImGuiClip.ClippedDraw(RemainingItems, DrawItemInternal, height);
         if (tmpIdx == selectedIdx)
             return false;
 
@@ -63,10 +66,10 @@ public class ClippedCombo<T>
     public bool Draw(string currentName, out int newIdx, ImGuiComboFlags flags = ImGuiComboFlags.None)
     {
         newIdx = -1;
-        using var id = ImRaii.PushId(_pushId);
-        ImGui.SetNextItemWidth(_previewSize * ImGuiHelpers.GlobalScale);
+        using var id = ImRaii.PushId(PushId);
+        ImGui.SetNextItemWidth(PreviewSize * ImGuiHelpers.GlobalScale);
 
-        using var combo = ImRaii.Combo(_label, currentName, flags | ImGuiComboFlags.HeightLargest);
+        using var combo = ImRaii.Combo(Label, currentName, flags | ImGuiComboFlags.HeightLargest);
         if (!combo)
             return false;
 
@@ -77,12 +80,12 @@ public class ClippedCombo<T>
         }
 
         ImGui.SetNextItemWidth(-1);
-        var tmp = _filter;
+        var tmp = Filter;
         var enter = ImGui.InputTextWithHint("##filter", "Search...", ref tmp, 255,
             ImGuiInputTextFlags.EnterReturnsTrue);
         UpdateFilter(tmp);
 
-        if (enter && _remainingItems.Count == 0)
+        if (enter && RemainingItems.Count == 0)
         {
             ImGui.CloseCurrentPopup();
             return false;
@@ -94,10 +97,10 @@ public class ClippedCombo<T>
         if (ret)
             return true;
 
-        if (!enter && (isFocused || _remainingItems.Count != 1))
+        if (!enter && (isFocused || RemainingItems.Count != 1))
             return false;
 
-        newIdx = _remainingItems[0].Item2;
+        newIdx = RemainingItems[0].Item2;
         ImGui.CloseCurrentPopup();
         return true;
     }
@@ -105,52 +108,56 @@ public class ClippedCombo<T>
     public bool Draw(int currentIdx, out int newIdx, ImGuiComboFlags flags = ImGuiComboFlags.None)
     {
         var ret = false;
-        if (currentIdx < 0 || currentIdx >= _items.Count)
+        if (currentIdx < 0 || currentIdx >= Items.Count)
         {
             currentIdx = 0;
             newIdx = currentIdx;
             ret = true;
         }
 
-        var name = _items.Count > 0 ? _itemToName(_items[currentIdx]) : string.Empty;
+        var name = Items.Count > 0 ? ItemToName(Items[currentIdx]) : string.Empty;
         return Draw(name, out newIdx, flags) || ret;
     }
 
     private void UpdateFilter(string newFilter)
     {
-        if (newFilter == _filter)
+        if (newFilter == Filter)
             return;
 
         var newLower = newFilter.ToLowerInvariant();
-        var lower = _filter.ToLowerInvariant();
+        var lower = Filter.ToLowerInvariant();
 
-        if (_filter.Length > 0 && newLower.Contains(lower))
+        if (Filter.Length > 0 && newLower.Contains(lower))
         {
-            for (var i = 0; i < _remainingItems.Count; ++i)
+            for (var i = 0; i < RemainingItems.Count; ++i)
             {
-                if (_remainingItems[i].Item1.Contains(newLower))
+                if (ItemFilter(Items[RemainingItems[i].Item2], newLower))
                     continue;
 
-                _remainingItems.RemoveAt(i--);
+                RemainingItems.RemoveAt(i--);
             }
         }
         else if (newLower.Length > 0)
         {
-            _remainingItems.Clear();
-            for (var i = 0; i < _items.Count; ++i)
+            RemainingItems.Clear();
+            for (var i = 0; i < Items.Count; ++i)
             {
-                var itemLower = _itemToName(_items[i]).ToLowerInvariant();
-                if (itemLower.Contains(newLower))
-                    _remainingItems.Add((itemLower, i));
+                if (ItemFilter(Items[i], newLower))
+                    RemainingItems.Add((Items[i].Number, i));
             }
         }
         else
         {
-            _remainingItems.Clear();
-            for (var i = 0; i < _items.Count; ++i)
-                _remainingItems.Add((_itemToName(_items[i]).ToLowerInvariant(), i));
+            RemainingItems.Clear();
+            for (var i = 0; i < Items.Count; ++i)
+                RemainingItems.Add((Items[i].Number, i));
         }
 
-        _filter = newFilter;
+        Filter = newFilter;
     }
+}
+
+public abstract record NumberedItem
+{
+    public required int Number;
 }
