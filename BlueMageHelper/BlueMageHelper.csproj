@@ -1,4 +1,4 @@
-﻿<Project Sdk="Dalamud.NET.Sdk/14.0.1">
+﻿<Project Sdk="Dalamud.NET.Sdk/15.0.0">
     <PropertyGroup>
         <Name>Blue Mage Helper</Name>
         <Author>Infi, Sl0nderman, harbingerftw</Author>
@@ -11,8 +11,12 @@
         <ApplicableVersion>any</ApplicableVersion>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <DalamudLibPath>$(appdata)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
+    <PropertyGroup Condition="'$(DalamudLibPath)' == '' and '$(OS)' == 'Windows_NT'">
+        <DalamudLibPath>$(APPDATA)\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(DalamudLibPath)' == '' and '$(OS)' != 'Windows_NT'">
+        <DalamudLibPath>$(HOME)/.xlcore/dalamud/Hooks/dev/</DalamudLibPath>
     </PropertyGroup>
 
     <ItemGroup>
